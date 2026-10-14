@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class CProjectileDataSO : MonoBehaviour
+public abstract class CProjectileDataSO : CGameDataSO
 {
     #region 내부 변수
 

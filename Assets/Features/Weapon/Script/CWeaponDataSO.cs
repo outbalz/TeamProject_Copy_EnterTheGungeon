@@ -9,7 +9,7 @@ public abstract class CWeaponDataSO : CGameDataSO
     #endregion
 
     #region 프로퍼티
-    public CWeaponTriggerStrategySO Trigger => _trgger;
+    public CWeaponTriggerStrategySO Trigger => _trigger;
     #endregion
 
 }
