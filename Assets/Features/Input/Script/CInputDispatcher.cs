@@ -23,7 +23,7 @@ public class CInputActionData
 }
 
 [Serializable]
-public class CInputVecterActionData
+public class CInputVectorActionData
 {
     [SerializeField] private InputActionReference _reference;
     [SerializeField] private string _actionName;
@@ -72,7 +72,7 @@ public class CInputDispatcher : CSingleton<CInputDispatcher>
 {
     #region 인스팩터
     [SerializeField] private List<CInputActionData> _inputActions;
-    [SerializeField] private List<CInputVecterActionData> _inputVecterActions;
+    [SerializeField] private List<CInputVectorActionData> _inputVectorActions;
     [SerializeField] private List<CInputAxisActionData> _inputAxisActions;
     #endregion
 
@@ -82,7 +82,7 @@ public class CInputDispatcher : CSingleton<CInputDispatcher>
 
     #region 프로퍼티
     public readonly Dictionary<string, CInputActionData> InputActionMap = new Dictionary<string, CInputActionData>();
-    public readonly Dictionary<string, CInputVecterActionData> InputVecterActionMap = new Dictionary<string, CInputVecterActionData>();
+    public readonly Dictionary<string, CInputVectorActionData> InputVectorActionMap = new Dictionary<string, CInputVectorActionData>();
     public readonly Dictionary<string, CInputAxisActionData> InputAxisActionMap = new Dictionary<string, CInputAxisActionData>();
     #endregion
 
@@ -105,7 +105,7 @@ public class CInputDispatcher : CSingleton<CInputDispatcher>
         EnableActions(false);
         InputActionMap.Clear();
         InputAxisActionMap.Clear();
-        InputVecterActionMap.Clear();
+        InputVectorActionMap.Clear();
     }
 
     protected override void OnDestroy()
@@ -113,7 +113,7 @@ public class CInputDispatcher : CSingleton<CInputDispatcher>
         base.OnDestroy();
         InputActionMap.Clear();
         InputAxisActionMap.Clear();
-        InputVecterActionMap.Clear();
+        InputVectorActionMap.Clear();
 
         UnBindAll();
     }
@@ -128,7 +128,7 @@ public class CInputDispatcher : CSingleton<CInputDispatcher>
         data.Reference.action.performed += data.OnPerformed;
     }
 
-    private void TryBind(CInputVecterActionData data)
+    private void TryBind(CInputVectorActionData data)
     {
         if (data.Reference == null)
         {
@@ -163,7 +163,7 @@ public class CInputDispatcher : CSingleton<CInputDispatcher>
         data.Reference.action.performed -= data.OnPerformed;
     }
     
-    private void UnBind(CInputVecterActionData data)
+    private void UnBind(CInputVectorActionData data)
     {
         if (data.Reference == null)
         {
@@ -204,14 +204,14 @@ public class CInputDispatcher : CSingleton<CInputDispatcher>
             TryBind(_inputActions[i]);
         }
 
-        for (int i = 0; i < _inputVecterActions.Count; i++)
+        for (int i = 0; i < _inputVectorActions.Count; i++)
         {
-            if(_inputVecterActions[i] == null)
+            if(_inputVectorActions[i] == null)
             {
                 continue;
             }
 
-            TryBind(_inputVecterActions[i]);
+            TryBind(_inputVectorActions[i]);
         }
 
         for (int i = 0; i < _inputAxisActions.Count; i++)
@@ -244,14 +244,14 @@ public class CInputDispatcher : CSingleton<CInputDispatcher>
             UnBind(_inputActions[i]);
         }
 
-        for (int i = 0; i < _inputVecterActions.Count; i++)
+        for (int i = 0; i < _inputVectorActions.Count; i++)
         {
-            if(_inputVecterActions[i] == null)
+            if(_inputVectorActions[i] == null)
             {
                 continue;
             }
 
-            UnBind(_inputVecterActions[i]);
+            UnBind(_inputVectorActions[i]);
         }
 
         for (int i = 0; i < _inputAxisActions.Count; i++)
@@ -287,14 +287,14 @@ public class CInputDispatcher : CSingleton<CInputDispatcher>
                 _inputActions[i].Reference.action.Enable();
             }
 
-            for (int i = 0; i < _inputVecterActions.Count; i++)
+            for (int i = 0; i < _inputVectorActions.Count; i++)
             {
-                if (_inputVecterActions[i] == null)
+                if (_inputVectorActions[i] == null)
                 {
                     continue;
                 }
 
-                _inputVecterActions[i].Reference.action.Enable();
+                _inputVectorActions[i].Reference.action.Enable();
             }
 
             for (int i = 0; i < _inputAxisActions.Count; i++)
@@ -321,14 +321,14 @@ public class CInputDispatcher : CSingleton<CInputDispatcher>
                 _inputActions[i].Reference.action.Disable();
             }
 
-            for (int i = 0; i < _inputVecterActions.Count; i++)
+            for (int i = 0; i < _inputVectorActions.Count; i++)
             {
-                if (_inputVecterActions[i] == null)
+                if (_inputVectorActions[i] == null)
                 {
                     continue;
                 }
 
-                _inputVecterActions[i].Reference.action.Disable();
+                _inputVectorActions[i].Reference.action.Disable();
             }
 
             for (int i = 0; i < _inputAxisActions.Count; i++)
@@ -364,21 +364,21 @@ public class CInputDispatcher : CSingleton<CInputDispatcher>
             InputActionMap.Add(action.ActionName, action);
         }
 
-        for (int i = 0; i < _inputVecterActions.Count; i++)
+        for (int i = 0; i < _inputVectorActions.Count; i++)
         {
-            if (_inputVecterActions[i] == null)
+            if (_inputVectorActions[i] == null)
             {
                 continue;
             }
 
-            CInputVecterActionData action = _inputVecterActions[i];
+            CInputVectorActionData action = _inputVectorActions[i];
 
-            if (InputVecterActionMap.ContainsKey(action.ActionName))
+            if (InputVectorActionMap.ContainsKey(action.ActionName))
             {
                 continue;
             }
 
-            InputVecterActionMap.Add(action.ActionName, action);
+            InputVectorActionMap.Add(action.ActionName, action);
         }
 
         for (int i = 0; i < _inputAxisActions.Count; i++)
