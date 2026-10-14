@@ -5,7 +5,7 @@ using UnityEngine;
 
 public abstract class CWeaponTriggerStrategySO : CGameDataSO
 {
-    #region 내부 변수
+    #region 인스팩터
 
     #endregion
 

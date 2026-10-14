@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CMapRoomDataSO : CGameDataSO
 {
-    #region 내부 변수
+    #region 인스팩터
     [SerializeField] private CRoomEnterStrategySO _roomEnter;
     [SerializeField] private CRoomClearStrategySO _roomClear;
     #endregion
