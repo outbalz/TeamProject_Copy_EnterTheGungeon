@@ -24,6 +24,7 @@ public abstract class CGameDataSO : ScriptableObject
 		if (string.IsNullOrWhiteSpace(_name))
 		{
 			Debug.LogWarning("_name이 적합하지 않습니다");
+
 		}
     }
 }

@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4761887865712996773
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8971945951330073153}
+  - component: {fileID: 2419618072031148267}
+  m_Layer: 0
+  m_Name: InputDispather
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8971945951330073153
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4761887865712996773}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2419618072031148267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4761887865712996773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d86fbbf04b88b2c449b016d5e623b8b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inputActions:
+  - _reference: {fileID: 3190006493357791017, guid: 200e6164e90dfc2499f3177eebf29beb, type: 3}
+    _actionName: DodghRoll
+  - _reference: {fileID: 6058172525064249934, guid: 200e6164e90dfc2499f3177eebf29beb, type: 3}
+    _actionName: Interact
+  - _reference: {fileID: -3490008212378124013, guid: 200e6164e90dfc2499f3177eebf29beb, type: 3}
+    _actionName: ReloadWeapon
+  - _reference: {fileID: 8591784490846643055, guid: 200e6164e90dfc2499f3177eebf29beb, type: 3}
+    _actionName: TriggerWeapon
+  - _reference: {fileID: -8082825223521642780, guid: 200e6164e90dfc2499f3177eebf29beb, type: 3}
+    _actionName: UseBlankRound
+  - _reference: {fileID: -8756277636637658342, guid: 200e6164e90dfc2499f3177eebf29beb, type: 3}
+    _actionName: UseItem
+  _inputVecterActions:
+  - _reference: {fileID: -6494512496449401202, guid: 200e6164e90dfc2499f3177eebf29beb, type: 3}
+    _actionName: Move
+  _inputAxisActions:
+  - _reference: {fileID: 8816471114339809100, guid: 200e6164e90dfc2499f3177eebf29beb, type: 3}
+    _actionName: Scroll
