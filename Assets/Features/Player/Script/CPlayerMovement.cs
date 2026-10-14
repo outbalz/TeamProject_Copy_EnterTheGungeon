@@ -1,16 +1,16 @@
-using UnityEngine;
-using UnityEngine.InputSystem;
+Ôªøusing UnityEngine;
 
 public class CPlayerMovement : MonoBehaviour
 {
-    #region ¿ŒΩ∫∆Â≈Õ
-    [SerializeField] private InputActionReference _moveAction;
+    #region Ïù∏Ïä§ÌéôÌÑ∞
+    [SerializeField] private string _moveActionName = "Move";
     [SerializeField] private float _moveSpeed = 5.0f;
     #endregion
 
-    #region ≥ª∫Œ ∫Øºˆ
+    #region ÎÇ¥Î∂Ä Î≥ÄÏàò
     private Rigidbody2D _rigidbody;
     private Vector2 _moveDirection;
+    private CInputVectorActionData _moveInput;
     #endregion
 
     private void Awake()
@@ -19,42 +19,45 @@ public class CPlayerMovement : MonoBehaviour
 
         if (_rigidbody == null)
         {
-            Debug.LogError("Rigidbody2D∞° ∫ÒæÓ¿÷¿Ω");
+            Debug.LogError("Rigidbody2DÍ∞Ä ÎπÑÏñ¥ÏûàÏùå");
             enabled = false;
             return;
         }
+    }
+
+    private void Start()
+    {
+        CInputDispatcher dispatcher = FindObjectOfType<CInputDispatcher>();
+
+        if (dispatcher == null)
+        {
+            Debug.LogError("InputDispatcherÍ∞Ä ÎπÑÏñ¥ÏûàÏùå");
+            enabled = false;
+            return;
+        }
+
+        if (!dispatcher.InputVectorActionMap.TryGetValue(_moveActionName, out _moveInput))
+        {
+            Debug.LogError("Move ActionÏù¥ ÏóÜÏùå");
+            enabled = false;
+            return;
+        }
+
+        _moveInput.OnPerformedAction += InputMove;
     }
 
     private void OnEnable()
     {
-        if (_moveAction == null)
-        {
-            Debug.LogError("Move Action ¬¸¡∂∞° ∫ÒæÓ¿÷¿Ω");
-            enabled = false;
-            return;
-        }
-
-        if (_moveAction.action == null)
-        {
-            Debug.LogError("Move Action¿Ã º≥¡§µ«¡ˆ æ ¿Ω");
-            enabled = false;
-            return;
-        }
-
-        _moveAction.action.Enable();
+        if (_moveInput != null)
+            _moveInput.OnPerformedAction += InputMove;
     }
 
     private void OnDisable()
     {
-        if (_moveAction != null && _moveAction.action != null)
-            _moveAction.action.Disable();
+        if (_moveInput != null)
+            _moveInput.OnPerformedAction -= InputMove;
 
         _moveDirection = Vector2.zero;
-    }
-
-    private void Update()
-    {
-        InputMove();
     }
 
     private void FixedUpdate()
@@ -62,15 +65,13 @@ public class CPlayerMovement : MonoBehaviour
         Move();
     }
 
-    // ¿Ãµø ¿‘∑¬
-    private void InputMove()
+    // Ïù¥Îèô ÏûÖÎ†•
+    private void InputMove(Vector2 direction)
     {
-        _moveDirection = _moveAction.action.ReadValue<Vector2>();
-
-        _moveDirection = Vector2.ClampMagnitude(_moveDirection, 1.0f);
+        _moveDirection = Vector2.ClampMagnitude(direction, 1.0f);
     }
 
-    // ¿Ãµø
+    // Ïù¥Îèô
     private void Move()
     {
         Vector2 nextPosition = _rigidbody.position + _moveDirection * _moveSpeed * Time.fixedDeltaTime;
