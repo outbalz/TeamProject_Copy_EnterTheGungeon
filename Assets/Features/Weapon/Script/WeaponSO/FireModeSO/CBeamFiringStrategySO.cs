@@ -5,7 +5,9 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using System;
 
-[CreateAssetMenu(menuName = "FireMode/CBeamFiringStrategySO", fileName = "CBeamFiringStrategySO")]
+
+[CreateAssetMenu(menuName = "Weapon/FireMode/CBeamFiringStrategySO", fileName = "CBeamFiringStrategySO")]
+
 public class CBeamFiringStrategySO : CWeaponStrategy
 {
 

@@ -3,9 +3,10 @@
     using UnityEngine;
     using System.Threading;
     using Cysharp.Threading.Tasks;
-    using System;
+using System;
 
-    [CreateAssetMenu(menuName = "FireMode/CSemiAutoFiringStrategySO", fileName = "CSemiAutoFiringStrategySO")]
+[CreateAssetMenu(menuName = "Weapon/FireMode/CSemiAutoFiringStrategySO", fileName = "CSemiAutoFiringStrategySO")]
+
     public class CSemiAutoFiringStrategySO : CWeaponStrategy
     {
         #region ¿ŒΩ∫∆Â≈Õ

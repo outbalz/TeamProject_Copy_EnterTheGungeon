@@ -5,6 +5,8 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 
 [CreateAssetMenu(menuName = "Pattern/CRandomSpreadPatternSO", fileName = "CRandomSpreadPatternSO")]
+
+
 public class CRandomSpreadPatternSO : CWeaponStrategy
 {
     #region ¿ŒΩ∫∆Â≈Õ

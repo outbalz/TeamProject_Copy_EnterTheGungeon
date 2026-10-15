@@ -4,7 +4,8 @@ using UnityEngine;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 
-[CreateAssetMenu(menuName = "Pattern/CStraightPatternSO", fileName = "CStraightPatternSO")]
+[CreateAssetMenu(menuName = "Weapon/Pattern/CStraightPatternSO", fileName = "CStraightPatternSO")]
+
 public class CStraightPatternSO : CWeaponStrategy
 {
     #region ¿ŒΩ∫∆Â≈Õ

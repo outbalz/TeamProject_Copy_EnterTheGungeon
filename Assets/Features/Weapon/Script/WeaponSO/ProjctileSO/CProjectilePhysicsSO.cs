@@ -4,7 +4,9 @@ using UnityEngine;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 
-[CreateAssetMenu(menuName = "ProjectileSettings/CProjectilePhysicsSO", fileName = "CProjectilePhysicsSO")]
+
+[CreateAssetMenu(menuName = "Weapon/ProjectileSettings/CProjectilePhysicsSO", fileName = "CProjectilePhysicsSO")]
+
 public class CProjectilePhysicsSO : ScriptableObject
 {
     #region ¿ŒΩ∫∆Â≈Õ
