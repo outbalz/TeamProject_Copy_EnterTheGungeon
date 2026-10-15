@@ -1,18 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-public class CEnemyHealth : MonoBehaviour
+public class CEnemyHealth : CHPHandler
 {
-    // Start is called before the first frame update
+    [Header("체력 설정")]
+    [SerializeField] private float _maxHealth = 100f;
+
+
     void Start()
     {
-        
+        HP = _maxHealth;
     }
-
-    // Update is called once per frame
-    void Update()
+    public override UniTask OnHit(float damage)
     {
-        
+        HP -= damage;
+
+        if (HP <= 0)
+        {
+            HP = 0;
+            OnDeathInvoke();
+        }
+
+        return UniTask.CompletedTask;
     }
 }
