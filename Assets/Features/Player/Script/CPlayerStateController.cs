@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public enum EPlayerState
 {
@@ -11,15 +11,15 @@ public enum EPlayerState
 
 public class CPlayerStateController : MonoBehaviour
 {
-    #region ³»ºÎ º¯¼ö
+    #region ë‚´ë¶€ ë³€ìˆ˜
     [SerializeField] private EPlayerState _currentState = EPlayerState.Idle;
     #endregion
 
-    #region ÇÁ·ÎÆÛÆ¼
+    #region í”„ë¡œí¼í‹°
     public EPlayerState CurrentState => _currentState;
     #endregion
 
-    // ÇÃ·¹ÀÌ¾î »óÅÂ º¯°æ
+    // í”Œë ˆì´ì–´ ìƒíƒœ ë³€ê²½
     public void ChangeState(EPlayerState state)
     {
         _currentState = state;
