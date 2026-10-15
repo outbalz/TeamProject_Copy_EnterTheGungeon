@@ -43,7 +43,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "DodghRoll",
+                    "name": "DodgeRoll",
                     "type": "Button",
                     "id": "3730d3ce-3df3-45d1-8156-bfe9407d445a",
                     "expectedControlType": "",
@@ -175,7 +175,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "DodghRoll",
+                    "action": "DodgeRoll",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
