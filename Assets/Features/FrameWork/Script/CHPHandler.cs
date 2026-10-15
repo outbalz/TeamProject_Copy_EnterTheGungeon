@@ -19,6 +19,11 @@ public abstract class CHPHandler : MonoBehaviour
     public event Action OnDeath;
     #endregion
 
-    public abstract UniTask OnHit();
+    public abstract UniTask OnHit(float damage);
+
+    public void OnDeathInvoke()
+    {
+        OnDeath?.Invoke();
+    }
 
 }
