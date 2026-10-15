@@ -14,6 +14,10 @@ public class CPlayerMovement : MonoBehaviour
     private CPlayerStateController _stateController;
     #endregion
 
+    #region 프로퍼티
+    public Vector2 MoveDirection => _moveDirection;
+    #endregion
+
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
@@ -80,7 +84,7 @@ public class CPlayerMovement : MonoBehaviour
         _moveDirection = Vector2.ClampMagnitude(direction, 1.0f);
 
         if (_stateController.CurrentState != EPlayerState.Idle &&
-        _stateController.CurrentState != EPlayerState.Move)
+            _stateController.CurrentState != EPlayerState.Move)
             return;
 
         if (_moveDirection == Vector2.zero)
