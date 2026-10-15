@@ -4,6 +4,26 @@ using UnityEngine;
 
 public class CEntityFactory : CFactory<CEntityController>
 {
+    protected override void PrefabCheck()
+    {
+        if (_prefab == null)
+        {
+            if (CDataBaseManager.Instance.PrefabDB != null)
+            {
+                if (CDataBaseManager.Instance.PrefabDB.TryGet("Entity", out CPrefabDataSO prefabDataSO))
+                {
+                    if(prefabDataSO is CEntityPrefabDataSO dataSO)
+                    {
+                        _prefab = dataSO.Prefab; 
+                    }
+                }
+            }
+
+        }
+
+        base.PrefabCheck();
+    }
+
     public CEntityController Creat(CEntityDataSO data)
     {
         CEntityController entity = Creat();
