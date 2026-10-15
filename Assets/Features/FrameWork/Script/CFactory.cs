@@ -11,14 +11,19 @@ public abstract class CFactory<T> : CSingleton<CFactory<T>> where T : MonoBehavi
 	protected override void Awake()
 	{
 		base.Awake();
-
-		if( _prefab == null)
-		{
-			Debug.LogWarning("팩토리 프리펩 누락");
-			enabled = false;
-			return;
-		}
+		
+		PrefabCheck();
 	}
+
+	protected virtual void PrefabCheck()
+	{
+        if (_prefab == null)
+        {
+            Debug.LogWarning("팩토리 프리펩 누락");
+            enabled = false;
+            return;
+        }
+    }
 
 	public virtual T Creat()
 	{
