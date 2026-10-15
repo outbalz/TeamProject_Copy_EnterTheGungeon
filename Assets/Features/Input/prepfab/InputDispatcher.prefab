@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8971945951330073153}
   - component: {fileID: 2419618072031148267}
   m_Layer: 0
-  m_Name: InputDispather
+  m_Name: InputDispatcher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _inputActions:
   - _reference: {fileID: 3190006493357791017, guid: 200e6164e90dfc2499f3177eebf29beb, type: 3}
-    _actionName: DodghRoll
+    _actionName: DodgeRoll
   - _reference: {fileID: 6058172525064249934, guid: 200e6164e90dfc2499f3177eebf29beb, type: 3}
     _actionName: Interact
   - _reference: {fileID: -3490008212378124013, guid: 200e6164e90dfc2499f3177eebf29beb, type: 3}
@@ -57,7 +57,7 @@ MonoBehaviour:
     _actionName: UseBlankRound
   - _reference: {fileID: -8756277636637658342, guid: 200e6164e90dfc2499f3177eebf29beb, type: 3}
     _actionName: UseItem
-  _inputVecterActions:
+  _inputVectorActions:
   - _reference: {fileID: -6494512496449401202, guid: 200e6164e90dfc2499f3177eebf29beb, type: 3}
     _actionName: Move
   _inputAxisActions:
