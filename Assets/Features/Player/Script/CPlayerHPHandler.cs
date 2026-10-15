@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class CPlayerHPHandler : CHPHandler
 {
-    public override UniTask OnHit()
+    public override UniTask OnHit(float damage)
     {
         //DoSomthing
         throw new System.NotImplementedException();
