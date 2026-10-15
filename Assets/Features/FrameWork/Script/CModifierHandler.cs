@@ -17,7 +17,7 @@ public class CModifierHandler : MonoBehaviour
 
 		else
 		{
-			_modifierMap.Add(modifier.ModifierName, new List<CModifier> { modifier });
+			_modifierMap.Add(modifier.ModifierName, new List<CModifier> {modifier});
 		}
 
 	}
