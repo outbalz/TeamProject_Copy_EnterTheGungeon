@@ -14,6 +14,7 @@ public class CSpreadPatternSO : CWeaponStrategy
 
     public override UniTask FireAsync(CWeaponFireContext context, CancellationToken ct)
     {
+        //유효성 검사
         if (context == null || context.FirePoint == null || context.SpawnProjectile == null)
         {
             return UniTask.CompletedTask;
@@ -21,6 +22,7 @@ public class CSpreadPatternSO : CWeaponStrategy
 
         ct.ThrowIfCancellationRequested();
 
+        // 검사 (음수 방지)
         int count = Mathf.Max(1, _projectilCount);
 
         // _projectilCount가 1발인 경우 
@@ -37,13 +39,17 @@ public class CSpreadPatternSO : CWeaponStrategy
 
             float t = (float)i / (count - 1);
 
+            // 산탄 비율
             float angle = Mathf.Lerp(-_spreadAngle * 0.5f, _spreadAngle * 0.5f, t);
 
+            // 최종 계산 비율
             Quaternion rotation = context.FirePoint.rotation * Quaternion.Euler(0f, angle, 0f);
 
-            context.FirePoint.rotation = rotation;
+            context.SpawnProjectile(rotation);
 
         }
+
+        Debug.Log("SpreadPattern");
 
         return UniTask.CompletedTask;
     }

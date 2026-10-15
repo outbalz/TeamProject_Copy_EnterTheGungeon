@@ -26,6 +26,9 @@ public class CAutoFiringStrategySO : CWeaponStrategy
             float Interval = Mathf.Max(0.01f, _shotInterval);
             // 소한
             context.SpawnProjectile(context.FirePoint.rotation);
+
+            Debug.Log("AutoFiring");
+
             // 딜레이
             await UniTask.Delay(TimeSpan.FromSeconds(Interval), DelayType.UnscaledDeltaTime, cancellationToken: ct);
 
@@ -36,7 +39,7 @@ public class CAutoFiringStrategySO : CWeaponStrategy
 
     private void OnValidate()
     {
-        // 검사 (음수방지)
+        // 최소 값 보정
         _shotInterval = Mathf.Max(0.01f, _shotInterval);
     }
 

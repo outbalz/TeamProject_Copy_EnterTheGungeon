@@ -10,7 +10,7 @@ public class CBurstFiringStrategySO : CWeaponStrategy
 {
     #region 인스펙터
     [SerializeField] private float _shotInterval = 0.1f;
-    [SerializeField] private int _shotCount = 0;
+    [SerializeField] private int _shotCount = 1;
     #endregion
 
     public override async UniTask FireAsync(CWeaponFireContext context, CancellationToken ct)
@@ -23,16 +23,19 @@ public class CBurstFiringStrategySO : CWeaponStrategy
 
         // 검사 (음수 방지)
         float Interval = Mathf.Max(0.01f, _shotInterval);
+        int count = Mathf.Max(1, _shotCount);
 
-        for (int i = 0; i < _shotCount; i++)
+        for (int i = 0; i < count; i++)
         {
             // 소한
             context.SpawnProjectile(context.FirePoint.rotation);
-           
+
+            Debug.Log("BurstFiring");
+
             ct.ThrowIfCancellationRequested();
 
             // 마지막발떄는 딜레이 x
-            if (i >= _shotCount -1)
+            if (i >= count - 1)
             {
                 continue;
             }
@@ -40,5 +43,12 @@ public class CBurstFiringStrategySO : CWeaponStrategy
             await UniTask.Delay(TimeSpan.FromSeconds(Interval), DelayType.UnscaledDeltaTime, cancellationToken: ct);
 
         }
+    }
+
+    private void OnValidate()
+    {
+        // 최소 값 보정
+        _shotInterval = Mathf.Max(0.01f, _shotInterval);
+        _shotCount = Mathf.Max(1, _shotCount);
     }
 }

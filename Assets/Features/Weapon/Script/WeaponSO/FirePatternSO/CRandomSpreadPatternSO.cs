@@ -15,6 +15,7 @@ public class CRandomSpreadPatternSO : CWeaponStrategy
 
     public override  UniTask FireAsync(CWeaponFireContext context, CancellationToken ct)
     {
+        //유효성 검사
         if (context == null || context.FirePoint == null || context.SpawnProjectile == null)
         {
             return UniTask.CompletedTask;
@@ -52,6 +53,8 @@ public class CRandomSpreadPatternSO : CWeaponStrategy
             context.SpawnProjectile(rotation);
 
         }
+
+        Debug.Log("RandomSpreadPattern");
 
         return UniTask.CompletedTask;
     }

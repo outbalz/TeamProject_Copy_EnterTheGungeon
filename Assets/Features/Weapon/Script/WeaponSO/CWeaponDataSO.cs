@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using UnityEngine.Rendering;
 
 [CreateAssetMenu (menuName = "Weapon", fileName = "Weapon")]
 public class CWeaponDataSO : ScriptableObject
@@ -12,26 +13,20 @@ public class CWeaponDataSO : ScriptableObject
     [SerializeField] private string _weaponName = "Weapon";
     [SerializeField] private int _damage = 10;
 
-    [Header("발사체 설정")]
-    [SerializeField] private GameObject _projectilePrefab = null;
-    [SerializeField] private float _projectileSpeed = 5f;
-    [SerializeField] private float _projectileScale = 1f;
-
-    
+    [Header("발사 구조")]
     [SerializeField] private CWeaponStrategy _firestategy = null;
+    [SerializeField] private CWeaponStrategy _pattern = null;
+
+    [Header("투사체 연결")]
+    [SerializeField] private CProjectileDataSO _projectile = null;
     #endregion
 
     #region 프로퍼티 
     public string WeaponName => _weaponName;
     public int damage => _damage;
-
-    public GameObject ProjectilePrefab => _projectilePrefab;
-
-    public float ProjectileSpeed => _projectileSpeed;
-
-    public float ProjectileScale => _projectileScale;
-
     public CWeaponStrategy Firestategy => _firestategy;
+    public CWeaponStrategy Pattern => _pattern;
+    public CProjectileDataSO Projectile => _projectile;
     #endregion
 
 
