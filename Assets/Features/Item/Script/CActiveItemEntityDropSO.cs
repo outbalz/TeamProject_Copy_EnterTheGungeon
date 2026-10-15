@@ -9,11 +9,10 @@ public class CActiveItemEntityDropSO : CActiveItemEffectStrategySO
     [SerializeField] private CEntityDataSO _entity;
     #endregion
 
-    private CEntityFactory _entityFactory;
 
     public override UniTask OnUse()
     {
-        CEntityController entity = _entityFactory.Creat(_entity);
+        CEntityController entity = (CEntityFactory.Instance as CEntityFactory).Creat(_entity);
         entity.transform.position = CPlayerCharacterController.Instance.transform.position;
 
         return UniTask.CompletedTask;
