@@ -8,12 +8,16 @@ public abstract class CModifier
 {
 	#region 인스팩터
 	[SerializeField] protected float _modifier;
+    [SerializeField] protected string _modifierName;
 	#endregion
+
+    public string ModifierName => _modifierName;
 
 	public abstract float GetModifiedValue(float baseValue);
 
-    public CModifier(float modifier) 
+    public CModifier(string name,float modifier) 
     {
+        _modifierName = name;
         _modifier = modifier;
     }
 }
@@ -27,7 +31,7 @@ public class CAddModifier : CModifier
 		return baseValue + _modifier;
     }
 
-    public CAddModifier(float modifier) : base(modifier)
+    public CAddModifier(string name, float modifier) : base(name, modifier)
     {
     }
 }
@@ -42,7 +46,7 @@ public class CMultiflyModifier : CModifier
         return baseValue * _modifier;
     }    
     
-    public CMultiflyModifier(float modifier) : base(modifier)
+    public CMultiflyModifier(string name, float modifier) : base(name, modifier)
     {
     }
 
