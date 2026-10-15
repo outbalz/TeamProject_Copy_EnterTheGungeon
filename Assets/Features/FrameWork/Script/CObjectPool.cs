@@ -41,7 +41,7 @@ public class CObjectPool<T> : MonoBehaviour where T : MonoBehaviour
         }
     }
 
-    private T GetFromPool()
+    public T GetFromPool()
     {
         T obj;
 
@@ -60,7 +60,7 @@ public class CObjectPool<T> : MonoBehaviour where T : MonoBehaviour
         return obj;
     }
 
-    private void ReturnToPool(T obj)
+    public void ReturnToPool(T obj)
     {
         if (obj == null)
         {
