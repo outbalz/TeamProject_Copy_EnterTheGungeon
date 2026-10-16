@@ -1,10 +1,12 @@
 ﻿using Cysharp.Threading.Tasks;
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using System.Threading;
+using System.Threading.Tasks;
+using Unity.VisualScripting;
 using UnityEngine;
-using System;
+using static UnityEditor.Progress;
 
 public class CItemCoolDownTimerSO : CItemCoolDownStrategySO
 {
@@ -12,32 +14,29 @@ public class CItemCoolDownTimerSO : CItemCoolDownStrategySO
     [SerializeField] private float _cooldownTime;
     #endregion
 
-    #region 내부변수
-    private float _timer;
-    #endregion
 
-    public bool OnItemUse(CancellationToken ct)
+    public override bool OnItemUse(CActiveItem item)
     {
-        if(_timer > 0)
+        if(item.Cooldown > 0)
         {
             return false;
         }
 
-        _timer = _cooldownTime;
-
-        CoolingDown(ct).Forget();
+        item.Cooldown = _cooldownTime;
+        item.CTS = new CancellationTokenSource();
+        CoolingDown(item).Forget();
         return true;
     }
 
-    private async UniTask CoolingDown(CancellationToken ct)
+    private async UniTask CoolingDown(CActiveItem item)
     {
-        while (_timer > 0)
+        while (item.Cooldown > 0)
         {
-            ct.ThrowIfCancellationRequested();
+            item.CTS.Token.ThrowIfCancellationRequested();
 
-            _timer -= Time.deltaTime;
+            item.Cooldown -= Time.deltaTime;
 
-            await UniTask.Delay(TimeSpan.FromSeconds(1), DelayType.DeltaTime, cancellationToken: ct);
+            await UniTask.Delay(TimeSpan.FromSeconds(1), DelayType.DeltaTime, cancellationToken: item.CTS.Token);
         }
     }
 

@@ -4,5 +4,5 @@ using UnityEngine;
 
 public abstract class CItemCoolDownStrategySO : CGameDataSO
 {
-
+    public abstract bool OnItemUse(CActiveItem item);
 }

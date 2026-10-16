@@ -8,9 +8,20 @@ public class CItemCoolDownDamageDealtSO : CItemCoolDownStrategySO
     [SerializeField] private float _requirDamage;
     #endregion
 
-    #region 내부변수
-    private float _damageDealt;
-    #endregion
 
+    public override bool OnItemUse(CActiveItem item)
+    {
+        if(item.Cooldown > 0)
+        {
+            return false;
+        }
 
+        item.Cooldown = _requirDamage;
+        return true;
+    }
+
+    public void OnDealtDamage(CActiveItem item, float damage)
+    {
+        item.Cooldown -= damage;
+    }
 }

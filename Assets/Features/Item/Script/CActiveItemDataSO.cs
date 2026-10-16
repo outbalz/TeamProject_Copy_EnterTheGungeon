@@ -14,8 +14,8 @@ public class CActiveItemDataSO : CGameDataSO
     public CItemCoolDownStrategySO ColDown => _coolDown;
     #endregion
 
-    public void OnItemUes()
+    public void OnItemUes(CActiveItem item)
     {
-
+        _coolDown.OnItemUse(item);
     }
 }

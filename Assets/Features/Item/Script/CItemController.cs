@@ -1,7 +1,33 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.UIElements;
+
+public class CActiveItem
+{
+    public CActiveItemDataSO DataSO;
+    public float Cooldown;
+    public CancellationTokenSource CTS;
+
+    public void Cancel()
+    {
+        if(CTS == null)
+        {
+            return;
+        }
+
+        CTS.Cancel();
+        CTS.Dispose();
+        CTS = null;
+    }
+
+    public CActiveItem(CActiveItemDataSO dataSO, float coolDown)
+    {
+        DataSO = dataSO;
+        Cooldown = coolDown;
+    }
+}
 
 public class CItemController : MonoBehaviour
 {
@@ -10,9 +36,8 @@ public class CItemController : MonoBehaviour
     #endregion
 
     #region 내부변수
-    private List<CActiveItemDataSO> _activeItems = new List<CActiveItemDataSO>();
+    private List<CActiveItem> _activeItems = new List<CActiveItem>();
     private List<CPassiveItemDataSO> _passiveItems = new List<CPassiveItemDataSO>();
-    private Dictionary<CActiveItemDataSO, float> _cooldownMap = new Dictionary<CActiveItemDataSO, float>();
     private int _activeItemIndex = 0;
 
     private bool _isBinded = false;
@@ -34,6 +59,16 @@ public class CItemController : MonoBehaviour
 
     private void OnDestroy()
     {
+        for (int i = 0; i < _activeItems.Count; i++)
+        {
+            if(_activeItems[i] == null)
+            {
+                continue;
+            }
+
+            _activeItems[i].Cancel();
+        }
+
         UnBind();
     }
 
@@ -89,12 +124,30 @@ public class CItemController : MonoBehaviour
 
     private void OnItemUse()
     {
-        if (_activeItems[_activeItemIndex] == null)
+        if(_activeItems.Count == 0)
         {
             return;
         }
 
-        _activeItems[_activeItemIndex].OnItemUes();
+        if (_activeItems.Count <= _activeItemIndex || 0 > _activeItemIndex)
+        {
+            Debug.LogWarning("인덱스 오류");
+            return;
+        }
+
+        if (_activeItems[_activeItemIndex] == null)
+        {
+            Debug.LogWarning("아이템 누락");
+            return;
+        }
+
+        _activeItems[_activeItemIndex].DataSO.OnItemUes(_activeItems[_activeItemIndex]);
+    }
+
+
+    public void AddActiveItem(CActiveItemDataSO item)
+    {
+        _activeItems.Add(new CActiveItem(item, 0));
     }
 
 }
