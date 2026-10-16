@@ -5,7 +5,7 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine.Rendering;
 
-[CreateAssetMenu(menuName = "Projectile", fileName = "CProjectileDataSO")]
+[CreateAssetMenu(menuName = "Weapon/Projectile", fileName = "CProjectileDataSO")]
 public class CProjectileDataSO : ScriptableObject
 {
     #region ¿ŒΩ∫∆Â≈Õ

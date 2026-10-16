@@ -4,9 +4,7 @@ using UnityEngine;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 
-[CreateAssetMenu(menuName = "Pattern/CRandomSpreadPatternSO", fileName = "CRandomSpreadPatternSO")]
-
-
+[CreateAssetMenu(menuName = "Weapon/Pattern/CRandomSpreadPatternSO", fileName = "CRandomSpreadPatternSO")]
 public class CRandomSpreadPatternSO : CWeaponStrategy
 {
     #region ¿ŒΩ∫∆Â≈Õ
