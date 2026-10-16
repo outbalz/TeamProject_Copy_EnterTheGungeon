@@ -2,9 +2,7 @@
 
 public class CPlayerMovement : MonoBehaviour
 {
-    #region 인스펙터
-    [SerializeField] private CInputDispatcher _dispatcher;
-    
+    #region 인스펙터    
     [SerializeField] private string _moveActionName = "Move";
     [SerializeField] private float _moveSpeed = 5.0f;
     #endregion
@@ -42,14 +40,9 @@ public class CPlayerMovement : MonoBehaviour
 
     private void Start()
     {
-        if (_dispatcher == null)
-        {
-            Debug.LogError("InputDispatcher가 비어있음");
-            enabled = false;
-            return;
-        }
+        CInputDispatcher dispatcher = CInputDispatcher.Instance;
 
-        if (!_dispatcher.InputVectorActionMap.TryGetValue(_moveActionName, out _moveInput))
+        if (!dispatcher.InputVectorActionMap.TryGetValue(_moveActionName, out _moveInput))
         {
             Debug.LogError("Move Action이 없음");
             enabled = false;

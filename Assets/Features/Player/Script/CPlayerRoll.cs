@@ -3,11 +3,9 @@
 public class CPlayerRoll : MonoBehaviour
 {
     #region 인스펙터
-    [SerializeField] private CInputDispatcher _dispatcher;
-
     [SerializeField] private string _rollActionName = "DodgeRoll";
-    [SerializeField] private float _rollSpeed = 9.0f;
-    [SerializeField] private float _rollDuration = 0.35f;
+    [SerializeField] private float _rollSpeed = 4.5f;
+    [SerializeField] private float _rollDuration = 0.7f;
     #endregion
 
     #region 내부 변수
@@ -17,6 +15,13 @@ public class CPlayerRoll : MonoBehaviour
     private CInputActionData _rollInput;
     private Vector2 _rollDirection;
     private float _rollTimer;
+    #endregion
+
+    #region 프로퍼티
+    public bool IsInvincible =>
+        _stateController != null &&
+        _stateController.CurrentState == EPlayerState.Roll &&
+        _rollTimer > _rollDuration * 0.5f;
     #endregion
 
     private void Awake()
@@ -34,15 +39,10 @@ public class CPlayerRoll : MonoBehaviour
     }
 
     void Start()
-    {   
-        if (_dispatcher == null)
-        {
-            Debug.LogError("InputDispatcher가 비어있음");
-            enabled = false;
-            return;
-        }
+    {
+        CInputDispatcher dispatcher = CInputDispatcher.Instance;
 
-        if (!_dispatcher.InputActionMap.TryGetValue(_rollActionName, out _rollInput))
+        if (!dispatcher.InputActionMap.TryGetValue(_rollActionName, out _rollInput))
         {
             Debug.LogError("DodgeRoll Action이 없음");
             enabled = false;
