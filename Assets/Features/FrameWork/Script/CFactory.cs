@@ -1,11 +1,12 @@
-﻿using System.Collections;
+﻿using Cysharp.Threading.Tasks;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class CFactory<T> : CSingleton<CFactory<T>> where T : MonoBehaviour
+public abstract class CFactory<TFactoy, TReuslt> : CSingleton<TFactoy> where TFactoy : MonoBehaviour where TReuslt : MonoBehaviour
 {
 	#region 인스팩터
-	[SerializeField] protected T _prefab;
+	[SerializeField] protected TReuslt _prefab;
 	#endregion
 
 	protected override void Awake()
@@ -25,13 +26,13 @@ public abstract class CFactory<T> : CSingleton<CFactory<T>> where T : MonoBehavi
         }
     }
 
-	public virtual T Creat()
+	public virtual TReuslt Creat()
 	{
 		return Instantiate(_prefab);
 	}
 
-	public virtual T Creat(Transform tr)
+	public virtual TReuslt Creat(Transform tr)
 	{
-		return Instantiate(_prefab, tr);
-	}
+        return Instantiate(_prefab, tr);
+    }
 }

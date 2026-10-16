@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CFactoryExample : CFactory<CTest>
+public class CFactoryExample : CFactory<CFactoryExample, CTest>
 {
     #region 인스팩터
     [SerializeField] private float _scaleModifier = 0.5f;
