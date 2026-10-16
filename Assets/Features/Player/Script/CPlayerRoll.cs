@@ -3,6 +3,8 @@
 public class CPlayerRoll : MonoBehaviour
 {
     #region 인스펙터
+    [SerializeField] private CInputDispatcher _dispatcher;
+
     [SerializeField] private string _rollActionName = "DodgeRoll";
     [SerializeField] private float _rollSpeed = 9.0f;
     [SerializeField] private float _rollDuration = 0.35f;
@@ -13,7 +15,6 @@ public class CPlayerRoll : MonoBehaviour
     private CPlayerMovement _movement;
     private CPlayerStateController _stateController;
     private CInputActionData _rollInput;
-
     private Vector2 _rollDirection;
     private float _rollTimer;
     #endregion
@@ -33,17 +34,15 @@ public class CPlayerRoll : MonoBehaviour
     }
 
     void Start()
-    {
-        CInputDispatcher dispatcher = FindObjectOfType<CInputDispatcher>();
-        
-        if (dispatcher == null)
+    {   
+        if (_dispatcher == null)
         {
             Debug.LogError("InputDispatcher가 비어있음");
             enabled = false;
             return;
         }
 
-        if (!dispatcher.InputActionMap.TryGetValue(_rollActionName, out _rollInput))
+        if (!_dispatcher.InputActionMap.TryGetValue(_rollActionName, out _rollInput))
         {
             Debug.LogError("DodgeRoll Action이 없음");
             enabled = false;
@@ -56,23 +55,31 @@ public class CPlayerRoll : MonoBehaviour
     private void OnEnable()
     {
         if (_rollInput != null)
+        {
             _rollInput.OnPerformedAction += StartRoll;
+        }
     }
 
     private void OnDisable()
     {
         if (_rollInput != null)
+        {
             _rollInput.OnPerformedAction -= StartRoll;
+        }
 
         if (_stateController != null &&
             _stateController.CurrentState == EPlayerState.Roll)
+        {
             _stateController.ChangeState(EPlayerState.Idle);
+        }
     }
 
     private void FixedUpdate()
     {
         if (_stateController.CurrentState != EPlayerState.Roll)
+        {
             return;
+        }
 
         Roll();
     }
@@ -81,7 +88,9 @@ public class CPlayerRoll : MonoBehaviour
     private void StartRoll()
     {
         if (_stateController.CurrentState != EPlayerState.Move)
+        {
             return;
+        }
 
         _rollDirection = _movement.MoveDirection.normalized;
         _rollTimer = _rollDuration;
@@ -99,15 +108,21 @@ public class CPlayerRoll : MonoBehaviour
         _rollTimer -= Time.fixedDeltaTime;
 
         if (_rollTimer <= 0.0f)
+        {
             EndRoll();
+        }
     }
 
     // 구르기 종료
     private void EndRoll()
     {
         if (_movement.MoveDirection == Vector2.zero)
+        {
             _stateController.ChangeState(EPlayerState.Idle);
+        }
         else
+        {
             _stateController.ChangeState(EPlayerState.Move);
+        }
     }
 }

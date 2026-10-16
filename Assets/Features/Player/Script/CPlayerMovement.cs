@@ -3,6 +3,8 @@
 public class CPlayerMovement : MonoBehaviour
 {
     #region 인스펙터
+    [SerializeField] private CInputDispatcher _dispatcher;
+    
     [SerializeField] private string _moveActionName = "Move";
     [SerializeField] private float _moveSpeed = 5.0f;
     #endregion
@@ -40,16 +42,14 @@ public class CPlayerMovement : MonoBehaviour
 
     private void Start()
     {
-        CInputDispatcher dispatcher = FindObjectOfType<CInputDispatcher>();
-
-        if (dispatcher == null)
+        if (_dispatcher == null)
         {
             Debug.LogError("InputDispatcher가 비어있음");
             enabled = false;
             return;
         }
 
-        if (!dispatcher.InputVectorActionMap.TryGetValue(_moveActionName, out _moveInput))
+        if (!_dispatcher.InputVectorActionMap.TryGetValue(_moveActionName, out _moveInput))
         {
             Debug.LogError("Move Action이 없음");
             enabled = false;
@@ -62,13 +62,17 @@ public class CPlayerMovement : MonoBehaviour
     private void OnEnable()
     {
         if (_moveInput != null)
+        {
             _moveInput.OnPerformedAction += InputMove;
+        }
     }
 
     private void OnDisable()
     {
         if (_moveInput != null)
+        {
             _moveInput.OnPerformedAction -= InputMove;
+        }
 
         _moveDirection = Vector2.zero;
     }
@@ -85,19 +89,27 @@ public class CPlayerMovement : MonoBehaviour
 
         if (_stateController.CurrentState != EPlayerState.Idle &&
             _stateController.CurrentState != EPlayerState.Move)
+        {
             return;
+        }
 
         if (_moveDirection == Vector2.zero)
+        {
             _stateController.ChangeState(EPlayerState.Idle);
+        }
         else
+        {
             _stateController.ChangeState(EPlayerState.Move);
+        }
     }
 
     // 이동
     private void Move()
     {
         if (_stateController.CurrentState != EPlayerState.Move)
+        {
             return;
+        }
 
         Vector2 nextPosition = _rigidbody.position + _moveDirection * _moveSpeed * Time.fixedDeltaTime;
 
