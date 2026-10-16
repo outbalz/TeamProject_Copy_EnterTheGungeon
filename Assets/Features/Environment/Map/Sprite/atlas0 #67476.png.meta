@@ -9760,7 +9760,7 @@ TextureImporter:
       name: atlas0 #67476_460
       rect:
         serializedVersion: 2
-        x: 54
+        x: 52
         y: 36
         width: 18
         height: 18
@@ -10789,7 +10789,7 @@ TextureImporter:
       name: atlas0 #67476_509
       rect:
         serializedVersion: 2
-        x: 432
+        x: 430
         y: 18
         width: 18
         height: 18
@@ -10810,7 +10810,7 @@ TextureImporter:
       name: atlas0 #67476_510
       rect:
         serializedVersion: 2
-        x: 450
+        x: 448
         y: 18
         width: 18
         height: 18
@@ -10831,7 +10831,7 @@ TextureImporter:
       name: atlas0 #67476_511
       rect:
         serializedVersion: 2
-        x: 468
+        x: 466
         y: 18
         width: 18
         height: 18
@@ -10852,7 +10852,7 @@ TextureImporter:
       name: atlas0 #67476_512
       rect:
         serializedVersion: 2
-        x: 486
+        x: 484
         y: 18
         width: 18
         height: 18
