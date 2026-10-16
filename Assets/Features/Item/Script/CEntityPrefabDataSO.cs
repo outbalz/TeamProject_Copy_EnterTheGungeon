@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+[CreateAssetMenu(menuName = "SO/GameDataSO/PrefabDataSO/EntityPrefabDataSO", fileName = "EntityPrefabDataSO")]
 public class CEntityPrefabDataSO : CPrefabDataSO
 {
 	#region 인스팩터

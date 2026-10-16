@@ -35,7 +35,12 @@ public class CEntityFactory : CFactory<CEntityController>
     {
         CEntityController entity = Creat();
         entity.InitializeEntitiy(data);
-        entity.Rb.AddForce(velocity, ForceMode2D.Impulse);
+
+        if (velocity != Vector2.zero && entity.Rb != null)
+        {
+            entity.Rb.AddForce(velocity, ForceMode2D.Impulse);
+        }
+
         return entity;
     }
 }
