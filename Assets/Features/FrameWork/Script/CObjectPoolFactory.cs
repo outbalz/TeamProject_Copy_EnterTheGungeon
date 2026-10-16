@@ -2,20 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CObjectPoolFactory<T> : CFactory<T> where T : MonoBehaviour
+public class CObjectPoolFactory<TFactoy, TReuslt> : CFactory<TFactoy, TReuslt> where TFactoy : MonoBehaviour where TReuslt : MonoBehaviour
 {
     #region MyRegion
-    [SerializeField] private CObjectPool<T> _pool;
+    [SerializeField] private CObjectPool<TReuslt> _pool;
     #endregion
 
-    public override T Creat()
+    public override TReuslt Creat()
     {
         return _pool.GetFromPool();
     }
 
-    public override T Creat(Transform tr)
+    public override TReuslt Creat(Transform tr)
     {
-        T obj = _pool.GetFromPool();
+        TReuslt obj = _pool.GetFromPool();
 
         if (obj == null)
         {
