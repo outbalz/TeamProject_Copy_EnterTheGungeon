@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CEntityFactory : CFactory<CEntityController>
+public class CEntityFactory : CFactory<CEntityFactory, CEntityController>
 {
     protected override void PrefabCheck()
     {
