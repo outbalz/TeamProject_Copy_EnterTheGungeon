@@ -36,7 +36,7 @@ public class CItemCoolDownTimerSO : CItemCoolDownStrategySO
 
             item.Cooldown -= Time.deltaTime;
 
-            await UniTask.Delay(TimeSpan.FromSeconds(1), DelayType.DeltaTime, cancellationToken: item.CTS.Token);
+            await UniTask.NextFrame(PlayerLoopTiming.Update, item.CTS.Token);
         }
     }
 
