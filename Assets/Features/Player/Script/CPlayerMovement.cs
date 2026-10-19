@@ -42,6 +42,13 @@ public class CPlayerMovement : MonoBehaviour
     {
         CInputDispatcher dispatcher = CInputDispatcher.Instance;
 
+        if (dispatcher == null)
+        {
+            Debug.LogError("InputDispatcher가 비어있음");
+            enabled = false;
+            return;
+        }
+
         if (!dispatcher.InputVectorActionMap.TryGetValue(_moveActionName, out _moveInput))
         {
             Debug.LogError("Move Action이 없음");

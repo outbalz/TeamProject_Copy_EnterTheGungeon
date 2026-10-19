@@ -22,6 +22,7 @@ public class CPlayerRoll : MonoBehaviour
         _stateController != null &&
         _stateController.CurrentState == EPlayerState.Roll &&
         _rollTimer > _rollDuration * 0.5f;
+    public Vector2 RollDirection => _rollDirection;
     #endregion
 
     private void Awake()
@@ -41,6 +42,13 @@ public class CPlayerRoll : MonoBehaviour
     void Start()
     {
         CInputDispatcher dispatcher = CInputDispatcher.Instance;
+
+        if (dispatcher == null)
+        {
+            Debug.LogError("InputDispatcher가 비어있음");
+            enabled = false;
+            return;
+        }
 
         if (!dispatcher.InputActionMap.TryGetValue(_rollActionName, out _rollInput))
         {
