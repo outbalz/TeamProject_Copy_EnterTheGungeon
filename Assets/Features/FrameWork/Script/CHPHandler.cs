@@ -7,7 +7,7 @@ using UnityEngine;
 public abstract class CHPHandler : MonoBehaviour
 {
     #region 인스팩터
-
+    [SerializeField] protected float _maxHp;
     #endregion
 
     #region 내부변수
@@ -15,7 +15,9 @@ public abstract class CHPHandler : MonoBehaviour
     #endregion
 
     #region 프로퍼티
-    public float HP { get { return _hp; } set { _hp = value; } }
+    public float HP { get { return _hp; } set { _hp = Mathf.Clamp(value, 0, _maxHp); } }
+    public float MaxHP { get { return _maxHp; } set { _maxHp = value; } }
+    public event Action OnHitEvent;
     public event Action OnDeath;
     #endregion
 
@@ -24,6 +26,11 @@ public abstract class CHPHandler : MonoBehaviour
     public void OnDeathInvoke()
     {
         OnDeath?.Invoke();
+    }
+
+    public void OnHitInvoke()
+    {
+        OnHitEvent?.Invoke();
     }
 
 }
