@@ -4,14 +4,7 @@ using UnityEngine;
 
 // 
 
-public class CEnemyAttackPattern : MonoBehaviour
+public abstract class CEnemyAttackPattern : MonoBehaviour
 {
-    void Start()
-    {
-        
-    }
-    void Update()
-    {
-        
-    }
+    public abstract void Attack();
 }
