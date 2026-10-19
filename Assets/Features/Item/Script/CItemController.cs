@@ -167,7 +167,25 @@ public class CItemController : MonoBehaviour
 
     public void AddActiveItem(CActiveItemDataSO item)
     {
-        _activeItems.Add(new CActiveItem(item, 0));
+        if (_activeItems.Count < _itemSlotSize)
+        {
+            _activeItems.Add(new CActiveItem(item, 0));
+        }
+
+        else
+        {
+            DropItem(_activeItems[_activeItemIndex].DataSO);
+            _activeItems[_activeItemIndex] = new CActiveItem(item, 0);
+        }
     }
 
+    public void DropItem(CActiveItemDataSO item)
+    {
+        //Do something
+    }
+
+    public void DropItem(CPassiveItemDataSO item)
+    {
+        //Do something
+    }
 }
