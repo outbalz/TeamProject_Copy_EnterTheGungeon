@@ -59,11 +59,11 @@ public class CPlayerAnimationController : MonoBehaviour
 
             if (state == EPlayerState.Move)
             {
-                _animator.Play("Marine_Run_Front", 0, 0.0f);
+                _animator.Play("Run_Front", 0, 0.0f);
             }
             else
             {
-                _animator.Play("Marine_Idle_Front", 0, 0.0f);
+                _animator.Play("Idle_Front", 0, 0.0f);
             }
         }
 
@@ -84,11 +84,11 @@ public class CPlayerAnimationController : MonoBehaviour
         {
             if (isBack)
             {
-                _animator.Play("Marine_Roll_BackRight", 0, 0.0f);
+                _animator.Play("Roll_BackRight", 0, 0.0f);
             }
             else
             {
-                _animator.Play("Marine_Roll_FrontRight", 0, 0.0f);
+                _animator.Play("Roll_FrontRight", 0, 0.0f);
             }
         }
         else
@@ -97,11 +97,11 @@ public class CPlayerAnimationController : MonoBehaviour
 
             if (isBack)
             {
-                _animator.Play("Marine_Roll_Back", 0, 0.0f);
+                _animator.Play("Roll_Back", 0, 0.0f);
             }
             else
             {
-                _animator.Play("Marine_Roll_Front", 0, 0.0f);
+                _animator.Play("Roll_Front", 0, 0.0f);
             }
         }
     }

@@ -32,7 +32,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Marine_Roll_Back
+  m_Name: Roll_Back
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -58,7 +58,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Marine_Roll_Front
+  m_Name: Roll_Front
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -84,7 +84,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Marine_Idle_Front
+  m_Name: Idle_Front
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -110,7 +110,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: TestPrefab2
+  m_Name: PlayerBase
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: IsMoving
@@ -139,7 +139,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Marine_Roll_BackRight
+  m_Name: Roll_BackRight
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -165,7 +165,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Marine_Run_Front
+  m_Name: Run_Front
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -254,7 +254,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Marine_Roll_FrontRight
+  m_Name: Roll_FrontRight
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
