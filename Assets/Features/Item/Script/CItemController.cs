@@ -62,8 +62,9 @@ public class CItemController : CSingleton<CItemController>
         UnBind();
     }
 
-    private void OnDestroy()
+    protected override void OnDestroy()
     {
+
         for (int i = 0; i < _activeItems.Count; i++)
         {
             if(_activeItems[i] == null)
@@ -75,6 +76,8 @@ public class CItemController : CSingleton<CItemController>
         }
 
         UnBind();
+
+        base.OnDestroy();
     }
 
     private void TryBind()
