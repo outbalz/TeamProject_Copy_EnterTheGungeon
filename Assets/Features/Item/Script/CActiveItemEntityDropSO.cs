@@ -12,7 +12,7 @@ public class CActiveItemEntityDropSO : CActiveItemEffectStrategySO
 
     public override UniTask OnUse()
     {
-        CEntityController entity = (CEntityFactory.Instance as CEntityFactory).Creat(_entity);
+        CEntityController entity = CEntityFactory.Instance.Creat(_entity);
         entity.transform.position = CPlayerCharacterController.Instance.transform.position;
 
         return UniTask.CompletedTask;

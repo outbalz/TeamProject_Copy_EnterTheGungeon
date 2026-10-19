@@ -32,6 +32,7 @@ public class CEnemyAI : MonoBehaviour
 
         if (distance <= _attackRange)
         {
+            _enemyMovement.StopMove();
             return;
         }
 
