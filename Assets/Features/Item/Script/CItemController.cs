@@ -33,7 +33,7 @@ public class CActiveItem
     }
 }
 
-public class CItemController : MonoBehaviour
+public class CItemController : CSingleton<CItemController>
 {
     #region 인스팩터
     [SerializeField] private string _itemUseInputName = "UseItem";
@@ -177,6 +177,11 @@ public class CItemController : MonoBehaviour
             DropItem(_activeItems[_activeItemIndex].DataSO);
             _activeItems[_activeItemIndex] = new CActiveItem(item, 0);
         }
+    }
+
+    public void AddPassiveItem(CPassiveItemDataSO item)
+    {
+        _passiveItems.Add(item);
     }
 
     public void DropItem(CActiveItemDataSO item)

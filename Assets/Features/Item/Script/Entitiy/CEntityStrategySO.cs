@@ -1,17 +1,8 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CEntityStrategySO : MonoBehaviour
+public abstract class CEntityStrategySO : CGameDataSO
 {
-
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
+    public abstract void InitializeEntitiy(CEntityController entity);
 }
