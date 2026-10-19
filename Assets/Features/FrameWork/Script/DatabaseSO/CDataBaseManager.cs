@@ -9,7 +9,7 @@ public class CDataBaseManager : CSingletonDontDstroyAtLoad<CDataBaseManager>
 	[SerializeField] private CPrefabDatabaseSO _prefabDB;
 	#endregion
 
-	#region 프로퍼티
+	#region 
 	public CWeaponDatabaseSO WeaponDB => _weaponDB;
 	public CPrefabDatabaseSO PrefabDB => _prefabDB;
 	#endregion
