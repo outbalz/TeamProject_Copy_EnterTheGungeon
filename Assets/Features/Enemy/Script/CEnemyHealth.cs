@@ -3,21 +3,18 @@ using UnityEngine;
 
 public class CEnemyHealth : CHPHandler
 {
-    [Header("체력 설정")]
-    [SerializeField] private float _maxHealth = 100f;
-
-
-    void Start()
+    private void Start()
     {
-        HP = _maxHealth;
+        HP = MaxHP;
     }
     public override UniTask OnHit(float damage)
     {
         HP -= damage;
 
+        OnHitInvoke();
+
         if (HP <= 0)
         {
-            HP = 0;
             OnDeathInvoke();
         }
 
