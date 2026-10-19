@@ -12,6 +12,7 @@ public class CPlayerAnimationController : MonoBehaviour
     private CPlayerRoll _roll;
 
     private bool _wasRolling;
+    private bool _playedDead;
     #endregion
 
     private void Awake()
@@ -38,6 +39,26 @@ public class CPlayerAnimationController : MonoBehaviour
     {
         EPlayerState state = _stateController.CurrentState;
 
+
+        // 사망 애니메이션
+        if (state == EPlayerState.Dead)
+        {
+            if (!_playedDead)
+            {
+                _animator.SetBool("IsMoving", false);
+
+                _spriteRenderer.flipX = false;
+                _spriteRenderer.color = Color.white;
+
+                _animator.Play("Dead_Front", 0, 0.0f);
+
+                _wasRolling = false;
+                _playedDead = true;
+            }
+
+            return;
+        }
+        
         if (state == EPlayerState.Roll)
         {
             if (!_wasRolling)

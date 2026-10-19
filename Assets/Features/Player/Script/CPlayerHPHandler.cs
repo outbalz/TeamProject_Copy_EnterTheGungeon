@@ -5,8 +5,6 @@ using UnityEngine;
 public class CPlayerHPHandler : CHPHandler
 {
     #region 인스펙터
-    [SerializeField] private float _maxHP = 3.0f;
-
     [SerializeField] private float _hitDuration = 0.15f;
     [SerializeField] private float _hitInvincibleDuration = 1.0f;
     #endregion
@@ -20,7 +18,7 @@ public class CPlayerHPHandler : CHPHandler
     #endregion
 
     #region 프로퍼티
-    public float MaxHP => _maxHP;
+    public bool IsHitInvincible => _isHitInvincible;
     public bool IsInvincible => _isHitInvincible ||
         (_roll != null && _roll.IsInvincible);
     #endregion
@@ -38,7 +36,7 @@ public class CPlayerHPHandler : CHPHandler
             return;
         }
 
-        HP = _maxHP;
+        HP = MaxHP;
     }
 
     // 플레이어 피격
@@ -50,7 +48,9 @@ public class CPlayerHPHandler : CHPHandler
             return UniTask.CompletedTask;
         }
 
-        HP = Mathf.Max(0.0f, HP - damage);
+        HP -= damage;
+
+        OnHitInvoke();
 
         if (HP <= 0.0f)
         {
@@ -101,6 +101,6 @@ public class CPlayerHPHandler : CHPHandler
             return;
         }
 
-        HP = Mathf.Min(_maxHP, HP + amount);
+        HP = Mathf.Min(MaxHP, HP + amount);
     }
 }
