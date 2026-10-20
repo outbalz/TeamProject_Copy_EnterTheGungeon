@@ -7,7 +7,13 @@ public class CEnemyMovement : MonoBehaviour
     [Header("이동 설정")]
     [SerializeField] private float _moveSpeed = 2f;
 
+    [Header("좌우 이동 설정")]
+    [SerializeField] private float _sideMoveSpeed = 1f;
+    [SerializeField] private float _changeDirectionTime = 1f;
+
     private Rigidbody2D _rigidbody2D;
+    private float _directionTimer;
+    private int _moveDirection = 1;
 
     private void Awake()
     {
@@ -26,8 +32,31 @@ public class CEnemyMovement : MonoBehaviour
         _rigidbody2D.velocity = direction * _moveSpeed;
     }
 
+    public void MoveSideways()
+    {
+        if (_rigidbody2D == null)
+        {
+            return;
+        }
+
+        _directionTimer += Time.deltaTime;
+
+        if (_directionTimer >= _changeDirectionTime)
+        {
+            _moveDirection *= -1;
+            _directionTimer = 0f;
+        }
+
+        Vector2 direction = new Vector2(_moveDirection, 0f);
+
+        _rigidbody2D.velocity = direction * _sideMoveSpeed;
+    }
+
     public void StopMove()
     {
-        _rigidbody2D.velocity = Vector2.zero;
+        if (_rigidbody2D != null)
+        {
+            _rigidbody2D.velocity = Vector2.zero;
+        }
     }
 }
