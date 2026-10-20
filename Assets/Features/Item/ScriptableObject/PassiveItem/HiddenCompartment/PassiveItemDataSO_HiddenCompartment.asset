@@ -16,4 +16,4 @@ MonoBehaviour:
   _name: "\uBE44\uBC00 \uBCF4\uAD00\uD568"
   _effect:
   - {fileID: 11400000, guid: 2f8c2b3a4a97fe24ba0302c5c14b40d0, type: 2}
-  - {fileID: 11400000, guid: 96dc3e6c939b68544843db5da78b5886, type: 2}
+  - {fileID: 11400000, guid: feb9195f51bae474bbcc604485538bed, type: 2}

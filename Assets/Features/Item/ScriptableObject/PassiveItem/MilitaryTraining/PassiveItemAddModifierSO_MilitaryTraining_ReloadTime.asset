@@ -16,4 +16,4 @@ MonoBehaviour:
   _name: MilitaryTraining_ReloadTime
   _modifier:
     _modifier: -0.2
-    _modifierName: ReloadTime
+    _modifierName: ReloadTime_Additive

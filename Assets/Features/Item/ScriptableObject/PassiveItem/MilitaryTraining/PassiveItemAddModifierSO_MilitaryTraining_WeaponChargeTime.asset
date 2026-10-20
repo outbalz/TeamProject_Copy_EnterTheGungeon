@@ -16,4 +16,4 @@ MonoBehaviour:
   _name: MilitaryTraining_WeaponChargeTime
   _modifier:
     _modifier: -0.167
-    _modifierName: WeaponChargeTime
+    _modifierName: WeaponChargeTime_Additive

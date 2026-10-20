@@ -16,4 +16,4 @@ MonoBehaviour:
   _name: DisarmingPersonality_ShopPice
   _modifier:
     _modifier: 0.85
-    _modifierName: DisarmingPersonality_ShopPice
+    _modifierName: ShopPice

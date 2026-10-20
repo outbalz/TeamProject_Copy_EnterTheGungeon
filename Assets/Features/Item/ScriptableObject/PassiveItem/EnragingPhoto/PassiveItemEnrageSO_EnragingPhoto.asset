@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: EnragingPhoto_Enrage
   _name: EnragingPhoto_Enrage
-  _enrageTime: 0
+  _enrageTime: 4
   _modifier:
     _modifier: 2
     _modifierName: Damage

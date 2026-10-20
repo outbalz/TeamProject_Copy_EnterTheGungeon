@@ -22,7 +22,7 @@ public class CPassiveItemEnrageSO : CPassiveItemOnHitEffectSO
     private async UniTask Enrage()
     {
         //apply enrage effect
-        CPlayerCharacterController.Instance.ModifierHandler.ApplyModifier(_modifier);
+        CPlayerCharacterController.Instance.ModifierHandler.ApplyModifierWithCheck(_modifier);
 
         await UniTask.Delay(TimeSpan.FromSeconds(_enrageTime));
         

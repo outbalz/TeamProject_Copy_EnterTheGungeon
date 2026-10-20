@@ -14,7 +14,7 @@ public class CPassiveItemAddModifierSO : CPassiveItemEffectStrategySO
 
     public override UniTask OnItemGet()
     {
-        CPlayerCharacterController.Instance.ModifierHandler.ApplyModifier(_modifier);
+        CPlayerCharacterController.Instance.ModifierHandler.ApplyModifierWithCheck(_modifier);
         return UniTask.CompletedTask;
     }
 

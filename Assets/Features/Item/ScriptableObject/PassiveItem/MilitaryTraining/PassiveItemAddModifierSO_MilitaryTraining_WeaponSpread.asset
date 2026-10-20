@@ -16,4 +16,4 @@ MonoBehaviour:
   _name: MilitaryTraining_WeaponSpread
   _modifier:
     _modifier: -0.17
-    _modifierName: WeaponSpread
+    _modifierName: WeaponSpread_Additive
