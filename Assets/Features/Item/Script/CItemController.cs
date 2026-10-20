@@ -9,6 +9,9 @@ public class CActiveItem
     public CActiveItemDataSO DataSO;
     public float Cooldown;
     public CancellationTokenSource CTS;
+    
+    //사용 가능 횟수, -1경우 무제한
+    public int UseAmount;
 
     public void Cancel()
     {
@@ -26,10 +29,11 @@ public class CActiveItem
     {
         DataSO = dataSO;
         Cooldown = coolDown;
+        UseAmount = dataSO.UseAmount;
     }
 }
 
-public class CItemController : MonoBehaviour
+public class CItemController : CSingleton<CItemController>
 {
     #region 인스팩터
     [SerializeField] private string _itemUseInputName = "UseItem";
@@ -39,6 +43,7 @@ public class CItemController : MonoBehaviour
     private List<CActiveItem> _activeItems = new List<CActiveItem>();
     private List<CPassiveItemDataSO> _passiveItems = new List<CPassiveItemDataSO>();
     private int _activeItemIndex = 0;
+    private int _itemSlotSize = 1;
 
     private bool _isBinded = false;
     #endregion
@@ -57,8 +62,9 @@ public class CItemController : MonoBehaviour
         UnBind();
     }
 
-    private void OnDestroy()
+    protected override void OnDestroy()
     {
+
         for (int i = 0; i < _activeItems.Count; i++)
         {
             if(_activeItems[i] == null)
@@ -70,6 +76,8 @@ public class CItemController : MonoBehaviour
         }
 
         UnBind();
+
+        base.OnDestroy();
     }
 
     private void TryBind()
@@ -141,13 +149,51 @@ public class CItemController : MonoBehaviour
             return;
         }
 
-        _activeItems[_activeItemIndex].DataSO.OnItemUes(_activeItems[_activeItemIndex]);
-    }
+        //사용가능한 상태인지 확인하고 사용, 아니라면 리턴
+        if (!_activeItems[_activeItemIndex].DataSO.OnItemUes(_activeItems[_activeItemIndex]))
+        {
+            return;
+        }
 
+        if(_activeItems[_activeItemIndex].UseAmount != -1)
+        {
+            _activeItems[_activeItemIndex].UseAmount--;
+        }
+
+        if (_activeItems[_activeItemIndex].UseAmount == 0)
+        {
+            _activeItems.RemoveAt(_activeItemIndex);
+            _activeItemIndex = Mathf.Max(_activeItemIndex - 1, 0);
+        }
+
+    }
 
     public void AddActiveItem(CActiveItemDataSO item)
     {
-        _activeItems.Add(new CActiveItem(item, 0));
+        if (_activeItems.Count < _itemSlotSize)
+        {
+            _activeItems.Add(new CActiveItem(item, 0));
+        }
+
+        else
+        {
+            DropItem(_activeItems[_activeItemIndex].DataSO);
+            _activeItems[_activeItemIndex] = new CActiveItem(item, 0);
+        }
     }
 
+    public void AddPassiveItem(CPassiveItemDataSO item)
+    {
+        _passiveItems.Add(item);
+    }
+
+    public void DropItem(CActiveItemDataSO item)
+    {
+        //Do something
+    }
+
+    public void DropItem(CPassiveItemDataSO item)
+    {
+        //Do something
+    }
 }
