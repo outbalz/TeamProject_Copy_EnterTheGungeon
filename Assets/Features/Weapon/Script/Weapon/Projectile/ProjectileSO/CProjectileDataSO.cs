@@ -8,7 +8,6 @@ public abstract class CProjectileDataSO : CGameDataSO
 {
     #region 인스펙터
     [Header("발사체 설정")]
-    [SerializeField] private GameObject _projectilePrefab = null;
     [SerializeField] private float _projectileSpeed = 5f;
     [SerializeField] private float _projectileScale = 1f;
     [SerializeField] private float _lifeTime = 5f;
@@ -19,7 +18,6 @@ public abstract class CProjectileDataSO : CGameDataSO
     #endregion
 
     #region 프로퍼티 
-    public GameObject ProjectilePrefab => _projectilePrefab;
     public float ProjectileSpeed => _projectileSpeed;
     public float ProjectileScale => _projectileScale;
     public float LifeTime => _lifeTime;

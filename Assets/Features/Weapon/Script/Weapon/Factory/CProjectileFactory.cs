@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CProjectileFactory : CFactory<CProjectileFactory, ProjectileController>
+public class CWeaponFactory : CFactory<CWeaponFactory, WeaponController>
 {
     protected override void PrefabCheck()
     {
@@ -14,14 +14,19 @@ public class CProjectileFactory : CFactory<CProjectileFactory, ProjectileControl
                 if (CDataBaseManager.Instance.PrefabDB.TryGet("Projectile", out CPrefabDataSO PrefabDataSO))
                 {
         
+                    if (PrefabDataSO is CProjectilePrefabDataSO dataSO)
+                    {
+                      
+                    }
                 }
-
-
             }
-
         }
+        base.PrefabCheck();
+    }
 
-
+    public override WeaponController Creat()
+    {
+        return base.Creat();
     }
 
 

@@ -23,7 +23,7 @@ public class CProjectilePhysicsSO : ScriptableObject
 
     #region 프로퍼티 
     public int BounceCount => _bounceCount;
-    public int pierceCount => _pierceCount;
+    public int PierceCount => _pierceCount;
     public float Knockback => _knockback;
     #endregion
 

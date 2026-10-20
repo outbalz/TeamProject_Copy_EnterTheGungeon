@@ -9,6 +9,7 @@ public class CWeaponDataSO : CGameDataSO
     [Header("총기 설정")]
     [SerializeField] private string _weaponName = "Weapon";
     [SerializeField] private int _damage = 10;
+    [SerializeField] private float _reload = 2f;
 
     [Header("발사 구조")]
     [SerializeField] private CWeaponTriggerContext _fireMode = null;
@@ -24,6 +25,7 @@ public class CWeaponDataSO : CGameDataSO
     public CWeaponTriggerStrategySO Trigger => _trigger;
     public string WeaponName => _weaponName;
     public int damage => _damage;
+    public float reload => _reload;
     public CWeaponTriggerContext FireMode => _fireMode;
     public CWeaponTriggerContext Pattern => _pattern;
     public CProjectileDataSO Projectile => _projectile;

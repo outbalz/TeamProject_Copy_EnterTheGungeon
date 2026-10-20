@@ -30,14 +30,17 @@ public class WeaponController : MonoBehaviour
     }
     private void Update()
     {
-        if (Mouse.current.leftButton.wasPressedThisFrame)
+        if (Mouse.current != null)
         {
-            TryFire();
-        }
+            if (Mouse.current.leftButton.wasPressedThisFrame)
+            {
+                TryFire();
+            }
 
-        if (Mouse.current.leftButton.wasReleasedThisFrame)
-        {
-            CancleFire();
+            if (Mouse.current.leftButton.wasReleasedThisFrame)
+            {
+                CancleFire();
+            }
         }
         
     }
