@@ -1,5 +1,5 @@
 ﻿
-public class CObjectPoolExample : CObjectPool<CTest>
+public class CObjectPoolExample : CObjectPool<CObjectPoolExample, CTest>
 {
 
 }
