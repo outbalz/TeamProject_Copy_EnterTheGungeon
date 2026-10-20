@@ -21,6 +21,7 @@ public class CPlayerAnimationController : MonoBehaviour
 
     private float _hitFlashTimer;
     #endregion
+
     private void Awake()
     {
         _stateController = GetComponent<CPlayerStateController>();
@@ -71,6 +72,7 @@ public class CPlayerAnimationController : MonoBehaviour
         UpdateAnimation();
         UpdateHitEffect();
     }
+
     private void LateUpdate()
     {
         UpdateHitMask();
@@ -168,7 +170,6 @@ public class CPlayerAnimationController : MonoBehaviour
         }
     }
 
-
     // 피격 및 무적 효과
     private void UpdateHitEffect()
     {
@@ -217,7 +218,6 @@ public class CPlayerAnimationController : MonoBehaviour
 
         _spriteRenderer.color = color;
     }
-
 
     // 현재 캐릭터 스프라이트로 마스크 갱신
     private void UpdateHitMask()
