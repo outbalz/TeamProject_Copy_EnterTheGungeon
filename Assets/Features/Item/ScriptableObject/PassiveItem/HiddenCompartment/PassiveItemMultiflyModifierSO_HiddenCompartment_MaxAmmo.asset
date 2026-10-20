@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29d4f36c4f5f4a640859466b3052c51a, type: 3}
   m_Name: PassiveItemMultiflyModifierSO_HiddenCompartment_MaxAmmo
   m_EditorClassIdentifier: 
-  _id: 
-  _name: 
+  _id: HiddenCompartment_MaxAmmo
+  _name: HiddenCompartment_MaxAmmo
   _modifier:
-    _modifier: 0
-    _modifierName: 
+    _modifier: 1.1
+    _modifierName: MaxAmmo

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bc8247577780594084f452ed33254eb, type: 3}
   m_Name: PassiveItemAddModifierSO_HiddenCompartment_ItemSlot
   m_EditorClassIdentifier: 
-  _id: HiddenCompartment
-  _name: HiddenCompartment
+  _id: HiddenCompartment_ItemSlot
+  _name: HiddenCompartment_ItemSlot
   _modifier:
-    _modifier: 0
-    _modifierName: 
+    _modifier: 1
+    _modifierName: ItemSlot
