@@ -3,21 +3,37 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class CObjectPool<T> : MonoBehaviour where T : MonoBehaviour
+public class CObjectPool<TPool, TReuslt> : CSingleton<TPool> where TPool : MonoBehaviour where TReuslt : MonoBehaviour
 {
     #region 인스팩터
-    [SerializeField] private T _prefab;
-	[SerializeField] private int _prewarmCount;
-    [SerializeField] private Transform _poolRoot;
+    [SerializeField] protected TReuslt _prefab;
+	[SerializeField] protected int _prewarmCount;
+    [SerializeField] protected Transform _poolRoot;
     #endregion
 
     #region 내부변수
-	private readonly Queue<T> _pool = new Queue<T>();
-	private readonly List<T> _liveList = new List<T>();
+	protected readonly Queue<TReuslt> _pool = new Queue<TReuslt>();
+	protected readonly List<TReuslt> _liveList = new List<TReuslt>();
     #endregion
 
+    protected override void Awake()
+    {
+        base.Awake();
 
-    private void CreatePoolRoot()
+        PrefabCheck();
+    }
+
+    protected virtual void PrefabCheck()
+    {
+        if (_prefab == null)
+        {
+            Debug.LogWarning("팩토리 프리펩 누락");
+            enabled = false;
+            return;
+        }
+    }
+
+    public void CreatePoolRoot()
     {
         if (_poolRoot != null)
         {
@@ -29,21 +45,21 @@ public class CObjectPool<T> : MonoBehaviour where T : MonoBehaviour
         _poolRoot = root.transform;
     }
 
-    private void Prewarm()
+    public void Prewarm()
     {
         CreatePoolRoot();
 
         for (int i = 0; i < _prewarmCount; i++)
         {
-            T obj = Instantiate(_prefab, _poolRoot);
+            TReuslt obj = Instantiate(_prefab, _poolRoot);
             obj.gameObject.SetActive(false);
             _pool.Enqueue(obj);
         }
     }
 
-    public T GetFromPool()
+    public TReuslt GetFromPool()
     {
-        T obj;
+        TReuslt obj;
 
         if (_pool.Count > 0)
         {
@@ -60,7 +76,7 @@ public class CObjectPool<T> : MonoBehaviour where T : MonoBehaviour
         return obj;
     }
 
-    public void ReturnToPool(T obj)
+    public void ReturnToPool(TReuslt obj)
     {
         if (obj == null)
         {
@@ -77,7 +93,7 @@ public class CObjectPool<T> : MonoBehaviour where T : MonoBehaviour
         _pool.Enqueue(obj);
     }
 
-    public List<T> GetAliveList()
+    public List<TReuslt> GetAliveList()
     {
         return _liveList;
     }
