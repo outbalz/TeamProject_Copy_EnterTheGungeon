@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85fdea9e050667d4297bf1eb03af3d74, type: 3}
   m_Name: PassiveItemDataSO_DisarmingPersonality
   m_EditorClassIdentifier: 
-  _id: 
-  _name: 
-  _effect: []
+  _id: DisarmingPersonality
+  _name: "\uC694\uB839 \uC88B\uC740 \uC131\uACA9"
+  _effect:
+  - {fileID: 11400000, guid: 34441847840255c4d8da63c089595adc, type: 2}

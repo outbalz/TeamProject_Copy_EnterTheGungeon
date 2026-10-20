@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29d4f36c4f5f4a640859466b3052c51a, type: 3}
   m_Name: PassiveItemMultiflyModifierSO_DisarmingPersonality_ShopPice
   m_EditorClassIdentifier: 
-  _id: 
-  _name: 
+  _id: DisarmingPersonality_ShopPice
+  _name: DisarmingPersonality_ShopPice
   _modifier:
-    _modifier: 0
-    _modifierName: 
+    _modifier: 0.85
+    _modifierName: DisarmingPersonality_ShopPice
