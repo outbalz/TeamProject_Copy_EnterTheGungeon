@@ -58,46 +58,7 @@ public class ProjectileController : MonoBehaviour
         _lifeTimerCorotine = StartCoroutine(LifeTimer(_projectileData.LifeTime));
     }
 
-    private void Update()
-    {
-        // 투사체 정보 방어코드
-        if (_projectileData == null)
-        {
-            return;
-        }
 
-        float moveDistance = _projectileData.ProjectileSpeed * Time.deltaTime;
-        Vector2 rayDir = transform.up;
-
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, rayDir, moveDistance, wall);
-
-        if (hit.collider != null)
-        {
-            transform.position = hit.point;
-            _projectileData.OnImpact().Forget();
-
-            bool isBound = CProjectilePhysicsHandler.HandleBounce(
-                ref _currentBounceCount,
-                _rb,
-                transform,
-                rayDir,
-                hit.normal,
-                _projectileData.ProjectileSpeed
-                );
-
-            if ( !isBound )
-            {
-                ReturnToPool();
-            }
-        }
-
-        else
-        {
-            transform.Translate(transform.up * moveDistance, Space.World);
-        }
-
-       
-    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

@@ -9,9 +9,6 @@ using UnityEngine;
 
 public class CWeaponTriggerContext
 {
-    #region 인스펙터
-
-    #endregion
 
     #region 프로퍼티
     public CWeaponDataSO Weapon { get; private set; }

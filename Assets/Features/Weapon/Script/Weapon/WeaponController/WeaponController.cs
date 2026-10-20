@@ -30,6 +30,7 @@ public class WeaponController : MonoBehaviour
     }
     private void Update()
     {
+        //유효성 검사
         if (Mouse.current != null)
         {
             if (Mouse.current.leftButton.wasPressedThisFrame)
@@ -51,6 +52,7 @@ public class WeaponController : MonoBehaviour
         CancleFire();
     }
 
+    // 무기선택
     public bool SelectWeapon(string id)
     {
         if (_database == null)
@@ -70,6 +72,7 @@ public class WeaponController : MonoBehaviour
         return true;
     }
 
+    // 발사
     public void TryFire()
     {
         if (_currentWeapon == null)
@@ -102,6 +105,7 @@ public class WeaponController : MonoBehaviour
         weapon.Trigger.TriggerWeapon(context, _fireCTS.Token).Forget();
     }
 
+    // 투사체 꺼내오기
     private void SpawnProjectile(CWeaponDataSO weapon, Quaternion rotation)
     {
         if (weapon == null || weapon.Projectile == null)
@@ -109,6 +113,7 @@ public class WeaponController : MonoBehaviour
             return;
         }
 
+        // 생성
         ProjectileController projectile = CProjectileFactory.Instance.Creat(_firePoint);
 
         if (projectile == null )
@@ -130,6 +135,7 @@ public class WeaponController : MonoBehaviour
 
     }
 
+    // 취소됬을경우
     private void CancleFire()
     {
         if (_fireCTS == null)
