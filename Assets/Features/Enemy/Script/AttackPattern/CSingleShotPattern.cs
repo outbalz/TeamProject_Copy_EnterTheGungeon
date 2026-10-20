@@ -27,7 +27,7 @@ public class CSingleShotPattern : CEnemyAttackPattern
         if (bullet != null)
         {
             Vector2 direction = (Vector2)(_player.position - _firePoint.position);
-            bullet.Fire(direction);
+            bullet.Fire(direction, 5f);
         }
     }
 }
