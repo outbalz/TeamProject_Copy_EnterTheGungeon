@@ -12,6 +12,7 @@ public abstract class CModifier
 	#endregion
 
     public string ModifierName => _modifierName;
+    public float ModifierValue => _modifier;
 
 	public abstract float GetModifiedValue(float baseValue);
 
