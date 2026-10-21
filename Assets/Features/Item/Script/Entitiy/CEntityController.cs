@@ -27,6 +27,14 @@ public class CEntityController : CInteractalbeController
 
     public override void Interact()
     {
+        if (_dataSO != null)
+        {
+            if (!_dataSO.IsInteractable)
+            {
+                return;
+            }
+        }
+
         OnInteractEvent?.Invoke();
     }
 
