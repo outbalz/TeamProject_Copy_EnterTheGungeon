@@ -17,6 +17,7 @@ public class CEntityController : CInteractalbeController
     public Rigidbody2D Rb => _rb;
     public event Action OnInteractEvent;
     public event Action<Collider2D> OnTriggerEnterEvent;
+    public event Action OnDestroyEvent;
     #endregion
 
     public void InitializeEntitiy(CEntityDataSO data)
@@ -45,6 +46,8 @@ public class CEntityController : CInteractalbeController
 
     private void OnDestroy()
     {
+        OnDestroyEvent?.Invoke();
+        OnDestroyEvent = null;
         OnInteractEvent = null;
         OnTriggerEnterEvent = null;
     }
