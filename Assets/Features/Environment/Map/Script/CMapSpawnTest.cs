@@ -7,64 +7,72 @@ using UnityEngine.Tilemaps;
 public class CMapSpawnTest : MonoBehaviour
 {
     [SerializeField]
-    GameObject _room1;
-    [SerializeField]
-    GameObject _room2;
-    [SerializeField]
-    Tilemap _tilemap;
-    // string _currentScene;
-    //
-    // void Start()
-    // { 
-    //     _currentScene = SceneManager.GetActiveScene().name;
-    // }
-    Collider2D _col2D;
-    Vector3 size;
-    Vector3 center;
+    GameObject _spwaner;
+   //[SerializeField]
+   //GameObject _room1;
+   //[SerializeField]
+   //GameObject _room2;
 
+    [SerializeField]
+    GameObject[] _rooms;
+
+    GameObject _currentRoom;
+    Tilemap _currentTilemap;
+
+    string _name = "DoorSpawnSite";
     [SerializeField]
     int _seed = 100;
-
-    [SerializeField]
-    Vector3Int _vector3Int = new Vector3Int();
-    [SerializeField]
-    TileBase _tilebase;
-    
+    Transform ranDoor = null;
+    Collider2D _colRoom = null;
     private void Start()
     {
-        _col2D = _room1.GetComponentInChildren<TilemapCollider2D>();
-
-        if( _col2D == null )
-        {
-            Debug.Log("콜라이더가 널");
-        }
-        Debug.Log(_col2D.GetInstanceID());
 
         
-
-    }
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.O))
+        
+        //시드
+        //Random.InitState(_seed);
+        if (ranDoor == null)
         {
-            //size = _col2D.bounds.size;
-            //center = _col2D.bounds.center;
-            //Debug.Log("사이즈와 위치 입력");
-            //Debug.Log($"사이즈 : {size}");
-            //Debug.Log($"센터 : {center}");
-
-            //Random.InitState(_seed);
-            //Debug.Log($"랜덤 : {Random.Range(1,10)}");
-            TileChangeData a;
-
-            _tilemap.SetTile(_vector3Int, _tilebase);
-            //_tilemap.SetTiles();
+            ranDoor = GetComponent<Transform>();
+        }
+        if (_colRoom == null)
+        {
+            _colRoom = GetComponent<Collider2D>();
         }
 
-        if (Input.GetKeyDown(KeyCode.S))
+        
+        for (int i = 0; i < _rooms.Length; i++)
         {
-            //Instantiate(_room2, center + size, rotation : Quaternion.identity);
+            
+            if(_colRoom == null)
+            {
+                _currentRoom = Instantiate(_rooms[i], ranDoor.position , ranDoor.rotation, _spwaner.transform);
+            }
+            else
+            {
+                _currentRoom = Instantiate(_rooms[i], ranDoor.position + (ranDoor.position - _colRoom.bounds.center), ranDoor.rotation, _spwaner.transform);
+            }
+                
+            _colRoom = _currentRoom.GetComponentInChildren<TilemapCollider2D>();
+            _currentTilemap = _colRoom.GetComponent<Tilemap>();
+
+            while (true)
+            {
+                int ranNum = Random.Range(1, 10);
+                Debug.Log(ranNum);
+                string _nameNum = _name + ranNum;
+
+                
+                ranDoor = _currentRoom.transform.Find(_nameNum);
+
+                if (ranDoor != null)
+                {
+                    break;
+                }
+            }
+            _currentTilemap.SetTile(_currentTilemap.LocalToCell(ranDoor.position),null); 
         }
     }
 
+ 
 }

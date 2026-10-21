@@ -4674,7 +4674,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 456189405}
-  - component: {fileID: 456189404}
   m_Layer: 0
   m_Name: test
   m_TagString: Untagged
@@ -4682,24 +4681,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &456189404
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 456189403}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 272abebab199d6f4ab452c7ba42b28c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _room1: {fileID: 1173110267}
-  _room2: {fileID: 629053061}
-  _tilemap: {fileID: 1894246814}
-  _seed: 100
-  _vector3Int: {x: 0, y: 0, z: 0}
-  _tilebase: {fileID: 11400000, guid: 3d797c33e47e22c4890a9bfafe1f5834, type: 2}
 --- !u!4 &456189405
 Transform:
   m_ObjectHideFlags: 0
@@ -10859,11 +10840,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a2e2e8ffb4b7d34a8c72946d22fee93, type: 3}
---- !u!1 &629053061 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7670871245897480715, guid: 74657a62af603c743b5fa8017343f67d, type: 3}
-  m_PrefabInstance: {fileID: 941669241}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &941669241
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10921,11 +10897,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74657a62af603c743b5fa8017343f67d, type: 3}
---- !u!1 &1173110267 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8113486462279106404, guid: 7e023bb1cd48db149852f9771e5fff39, type: 3}
-  m_PrefabInstance: {fileID: 1336552600}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1336552600
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11075,11 +11046,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1839735485 &1894246814 stripped
-Tilemap:
-  m_CorrespondingSourceObject: {fileID: 3740578669293149318, guid: 7e023bb1cd48db149852f9771e5fff39, type: 3}
-  m_PrefabInstance: {fileID: 1336552600}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &517102228307922639
 PrefabInstance:
   m_ObjectHideFlags: 0
