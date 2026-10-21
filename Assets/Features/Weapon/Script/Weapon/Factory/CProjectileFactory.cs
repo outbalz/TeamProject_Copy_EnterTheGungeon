@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CWeaponFactory : CFactory<CWeaponFactory, WeaponController>
+public class CProjectileFactory : CFactory<CProjectileFactory, ProjectileController>
 {
+    private List<ProjectileController> _bullet = new List<ProjectileController>();
     protected override void PrefabCheck()
     {
         // _prefab 없을 경우 방어코드 
@@ -13,10 +14,10 @@ public class CWeaponFactory : CFactory<CWeaponFactory, WeaponController>
             {
                 if (CDataBaseManager.Instance.PrefabDB.TryGet("Projectile", out CPrefabDataSO PrefabDataSO))
                 {
-        
+
                     if (PrefabDataSO is CProjectilePrefabDataSO dataSO)
                     {
-                      
+                        _prefab = dataSO.ProjectilePrefab;
                     }
                 }
             }
@@ -24,9 +25,25 @@ public class CWeaponFactory : CFactory<CWeaponFactory, WeaponController>
         base.PrefabCheck();
     }
 
-    public override WeaponController Creat()
+    public override ProjectileController Creat()
     {
-        return base.Creat();
+        Debug.Log($"현재 풀에 있는 총알 개수: {_bullet.Count}");
+
+        PrefabCheck();
+
+        for (int i = 0; i < _bullet.Count; i++)
+        {
+            if (_bullet[i] != null && !_bullet[i].gameObject.activeSelf)
+            {
+                return _bullet[i];
+            }
+      
+        }
+
+        ProjectileController newProjectile = Instantiate(_prefab);
+        _bullet.Add(newProjectile);
+
+        return newProjectile;
     }
 
 

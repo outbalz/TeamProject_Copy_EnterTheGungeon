@@ -9,12 +9,13 @@ public enum PropertyType
     None,
     Fire,
     Electric,
-    Ice
+    Ice,
+    Boom
 }
 
 [CreateAssetMenu(menuName = "Weapon/ProjectileSettings/CProjectileEffectSO", fileName = "CProjectileEffectSO")]
 
-public class CProjectileEffectSO : ScriptableObject
+public abstract class CProjectileEffectSO : ScriptableObject
 {
     #region 인스펙터
     [Header("이펙트 및 사운드")]
@@ -28,5 +29,8 @@ public class CProjectileEffectSO : ScriptableObject
     public AudioClip ImpactSound => _impactSound;
     public PropertyType PropertyType => _propertyType;
     #endregion
+
+    public abstract void ApplyEffect(GameObject target);
+   
 
 }

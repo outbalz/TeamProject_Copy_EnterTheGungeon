@@ -10,13 +10,14 @@ public class CWeaponReloadContext
 {
     #region 프로퍼티
     public CWeaponDataSO Weapon { get; private set; }
-    public Action ReloadComplete { get; private set; }
-
+    public int CurrentAmmo { get; private set; }
+    public Action<int> AddAmmo { get; private set; }
     #endregion
-    public CWeaponReloadContext(CWeaponDataSO weapon, Action reloadComplete)
+    public CWeaponReloadContext(CWeaponDataSO weapon, int currentAmmo, Action<int> addAmmo)
     {
         Weapon = weapon;
-        ReloadComplete = reloadComplete;
+        CurrentAmmo = currentAmmo;
+        AddAmmo = addAmmo;
     }
 }
 
@@ -24,5 +25,5 @@ public class CWeaponReloadContext
 
 public abstract class CWeaponReloadStrategySO : CGameDataSO
 {
-    public abstract UniTask ReloadWeapon(CWeaponReloadContext context, CancellationToken ct);
+    public abstract UniTask<bool> ReloadWeapon(CWeaponReloadContext context, CancellationToken ct);
 }

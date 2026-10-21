@@ -20,7 +20,7 @@ public class CBeamFiringStrategySO : CWeaponTriggerStrategySO
         }
 
         // º“»Ø
-        context.SpawnProjectile(context.FirePoint.rotation);
+        await context.Weapon.Pattern.TriggerWeapon(context, ct);
 
         while (true)
         {

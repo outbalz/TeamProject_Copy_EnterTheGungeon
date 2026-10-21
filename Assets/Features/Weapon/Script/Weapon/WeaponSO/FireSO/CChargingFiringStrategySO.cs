@@ -50,7 +50,7 @@ public class CChargingFiringStrategySO : CWeaponTriggerStrategySO
         chargeRatio = Mathf.Clamp01(chargeRatio);
 
         // ¼ÒÇÑ
-        context.SpawnProjectile(context.FirePoint.rotation);
+        await context.Weapon.Pattern.TriggerWeapon(context, ct);
 
         Debug.Log("ChargingFiring");
 

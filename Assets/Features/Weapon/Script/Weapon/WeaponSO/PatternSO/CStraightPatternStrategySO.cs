@@ -4,9 +4,9 @@ using UnityEngine;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 
-[CreateAssetMenu(menuName = "Weapon/Pattern/CStraightPatternSO", fileName = "CStraightPatternSO")]
+[CreateAssetMenu(menuName = "Weapon/Pattern/CStraightPatternStrategySO", fileName = "CStraightPatternStrategySO")]
 
-public class CStraightPatternSO : CWeaponTriggerStrategySO
+public class CStraightPatternStrategySO : CWeaponTriggerStrategySO
 {
     #region ¿ŒΩ∫∆Â≈Õ
     [SerializeField] private int _projectilCount = 1;

@@ -51,7 +51,8 @@ public class ProjectileController : MonoBehaviour
         // 속도, 방향 초기화
         if (_rb != null)
         {
-            _rb.velocity = transform.up * _projectileData.ProjectileSpeed;
+            Vector2 moveDir = transform.up;
+            _rb.velocity = moveDir * _projectileData.ProjectileSpeed;
         }
 
         // 수명 코루틴 실행
@@ -104,13 +105,9 @@ public class ProjectileController : MonoBehaviour
                     ReturnToPool();
                 }
             }
-
-
-
         }
 
-        
-    
+       
     }
 
 
@@ -128,6 +125,9 @@ public class ProjectileController : MonoBehaviour
         _lifeTimerCorotine = null;
         // 비활성화
         gameObject.SetActive(false);
+
+        Debug.Log("총알 반환"); 
+    
     }
 
 }

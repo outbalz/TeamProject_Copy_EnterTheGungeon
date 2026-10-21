@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 324b479d59cd1ba4594b5feab6129604, type: 3}
+  m_Name: Weapon
+  m_EditorClassIdentifier: 
+  _id: 001
+  _name: Teat_Gun
+  _weaponName: Weapon
+  _damage: 10
+  _maxAmmo: 10
+  _maxTotalAmmo: 120
+  _reloadTime: 2
+  _projectile: {fileID: 11400000, guid: ac7994f06a455fe419a7bb28818a3832, type: 2}
+  _reload: {fileID: 11400000, guid: db8c41e27754dfc40b1750896b7761e0, type: 2}
+  _trigger: {fileID: 11400000, guid: 0eb4ea365224cfa4d83ffb2995ff35a9, type: 2}
+  _pattern: {fileID: 11400000, guid: 9f0681858b9254e46a5355ffa74e8ce4, type: 2}

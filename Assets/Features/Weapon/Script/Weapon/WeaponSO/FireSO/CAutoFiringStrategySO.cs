@@ -26,9 +26,17 @@ public class CAutoFiringStrategySO : CWeaponTriggerStrategySO
         {
             // 검사 (음수 방지)
             float Interval = Mathf.Max(0.01f, _shotInterval);
-            // 소한
-            context.SpawnProjectile(context.FirePoint.rotation);
 
+            if (context.Weapon.Pattern != null)
+            {
+                await context.Weapon.Pattern.TriggerWeapon(context, ct);
+            }
+
+            else
+            {
+                // 소한
+                context.SpawnProjectile(context.FirePoint.rotation);
+            }
             Debug.Log("AutoFiring");
 
             // 딜레이

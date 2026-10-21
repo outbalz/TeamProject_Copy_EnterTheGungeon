@@ -5,13 +5,14 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 
 
-[CreateAssetMenu(menuName = "Weapon/Pattern/CSpreadPatternSO", fileName = "CSpreadPatternSO")]
 
-public class CSpreadPatternSO : CWeaponTriggerStrategySO
+[CreateAssetMenu(menuName = "Weapon/Pattern/CSpiralPatternStrategySO", fileName = "CSpiralPatternStrategySO")]
+
+public class CSpiralPatternStrategySO : CWeaponTriggerStrategySO
 {
     #region 인스펙터
     [SerializeField] private int _projectilCount = 3;
-    [SerializeField] private float _spreadAngle = 10f;
+    [SerializeField] private float _spiralSpeed = 120f;
     #endregion
 
     public override UniTask TriggerWeapon(CWeaponTriggerContext context, CancellationToken ct)
@@ -27,39 +28,48 @@ public class CSpreadPatternSO : CWeaponTriggerStrategySO
         // 검사 (음수 방지)
         int count = Mathf.Max(1, _projectilCount);
 
+        // 카운트에 따른 각도
+        float angleRatio = 360f / count;
+
+        // 시간에 따른 회전 누적
+        float basicangle = Time.time * _spiralSpeed;
+
         // _projectilCount가 1발인 경우 
         if (count == 1)
         {
-            context.SpawnProjectile(context.FirePoint.rotation);
+            Quaternion rotation = context.FirePoint.rotation * Quaternion.Euler(0f, basicangle, 0f);
+
+            context.SpawnProjectile(rotation);
 
             return UniTask.CompletedTask;
         }
+
 
         for (int i = 0; i < count; i++)
         {
             ct.ThrowIfCancellationRequested();
 
-            float t = (float)i / (count - 1);
+            // 최종 각도
+            float angle = basicangle + (angleRatio * i);
 
-            // 산탄 비율
-            float angle = Mathf.Lerp(-_spreadAngle * 0.5f, _spreadAngle * 0.5f, t);
-
-            // 최종 계산 비율
-            Quaternion rotation = context.FirePoint.rotation * Quaternion.Euler(0f, angle, 0f);
+            // 각도 계산
+            Quaternion rotation = context.FirePoint.rotation * Quaternion.Euler(0f, 0f, angle);
 
             context.SpawnProjectile(rotation);
 
         }
 
-        Debug.Log("SpreadPattern");
+        Debug.Log("SpiralPattern");
 
         return UniTask.CompletedTask;
     }
 
     protected override void OnValidate()
     {
+        // id / name 검사
+        base.OnValidate();
+
         // 최소값 보정
         _projectilCount = Mathf.Max(1, _projectilCount);
-        _spreadAngle = Mathf.Max(0f, _spreadAngle);
     }
 }

@@ -29,7 +29,7 @@ public class CBurstFiringStrategySO : CWeaponTriggerStrategySO
         for (int i = 0; i < count; i++)
         {
             // ¼ÒÇÑ
-            context.SpawnProjectile(context.FirePoint.rotation);
+            await context.Weapon.Pattern.TriggerWeapon(context, ct);
 
             Debug.Log("BurstFiring");
 

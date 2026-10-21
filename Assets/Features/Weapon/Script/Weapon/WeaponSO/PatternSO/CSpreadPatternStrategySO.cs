@@ -4,14 +4,17 @@ using UnityEngine;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 
-[CreateAssetMenu(menuName = "Weapon/Pattern/CCirclePatternSO", fileName = "CCirclePatternSO")]
-public class CCirclePatternSO : CWeaponTriggerStrategySO
+
+[CreateAssetMenu(menuName = "Weapon/Pattern/CSpreadPatternStrategySO", fileName = "CSpreadPatternStrategySO")]
+
+public class CSpreadPatternStrategySO : CWeaponTriggerStrategySO
 {
     #region 인스펙터
     [SerializeField] private int _projectilCount = 3;
+    [SerializeField] private float _spreadAngle = 10f;
     #endregion
 
-    public override  UniTask TriggerWeapon(CWeaponTriggerContext context, CancellationToken ct)
+    public override UniTask TriggerWeapon(CWeaponTriggerContext context, CancellationToken ct)
     {
         //유효성 검사
         if (context == null || context.FirePoint == null || context.SpawnProjectile == null)
@@ -31,24 +34,24 @@ public class CCirclePatternSO : CWeaponTriggerStrategySO
 
             return UniTask.CompletedTask;
         }
-        // 카운트에 따른 각도
-        float angleRatio = 360f / count;
 
         for (int i = 0; i < count; i++)
         {
             ct.ThrowIfCancellationRequested();
 
-            // 최종 각도
-            float angle = angleRatio * i;
+            float t = (float)i / (count - 1);
 
-            // 각도 계산
-            Quaternion rotation = context.FirePoint.rotation * Quaternion.Euler(0f, angle, 0f);
+            // 산탄 비율
+            float angle = Mathf.Lerp(-_spreadAngle * 0.5f, _spreadAngle * 0.5f, t);
+
+            // 최종 계산 비율
+            Quaternion rotation = context.FirePoint.rotation * Quaternion.Euler(0f, 0f, angle);
 
             context.SpawnProjectile(rotation);
 
         }
 
-        Debug.Log("CirclePattern");
+        Debug.Log("SpreadPattern");
 
         return UniTask.CompletedTask;
     }
@@ -57,5 +60,6 @@ public class CCirclePatternSO : CWeaponTriggerStrategySO
     {
         // 최소값 보정
         _projectilCount = Mathf.Max(1, _projectilCount);
+        _spreadAngle = Mathf.Max(0f, _spreadAngle);
     }
 }

@@ -9,6 +9,7 @@ public class CWeaponDataSO : CGameDataSO
     [Header("총기 설정")]
     [SerializeField] private string _weaponName = "Weapon";
     [SerializeField] private int _damage = 10;
+    [SerializeField] private Sprite _weaponSprite;
 
     [Header("재장전")]
     [SerializeField] private int _maxAmmo = 10;  // 최대 탄수
@@ -28,6 +29,7 @@ public class CWeaponDataSO : CGameDataSO
     public CWeaponTriggerStrategySO Pattern => _pattern;
     public string WeaponName => _weaponName;
     public int Damage => _damage;
+    public Sprite WeaponSprite => _weaponSprite;
     public int MaxAmmo => _maxAmmo;
     public int MaxTotalAmmo => _maxTotalAmmo;
     public float ReloadTime => _reloadTime;

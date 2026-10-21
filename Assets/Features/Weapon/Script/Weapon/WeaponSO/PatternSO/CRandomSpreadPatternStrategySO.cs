@@ -4,8 +4,8 @@ using UnityEngine;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 
-[CreateAssetMenu(menuName = "Weapon/Pattern/CRandomSpreadPatternSO", fileName = "CRandomSpreadPatternSO")]
-public class CRandomSpreadPatternSO : CWeaponTriggerStrategySO
+[CreateAssetMenu(menuName = "Weapon/Pattern/CRandomSpreadPatternStrategySO", fileName = "CRandomSpreadPatternStrategySO")]
+public class CRandomSpreadPatternStrategySO : CWeaponTriggerStrategySO
 {
     #region 인스펙터
     [SerializeField] private int _projectilCount = 3;
@@ -48,7 +48,7 @@ public class CRandomSpreadPatternSO : CWeaponTriggerStrategySO
             float finalAngle = baseAngle + randomOffset;
 
             // 최종 계산 비율
-            Quaternion rotation = context.FirePoint.rotation * Quaternion.Euler(0f, finalAngle, 0f);
+            Quaternion rotation = context.FirePoint.rotation * Quaternion.Euler(0f, 0f, finalAngle);
 
             context.SpawnProjectile(rotation);
 

@@ -4,18 +4,14 @@ using UnityEngine;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 
-
-
-[CreateAssetMenu(menuName = "Weapon/Pattern/CSpiralPatternSO", fileName = "CSpiralPatternSO")]
-
-public class CSpiralPatternSO : CWeaponTriggerStrategySO
+[CreateAssetMenu(menuName = "Weapon/Pattern/CCirclePatternStrategySO", fileName = "CCirclePatternStrategySO")]
+public class CCirclePatternStrategySO : CWeaponTriggerStrategySO
 {
     #region 인스펙터
     [SerializeField] private int _projectilCount = 3;
-    [SerializeField] private float _spiralSpeed = 120f;
     #endregion
 
-    public override UniTask TriggerWeapon(CWeaponTriggerContext context, CancellationToken ct)
+    public override  UniTask TriggerWeapon(CWeaponTriggerContext context, CancellationToken ct)
     {
         //유효성 검사
         if (context == null || context.FirePoint == null || context.SpawnProjectile == null)
@@ -28,47 +24,37 @@ public class CSpiralPatternSO : CWeaponTriggerStrategySO
         // 검사 (음수 방지)
         int count = Mathf.Max(1, _projectilCount);
 
-        // 카운트에 따른 각도
-        float angleRatio = 360f / count;
-
-        // 시간에 따른 회전 누적
-        float basicangle = Time.time * _spiralSpeed;
-
         // _projectilCount가 1발인 경우 
         if (count == 1)
         {
-            Quaternion rotation = context.FirePoint.rotation * Quaternion.Euler(0f, basicangle, 0f);
-
-            context.SpawnProjectile(rotation);
+            context.SpawnProjectile(context.FirePoint.rotation);
 
             return UniTask.CompletedTask;
         }
-
+        // 카운트에 따른 각도
+        float angleRatio = 360f / count;
 
         for (int i = 0; i < count; i++)
         {
             ct.ThrowIfCancellationRequested();
 
             // 최종 각도
-            float angle = basicangle + (angleRatio * i);
+            float angle = angleRatio * i;
 
             // 각도 계산
-            Quaternion rotation = context.FirePoint.rotation * Quaternion.Euler(0f, angle, 0f);
+            Quaternion rotation = context.FirePoint.rotation * Quaternion.Euler(0f, 0f, angle);
 
             context.SpawnProjectile(rotation);
 
         }
 
-        Debug.Log("SpiralPattern");
+        Debug.Log("CirclePattern");
 
         return UniTask.CompletedTask;
     }
 
     protected override void OnValidate()
     {
-        // id / name 검사
-        base.OnValidate();
-
         // 최소값 보정
         _projectilCount = Mathf.Max(1, _projectilCount);
     }
