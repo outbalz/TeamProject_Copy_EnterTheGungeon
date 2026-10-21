@@ -2,7 +2,7 @@
 
 public class CPlayerMovement : MonoBehaviour
 {
-    #region 인스펙터
+    #region 인스펙터    
     [SerializeField] private string _moveActionName = "Move";
     [SerializeField] private float _moveSpeed = 5.0f;
     #endregion
@@ -40,7 +40,7 @@ public class CPlayerMovement : MonoBehaviour
 
     private void Start()
     {
-        CInputDispatcher dispatcher = FindObjectOfType<CInputDispatcher>();
+        CInputDispatcher dispatcher = CInputDispatcher.Instance;
 
         if (dispatcher == null)
         {
@@ -62,13 +62,17 @@ public class CPlayerMovement : MonoBehaviour
     private void OnEnable()
     {
         if (_moveInput != null)
+        {
             _moveInput.OnPerformedAction += InputMove;
+        }
     }
 
     private void OnDisable()
     {
         if (_moveInput != null)
+        {
             _moveInput.OnPerformedAction -= InputMove;
+        }
 
         _moveDirection = Vector2.zero;
     }
@@ -85,19 +89,27 @@ public class CPlayerMovement : MonoBehaviour
 
         if (_stateController.CurrentState != EPlayerState.Idle &&
             _stateController.CurrentState != EPlayerState.Move)
+        {
             return;
+        }
 
         if (_moveDirection == Vector2.zero)
+        {
             _stateController.ChangeState(EPlayerState.Idle);
+        }
         else
+        {
             _stateController.ChangeState(EPlayerState.Move);
+        }
     }
 
     // 이동
     private void Move()
     {
         if (_stateController.CurrentState != EPlayerState.Move)
+        {
             return;
+        }
 
         Vector2 nextPosition = _rigidbody.position + _moveDirection * _moveSpeed * Time.fixedDeltaTime;
 
