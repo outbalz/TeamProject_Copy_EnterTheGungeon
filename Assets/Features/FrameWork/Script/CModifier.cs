@@ -71,7 +71,12 @@ public class CAddtiveMultiflyModifier : CModifier
 
     public override float GetModifiedValue(float baseValue)
     {
-        return baseValue * ModifierHandler.GetModifiedValue(_modifierName, _modifier);
+        if (ModifierHandler == null)
+        {
+            return baseValue * _modifier;
+        }
+
+        return baseValue * ModifierHandler.GetModifiedValue(_addModifierName, _modifier);
     }
 
     public CAddtiveMultiflyModifier(string name, string addModifierName, float modifier, CModifierHandler modifierHandler) : base(name, modifier)
