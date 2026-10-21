@@ -30,11 +30,12 @@ public class CEntityController : CInteractalbeController
     {
         if (_dataSO != null)
         {
-            if (!_dataSO.IsInteractable)
+            if (!_dataSO.IsInteractable(this))
             {
                 return;
             }
         }
+
 
         OnInteractEvent?.Invoke();
     }

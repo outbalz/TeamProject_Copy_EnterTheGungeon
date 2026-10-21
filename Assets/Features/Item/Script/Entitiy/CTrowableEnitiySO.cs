@@ -19,6 +19,11 @@ public class CTrowableEnitiySO : CEntityStrategySO
         EntityLifeUpdate(entity).Forget();
     }
 
+    public override bool InteractCheck(CEntityController entity)
+    {
+        return false;
+    }
+
     private async UniTask EntityLifeUpdate(CEntityController entity)
     {
         float timer = _lifeTime;

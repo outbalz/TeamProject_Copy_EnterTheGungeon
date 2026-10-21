@@ -12,8 +12,19 @@ public class CEntityDataSO : CGameDataSO
 
 	#region 프로퍼티
 	public Sprite Sprite => _sprite;
-	public bool IsInteractable => _isInteractable;
 	#endregion
+
+	public bool IsInteractable(CEntityController entity)
+	{ 
+		{
+			if(_strategy != null)
+			{
+				return (_isInteractable && _strategy.InteractCheck(entity));
+			}
+
+			return _isInteractable;
+		} 
+	}
 
 	public void InitializeEntitiy(CEntityController entity)
 	{

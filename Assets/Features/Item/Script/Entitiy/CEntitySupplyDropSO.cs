@@ -17,6 +17,12 @@ public class CEntitySupplyDropSO : CEntityStrategySO
         DropEntitiy(entity).Forget();
     }
 
+    public override bool InteractCheck(CEntityController entity)
+    {
+        //TODO 현재 총의 탄약이 최대치인지 확인
+        return true;
+    }
+
     private async UniTask DropEntitiy(CEntityController entity)
     {
         float timer = _dropTime;
