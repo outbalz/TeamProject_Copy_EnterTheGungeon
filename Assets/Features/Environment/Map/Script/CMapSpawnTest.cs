@@ -6,73 +6,74 @@ using UnityEngine.Tilemaps;
 
 public class CMapSpawnTest : MonoBehaviour
 {
-    [SerializeField]
-    GameObject _spwaner;
-   //[SerializeField]
-   //GameObject _room1;
-   //[SerializeField]
-   //GameObject _room2;
+    
+     
+    Quaternion _quaternion;
+    RaycastHit2D _hit;
 
-    [SerializeField]
-    GameObject[] _rooms;
-
-    GameObject _currentRoom;
-    Tilemap _currentTilemap;
-
-    string _name = "DoorSpawnSite";
-    [SerializeField]
-    int _seed = 100;
-    Transform ranDoor = null;
-    Collider2D _colRoom = null;
-    private void Start()
+    private void Update()
     {
-
-        
-        
-        //시드
-        //Random.InitState(_seed);
-        if (ranDoor == null)
-        {
-            ranDoor = GetComponent<Transform>();
-        }
-        if (_colRoom == null)
-        {
-            _colRoom = GetComponent<Collider2D>();
-        }
-
-        
-        for (int i = 0; i < _rooms.Length; i++)
-        {
+        //sadf();
+       if (Input.GetMouseButtonDown(0))
+       {
+           Vector3 vec3 = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             
-            if(_colRoom == null)
-            {
-                _currentRoom = Instantiate(_rooms[i], ranDoor.position , ranDoor.rotation, _spwaner.transform);
-            }
-            else
-            {
-                _currentRoom = Instantiate(_rooms[i], ranDoor.position + (ranDoor.position - _colRoom.bounds.center), ranDoor.rotation, _spwaner.transform);
-            }
-                
-            _colRoom = _currentRoom.GetComponentInChildren<TilemapCollider2D>();
-            _currentTilemap = _colRoom.GetComponent<Tilemap>();
 
-            while (true)
-            {
-                int ranNum = Random.Range(1, 10);
-                Debug.Log(ranNum);
-                string _nameNum = _name + ranNum;
+            RaycastHit2D hit = Physics2D.Raycast(vec3, Vector3.zero);
+             
+       
+           if(hit.collider != null)
+           {
+               
+               Tilemap tile = hit.collider.GetComponent<Tilemap>();
 
-                
-                ranDoor = _currentRoom.transform.Find(_nameNum);
+                _quaternion = tile.transform.rotation;
+                tile.transform.rotation = Quaternion.identity;
 
-                if (ranDoor != null)
-                {
-                    break;
-                }
+                Vector3Int cell = tile.WorldToCell(hit.point);
+               
+               tile.SetTile(cell, null);
+
+                tile.RefreshAllTiles();
+
+                tile.transform.rotation = _quaternion;
+
+               
             }
-            _currentTilemap.SetTile(_currentTilemap.LocalToCell(ranDoor.position),null); 
-        }
+       }
+        
     }
 
- 
+    void sadf()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Vector2 point = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(point, Vector2.zero);
+
+            if (hit.collider != null)
+            {
+                Tilemap tile = hit.collider.GetComponent<Tilemap>();
+
+                if (tile != null)
+                {
+
+                    Matrix4x4 inverseMatrix = tile.transform.localToWorldMatrix.inverse;
+
+                    // 박살난 hit.point를 회전하기 전의 원래 "순수한 평평한 2D 좌표"로 강제 복원합니다.
+                    Vector3 cleanLocalPos = inverseMatrix.MultiplyPoint3x4(hit.point);
+
+                    // 평평하게 복원된 좌표를 넣어야만 WorldToCell이 제정신을 차리고 작동합니다.
+                    Vector3Int cell = tile.WorldToCell(cleanLocalPos);
+
+                    // 타일 삭제
+                    tile.SetTile(cell, null);
+
+                    Debug.Log($"[정상 작동 확인] 복원된 셀 좌표: {cell}");
+                }
+            }
+        }
+    }
 }
+
+
