@@ -2,6 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CObjectPoolFactoryExample : CObjectPoolFactory<CObjectPoolFactoryExample, CTest>
+public class CObjectPoolFactoryExample : CObjectPoolFactory<CObjectPoolFactoryExample, CObjectPoolExample, CTest>
 {
 }
