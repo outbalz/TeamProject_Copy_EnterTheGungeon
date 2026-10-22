@@ -14,6 +14,11 @@ public class CPassiveItemEntitySO : CEntityStrategySO
         entity.OnInteractEvent += () => Destroy(entity.gameObject);
     }
 
+    public override bool InteractCheck(CEntityController entity)
+    {
+        return true;
+    }
+
     private void GetItem()
     {
         CItemController.Instance.AddPassiveItem(_itemDataSO);
