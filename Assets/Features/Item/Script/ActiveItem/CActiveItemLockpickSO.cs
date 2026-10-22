@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(menuName = "SO/GameDataSO/ItemDataSO/ActiveItemEffect/Lockpick", fileName = "ActiveItemLockpickSO_")]
 public class CActiveItemLockpickSO : CActiveItemIntractSO
 {
     #region 인스팩터

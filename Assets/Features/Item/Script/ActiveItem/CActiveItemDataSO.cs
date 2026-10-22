@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(menuName = "SO/GameDataSO/ItemDataSO/ActiveItemDataSO", fileName = "ActiveItemDataSO_")]
 public class CActiveItemDataSO : CGameDataSO
 {
     #region 인스팩터
     [SerializeField] protected CActiveItemEffectStrategySO[] _effect;
     [SerializeField] protected CItemCoolDownStrategySO _coolDown;
-    [SerializeField] protected int _useAmount;
+    [SerializeField] protected int _useAmount = -1;
     #endregion
 
     #region 프로퍼티
