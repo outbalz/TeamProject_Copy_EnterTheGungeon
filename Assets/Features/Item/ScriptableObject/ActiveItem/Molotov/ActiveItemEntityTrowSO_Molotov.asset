@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ea3880b2b70b914a9f71ebccbc28554, type: 3}
   m_Name: ActiveItemEntityTrowSO_Molotov
   m_EditorClassIdentifier: 
-  _id: Molotov
-  _name: Molotov
-  _entity: {fileID: 0}
+  _id: EntityTrow_Molotov
+  _name: EntityTrow_Molotov
+  _entity: {fileID: 11400000, guid: dd025737e83d0434886f95b81393469e, type: 2}

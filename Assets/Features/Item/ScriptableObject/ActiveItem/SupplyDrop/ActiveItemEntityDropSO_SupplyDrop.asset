@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dee9e93cf95157a488882461b1647d39, type: 3}
   m_Name: ActiveItemEntityDropSO_SupplyDrop
   m_EditorClassIdentifier: 
-  _id: id
-  _name: name
-  _entity: {fileID: 0}
+  _id: SupplyDrop_EntityDrop
+  _name: SupplyDrop_EntityDrop
+  _entity: {fileID: 11400000, guid: dc7a2cef07cd23047b0a9fe1c5e54fc2, type: 2}

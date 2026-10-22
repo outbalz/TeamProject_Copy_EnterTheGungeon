@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f882fe89d41eac147b8baa1f35d33fa8, type: 3}
-  m_Name: EntityDataSO_SupplyCrate
+  m_Name: EntityDataSO_ItemEntity_EnragingPhoto
   m_EditorClassIdentifier: 
-  _id: SupplyCrate
-  _name: SupplyCrate
+  _id: ItemEntity_EnragingPhoto
+  _name: ItemEntity_EnragingPhoto
   _sprite: {fileID: 0}
   _isInteractable: 1
-  _strategy: {fileID: 11400000, guid: 9e9ed3d7de9ffad4294f8fec0d84c67a, type: 2}
+  _strategy: {fileID: 11400000, guid: d674460b7c893e14d87779128f2afa8f, type: 2}

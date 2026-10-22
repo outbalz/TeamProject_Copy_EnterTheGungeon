@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a12b91803696e54eaa6215343a4eef3, type: 3}
   m_Name: CoolDownDamageDealtSO_600
   m_EditorClassIdentifier: 
-  _id: id
-  _name: name
-  _requirDamage: 0
+  _id: CoolDownDamageDealt_600
+  _name: CoolDownDamageDealt_600
+  _requirDamage: 600

@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: Molotov
   _name: "\uD654\uC5FC\uBCD1"
-  _effect: []
-  _coolDown: {fileID: 0}
+  _effect:
+  - {fileID: 11400000, guid: 17a9ee9fd00ce9c4c895c42cca6101de, type: 2}
+  _coolDown: {fileID: 11400000, guid: 26ea1de06c530994c9260dcfd805ebc2, type: 2}
   _useAmount: -1

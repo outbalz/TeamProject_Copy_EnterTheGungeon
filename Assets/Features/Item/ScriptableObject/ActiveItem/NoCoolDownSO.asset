@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24f6c315ec1222542a7de89720ca866b, type: 3}
   m_Name: NoCoolDownSO
   m_EditorClassIdentifier: 
-  _id: id
-  _name: name
+  _id: NoCoolDownSO
+  _name: NoCoolDownSO

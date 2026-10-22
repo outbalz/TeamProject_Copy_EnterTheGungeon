@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f882fe89d41eac147b8baa1f35d33fa8, type: 3}
-  m_Name: EntityDataSO_Molotov
+  m_Name: EntityDataSO_ItemEntity_Molotov
   m_EditorClassIdentifier: 
-  _id: Entity_Molotov
-  _name: Entity_Molotov
+  _id: ItemEntity_Molotov
+  _name: ItemEntity_Molotov
   _sprite: {fileID: 0}
-  _isInteractable: 0
-  _strategy: {fileID: 0}
+  _isInteractable: 1
+  _strategy: {fileID: 11400000, guid: b43267cd69754fb41ba0f7ec451139e9, type: 2}

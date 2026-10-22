@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f882fe89d41eac147b8baa1f35d33fa8, type: 3}
   m_Name: EntityDataSO_AmmoCrate
   m_EditorClassIdentifier: 
-  _id: id
-  _name: name
+  _id: AmmoCrate
+  _name: "\uD0C4\uC57D \uC0C1\uC790"
   _sprite: {fileID: 0}
   _isInteractable: 0
   _strategy: {fileID: 0}

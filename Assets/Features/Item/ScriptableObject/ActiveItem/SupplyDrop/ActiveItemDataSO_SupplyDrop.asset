@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2375d144f6bfe1140a774a2c3391a183, type: 3}
   m_Name: ActiveItemDataSO_SupplyDrop
   m_EditorClassIdentifier: 
-  _id: id
-  _name: name
-  _effect: []
-  _coolDown: {fileID: 0}
-  _useAmount: -1
+  _id: SupplyDrop
+  _name: "\uBCD1\uAE30 \uC9C0\uC6D0"
+  _effect:
+  - {fileID: 11400000, guid: a37428d3c8bb9624e939573a83eaa23a, type: 2}
+  _coolDown: {fileID: 11400000, guid: c814047a5e1da2540a75e3b19c354212, type: 2}
+  _useAmount: 1
