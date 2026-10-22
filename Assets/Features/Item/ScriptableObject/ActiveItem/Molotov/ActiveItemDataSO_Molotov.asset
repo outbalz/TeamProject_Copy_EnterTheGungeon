@@ -18,3 +18,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 17a9ee9fd00ce9c4c895c42cca6101de, type: 2}
   _coolDown: {fileID: 11400000, guid: 26ea1de06c530994c9260dcfd805ebc2, type: 2}
   _useAmount: -1
+  _itemEntitySO: {fileID: 11400000, guid: 254f0949458ccff4b86c9a080959f64d, type: 2}

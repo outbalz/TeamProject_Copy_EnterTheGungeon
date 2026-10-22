@@ -16,3 +16,4 @@ MonoBehaviour:
   _name: "\uBD84\uB178\uC758 \uC0AC\uC9C4"
   _effect:
   - {fileID: 11400000, guid: 46227a8f6672fb74bafa08537619ee28, type: 2}
+  _itemEntitySO: {fileID: 11400000, guid: 33911925b1276ff4e9df920e9b8042f7, type: 2}
