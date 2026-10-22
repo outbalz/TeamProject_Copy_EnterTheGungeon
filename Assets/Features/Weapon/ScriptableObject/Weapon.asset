@@ -16,6 +16,7 @@ MonoBehaviour:
   _name: Teat_Gun
   _weaponName: Weapon
   _damage: 10
+  _weaponSprite: {fileID: -32502705, guid: 883a504e288b1b443b759cde0353cf72, type: 3}
   _maxAmmo: 10
   _maxTotalAmmo: 120
   _reloadTime: 2

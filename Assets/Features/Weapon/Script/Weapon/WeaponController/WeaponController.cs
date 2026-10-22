@@ -112,7 +112,7 @@ public class WeaponController : MonoBehaviour
         _currentAmmo = _currentWeapon.MaxAmmo;
         _currentTotalAmmo = _currentWeapon.MaxTotalAmmo;
 
-        
+        // 무기 이미지 장착 
         if (_weaponSpriteRenderer != null && _currentWeapon.WeaponSprite != null)
         {
             _weaponSpriteRenderer.sprite = _currentWeapon.WeaponSprite; 
@@ -162,7 +162,7 @@ public class WeaponController : MonoBehaviour
 
         weapon.Trigger.TriggerWeapon(context, _fireCTS.Token).Forget();
 
-        // 발사 렌더러
+        // 발사 이미지 장착 
         if (_fireSpriteRenderer != null && _fireSpriteRenderer.sprite != null)
         {
             _weaponSpriteRenderer.sprite = _fireSpriteRenderer.sprite;
