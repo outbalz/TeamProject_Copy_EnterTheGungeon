@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "SO/GameDataSO/ItemDataSO/CPassiveItemEffect/MultiflyModifier", 
+[CreateAssetMenu(menuName = "SO/GameDataSO/ItemDataSO/PassiveItemEffect/MultiflyModifier", 
     fileName = "PassiveItemMultiflyModifierSO_")]
 public class CPassiveItemMultiflyModifierSO : CPassiveItemEffectStrategySO
 {
@@ -14,7 +14,7 @@ public class CPassiveItemMultiflyModifierSO : CPassiveItemEffectStrategySO
 
     public override UniTask OnItemGet()
     {
-        CPlayerCharacterController.Instance.ModifierHandler.ApplyModifier(_modifier);
+        CPlayerCharacterController.Instance.ModifierHandler.ApplyModifierWithCheck(_modifier);
         return UniTask.CompletedTask;
     }
 

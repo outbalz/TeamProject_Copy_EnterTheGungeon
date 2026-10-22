@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85fdea9e050667d4297bf1eb03af3d74, type: 3}
+  m_Name: PassiveItemDataSO_DisarmingPersonality
+  m_EditorClassIdentifier: 
+  _id: DisarmingPersonality
+  _name: "\uC694\uB839 \uC88B\uC740 \uC131\uACA9"
+  _effect:
+  - {fileID: 11400000, guid: 34441847840255c4d8da63c089595adc, type: 2}
