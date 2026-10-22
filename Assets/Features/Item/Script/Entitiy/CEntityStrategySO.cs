@@ -5,4 +5,6 @@ using UnityEngine;
 public abstract class CEntityStrategySO : CGameDataSO
 {
     public abstract void InitializeEntitiy(CEntityController entity);
+
+    public abstract bool InteractCheck(CEntityController entity);
 }
