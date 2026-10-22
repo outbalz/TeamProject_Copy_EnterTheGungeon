@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(menuName = "SO/GameDataSO/EntityDataSO/EntityData", fileName = "EntityDataSO_")]
 public class CEntityDataSO : CGameDataSO
 {
 	#region 인스팩터

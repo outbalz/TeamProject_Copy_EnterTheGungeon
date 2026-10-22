@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(menuName = "SO/GameDataSO/EntityDataSO/EntityStrategy/EntitySupplyDropSO", fileName = "EntitySupplyDropSO_")]
 public class CEntitySupplyDropSO : CEntityStrategySO
 {
     #region 인스팩터

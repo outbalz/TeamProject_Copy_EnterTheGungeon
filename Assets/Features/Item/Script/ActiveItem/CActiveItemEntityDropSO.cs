@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(menuName = "SO/GameDataSO/ItemDataSO/ActiveItemEffect/EntityDrop", fileName = "ActiveItemEntityDropSO_")]
 public class CActiveItemEntityDropSO : CActiveItemEffectStrategySO
 {
     #region 인스팩터
