@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85fdea9e050667d4297bf1eb03af3d74, type: 3}
+  m_Name: PassiveItemDataSO_MilitaryTraining
+  m_EditorClassIdentifier: 
+  _id: MilitaryTraining
+  _name: "\uAD70\uC0AC \uD6C8\uB828"
+  _effect:
+  - {fileID: 11400000, guid: bc19b73e0baf67d41bd1f302cdcca56e, type: 2}
+  - {fileID: 11400000, guid: 1e1bfc3cc2d026e468b066811a8a846a, type: 2}
+  - {fileID: 11400000, guid: e9d61c6fcc4854f438bf98aa9b72b2fe, type: 2}

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(menuName = "SO/GameDataSO/ItemDataSO/ActiveItemCoolDown/CoolDownDamageDealt", fileName = "CoolDownDamageDealtSO_")]
 public class CItemCoolDownDamageDealtSO : CItemCoolDownStrategySO
 {
     #region 인스팩터
