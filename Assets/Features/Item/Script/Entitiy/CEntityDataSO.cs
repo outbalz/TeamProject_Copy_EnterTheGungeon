@@ -13,6 +13,7 @@ public class CEntityDataSO : CGameDataSO
 
 	#region 프로퍼티
 	public Sprite Sprite => _sprite;
+	public CEntityStrategySO Strategy => _strategy;
 	#endregion
 
 	public bool IsInteractable(CEntityController entity)

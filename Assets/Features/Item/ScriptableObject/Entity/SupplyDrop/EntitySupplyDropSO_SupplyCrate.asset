@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1b60a9c3b1135e4d9a18602d4a8f831, type: 3}
   m_Name: EntitySupplyDropSO_SupplyCrate
   m_EditorClassIdentifier: 
-  _id: id
-  _name: name
-  _dropEntitiy: {fileID: 0}
-  _dropTime: 0
+  _id: SupplyDrop_SupplyCrate
+  _name: SupplyDrop_SupplyCrate
+  _dropEntitiy: {fileID: 11400000, guid: 5529d32394cf30b4ab8514cc073d80d1, type: 2}
+  _dropTime: 3
