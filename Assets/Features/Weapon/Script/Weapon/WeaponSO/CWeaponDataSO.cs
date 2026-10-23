@@ -26,6 +26,7 @@ public class CWeaponDataSO : CGameDataSO
     [SerializeField] private int _maxAmmo = 10;  // 최대 탄수
     [SerializeField] private int _maxTotalAmmo = 120; // 총 소지 탄수
     [SerializeField] private float _reloadTime = 2f;
+    [SerializeField] private bool _isInfiniteAmmo = false;
 
 
     [Header("투사체 연결")]
@@ -49,6 +50,7 @@ public class CWeaponDataSO : CGameDataSO
     public int MaxAmmo => _maxAmmo;
     public int MaxTotalAmmo => _maxTotalAmmo;
     public float ReloadTime => _reloadTime;
+    public bool IsInfiniteAmmo => _isInfiniteAmmo;
     public CWeaponReloadStrategySO Reload => _reload;
     public CProjectileDataSO Projectile => _projectile;
     #endregion

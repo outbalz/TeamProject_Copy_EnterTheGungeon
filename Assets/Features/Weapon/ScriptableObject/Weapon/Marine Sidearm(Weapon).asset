@@ -10,17 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 324b479d59cd1ba4594b5feab6129604, type: 3}
-  m_Name: Weapon
+  m_Name: Marine Sidearm(Weapon)
   m_EditorClassIdentifier: 
   _id: 001
-  _name: Teat_Gun
-  _weaponName: Weapon
+  _name: Marine Sidearm
+  _weaponName: 001
   _damage: 10
   _weaponSprite: {fileID: -32502705, guid: 883a504e288b1b443b759cde0353cf72, type: 3}
+  _fireSprite: {fileID: -495874312, guid: 883a504e288b1b443b759cde0353cf72, type: 3}
+  _muzzleFlash: {fileID: 21300000, guid: 945a4226409b8ff449ff5525e7227cfe, type: 3}
+  _muzzleFlashTime: 0.08
+  _reboundRange: 0.2
+  _reboundSpeed: 10
   _maxAmmo: 10
   _maxTotalAmmo: 120
   _reloadTime: 2
+  _isInfiniteAmmo: 1
   _projectile: {fileID: 11400000, guid: ac7994f06a455fe419a7bb28818a3832, type: 2}
   _reload: {fileID: 11400000, guid: db8c41e27754dfc40b1750896b7761e0, type: 2}
-  _trigger: {fileID: 11400000, guid: 0eb4ea365224cfa4d83ffb2995ff35a9, type: 2}
-  _pattern: {fileID: 11400000, guid: 9f0681858b9254e46a5355ffa74e8ce4, type: 2}
+  _trigger: {fileID: 11400000, guid: cb5bdc0da81613b4e92700f2249aee56, type: 2}
+  _pattern: {fileID: 11400000, guid: 92361a70a91f93b47b3c1674e8ebab43, type: 2}
