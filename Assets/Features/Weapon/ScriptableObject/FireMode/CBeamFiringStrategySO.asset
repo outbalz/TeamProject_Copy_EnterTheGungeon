@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51310d66494435243bbe185195e1d358, type: 3}
   m_Name: CBeamFiringStrategySO
   m_EditorClassIdentifier: 
-  _id: 
-  _name: 
+  _id: BeamFire
+  _name: BeamFire

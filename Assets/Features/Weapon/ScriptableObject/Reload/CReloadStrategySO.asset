@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81bb75bfff4e5af41accde440f68e204, type: 3}
   m_Name: CReloadStrategySO
   m_EditorClassIdentifier: 
-  _id: 
-  _name: 
+  _id: Reload
+  _name: Reload

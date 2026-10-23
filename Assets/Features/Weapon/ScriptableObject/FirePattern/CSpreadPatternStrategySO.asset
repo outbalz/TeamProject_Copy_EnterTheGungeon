@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffa624f26fec9f141813e79670a32e88, type: 3}
   m_Name: CSpreadPatternStrategySO
   m_EditorClassIdentifier: 
-  _id: 
-  _name: 
+  _id: SpreedPattern
+  _name: SpreedPattern
   _projectilCount: 5
   _spreadAngle: 20

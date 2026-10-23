@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bdb0af3f94446f4083324982b212e4a, type: 3}
   m_Name: CProjectilePrefabDataSO
   m_EditorClassIdentifier: 
-  _id: id
-  _name: name
+  _id: ProjectilePrefab
+  _name: ProjectilePrefab
   _projectilePrefab: {fileID: 0}

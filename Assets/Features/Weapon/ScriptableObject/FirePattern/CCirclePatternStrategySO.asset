@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ca55a8f7d9802f489050c09a68ffb05, type: 3}
   m_Name: CCirclePatternStrategySO
   m_EditorClassIdentifier: 
-  _id: 
-  _name: 
+  _id: CirclePattern
+  _name: CirclePattern
   _projectilCount: 10
