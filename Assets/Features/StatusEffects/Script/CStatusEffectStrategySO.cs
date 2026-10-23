@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class CStatusEffectStrategySO : CGameDataSO
 {
-    public abstract void OnApply();
+    public abstract void OnApply(CStatusEffectHandler handler);
 
-    public abstract void OnRemoved();
+    public abstract void OnRemoved(CStatusEffectHandler handler);
 }

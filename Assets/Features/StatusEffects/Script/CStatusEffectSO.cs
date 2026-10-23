@@ -18,5 +18,11 @@ public class CStatusEffectSO : CGameDataSO
     [SerializeField] private CStatusEffectStrategySO _strategy;
     #endregion
 
+    #region 프로퍼티
+    public EStatusEffectType EffectType => _type;
+    public bool IsStackable => _isStackable;
+    public CStatusEffectStrategySO Strategy => _strategy;
+    #endregion
+
 
 }
