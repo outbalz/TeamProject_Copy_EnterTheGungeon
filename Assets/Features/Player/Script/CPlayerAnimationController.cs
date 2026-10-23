@@ -5,7 +5,6 @@ public class CPlayerAnimationController : MonoBehaviour
     #region 인스펙터
     [SerializeField] private Animator _animator;
     [SerializeField] private SpriteRenderer _spriteRenderer;
-
     [SerializeField] private SpriteMask _hitMask;
     [SerializeField] private SpriteRenderer _whiteFlashRenderer;
     #endregion
@@ -18,8 +17,8 @@ public class CPlayerAnimationController : MonoBehaviour
     private bool _wasRolling;
     private bool _playedDead;
     private bool _wasHit;
-
     private float _hitFlashTimer;
+    private string _currentAnimation;
     #endregion
 
     private void Awake()
@@ -88,8 +87,6 @@ public class CPlayerAnimationController : MonoBehaviour
         {
             if (!_playedDead)
             {
-                _animator.SetBool("IsMoving", false);
-
                 _spriteRenderer.flipX = false;
                 _spriteRenderer.color = Color.white;
 
@@ -102,36 +99,96 @@ public class CPlayerAnimationController : MonoBehaviour
             return;
         }
 
+        // 구르기 애니메이션
         if (state == EPlayerState.Roll)
         {
             if (!_wasRolling)
             {
-                _animator.SetBool("IsMoving", false);
-
                 PlayRollAnimation();
 
                 _wasRolling = true;
+                _currentAnimation = null;
             }
 
+            return;
+        }
+
+        // 피격 중에는 현재 애니메이션 유지
+        if (state == EPlayerState.Hit)
+        {
             return;
         }
 
         if (_wasRolling)
         {
             _wasRolling = false;
-            _spriteRenderer.flipX = false;
+            _currentAnimation = null;
+        }
 
-            if (state == EPlayerState.Move)
+        string directionName = "Front";
+        bool flipX = false;
+
+        // 쉬프트 누르는 동안 마우스 방향 확인
+        if (Input.GetKey(KeyCode.LeftShift) && Camera.main != null)
+        {
+            Vector3 mouseWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+            Vector2 direction = (Vector2)mouseWorld - (Vector2)transform.position;
+
+            if (direction.sqrMagnitude > 0.01f)
             {
-                _animator.Play("Run_Front", 0, 0.0f);
-            }
-            else
-            {
-                _animator.Play("Idle_Front", 0, 0.0f);
+                direction.Normalize();
+
+                bool isSide = Mathf.Abs(direction.x) > 0.35f;
+                bool isBack = direction.y > 0.0f;
+
+                if (isSide)
+                {
+                    if (isBack)
+                    {
+                        directionName = "BackRight";
+                    }
+                    else
+                    {
+                        directionName = "FrontRight";
+                    }
+
+                    flipX = direction.x < 0.0f;
+                }
+                else
+                {
+                    if (isBack)
+                    {
+                        directionName = "Back";
+                    }
+                    else
+                    {
+                        directionName = "Front";
+                    }
+                }
             }
         }
 
-        _animator.SetBool("IsMoving", state == EPlayerState.Move);
+        _spriteRenderer.flipX = flipX;
+
+        string animationName;
+
+        if (state == EPlayerState.Move)
+        {
+            animationName = "Run_" + directionName;
+        }
+        else
+        {
+            animationName = "Idle_" + directionName;
+        }
+
+        // 애니메이션이 변경될 때만 재생
+        if (_currentAnimation != animationName)
+        {
+            _animator.Play(animationName, 0, 0.0f);
+
+            _currentAnimation = animationName;
+        }
     }
 
     // 구르기 방향에 따른 애니메이션
