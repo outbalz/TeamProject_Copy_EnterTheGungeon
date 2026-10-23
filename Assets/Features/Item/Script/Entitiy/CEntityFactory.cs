@@ -24,16 +24,18 @@ public class CEntityFactory : CFactory<CEntityFactory, CEntityController>
         base.PrefabCheck();
     }
 
-    public CEntityController Creat(CEntityDataSO data)
+    public CEntityController Creat(CEntityDataSO data, Vector2 pos)
     {
         CEntityController entity = Creat();
+        entity.transform.position = pos;
         entity.InitializeEntitiy(data);
         return entity;
     }
 
-    public CEntityController CreatAndTrow(Vector2 velocity, CEntityDataSO data)
+    public CEntityController CreatAndTrow(Vector2 velocity, CEntityDataSO data, Vector2 pos)
     {
         CEntityController entity = Creat();
+        entity.transform.position = pos;
         entity.InitializeEntitiy(data);
 
         if (velocity != Vector2.zero && entity.Rb != null)

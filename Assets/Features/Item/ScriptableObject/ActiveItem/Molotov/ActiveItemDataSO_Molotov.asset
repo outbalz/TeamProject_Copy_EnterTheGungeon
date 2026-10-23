@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2375d144f6bfe1140a774a2c3391a183, type: 3}
+  m_Name: ActiveItemDataSO_Molotov
+  m_EditorClassIdentifier: 
+  _id: Molotov
+  _name: "\uD654\uC5FC\uBCD1"
+  _effect:
+  - {fileID: 11400000, guid: 17a9ee9fd00ce9c4c895c42cca6101de, type: 2}
+  _coolDown: {fileID: 11400000, guid: 26ea1de06c530994c9260dcfd805ebc2, type: 2}
+  _useAmount: -1
+  _itemEntitySO: {fileID: 11400000, guid: 254f0949458ccff4b86c9a080959f64d, type: 2}

@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f882fe89d41eac147b8baa1f35d33fa8, type: 3}
+  m_Name: EntityDataSO_ItemEntity_SupplyDrop
+  m_EditorClassIdentifier: 
+  _id: ItemEntity_SupplyDrop
+  _name: ItemEntity_SupplyDrop
+  _sprite: {fileID: 21300000, guid: bb9ae4a1f6e030a4ca0d7aa177fd37ed, type: 3}
+  _isInteractable: 1
+  _strategy: {fileID: 11400000, guid: 105b3087f3f66a340a1e4556b2b5b033, type: 2}

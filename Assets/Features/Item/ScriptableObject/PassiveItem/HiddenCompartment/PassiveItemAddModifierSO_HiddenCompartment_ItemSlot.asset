@@ -16,4 +16,4 @@ MonoBehaviour:
   _name: HiddenCompartment_ItemSlot
   _modifier:
     _modifier: 1
-    _modifierName: ItemSlot_Additive
+    _modifierName: ItemSlot
