@@ -170,6 +170,13 @@ public class CItemController : CSingleton<CItemController>
 
     public void AddActiveItem(CActiveItemDataSO item)
     {
+        int slotSize = _itemSlotSize;
+
+        if (CPlayerCharacterController.Instance.ModifierHandler != null)
+        {
+            slotSize = Mathf.RoundToInt(CPlayerCharacterController.Instance.ModifierHandler.GetModifiedValue("ItemSlot", _itemSlotSize));
+        }
+
         if (_activeItems.Count < _itemSlotSize)
         {
             _activeItems.Add(new CActiveItem(item, 0));
