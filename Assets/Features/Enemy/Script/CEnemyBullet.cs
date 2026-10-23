@@ -1,12 +1,12 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// ÇÃ·¹ÀÌ¾î Ãæµ¹½Ã ÇÇÇØ ±â´É ³Ö±â
+// í”Œë ˆì´ì–´ ì¶©ëŒì‹œ í”¼í•´ ê¸°ëŠ¥ ë„£ê¸°
 
 public class CEnemyBullet : MonoBehaviour
 {
-    [Header("ÃÑ¾Ë ¼³Á¤")]
+    [Header("ì´ì•Œ ì„¤ì •")]
     [SerializeField] private float _moveSpeed = 5f;
     [SerializeField] private float _lifeTime = 5f;
 
@@ -56,4 +56,4 @@ public class CEnemyBullet : MonoBehaviour
             _rigidbody2D.velocity = Vector2.zero;
         }
     }
-}
+} 
