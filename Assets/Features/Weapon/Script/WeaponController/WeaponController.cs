@@ -22,7 +22,6 @@ public class WeaponController : MonoBehaviour
 
     [Header("스프라이트 설정")]
     [SerializeField] private SpriteRenderer _weaponSpriteRenderer;
-    [SerializeField] private SpriteRenderer _fireSpriteRenderer;
     [SerializeField] private float _fireSpriteTime = 0.1f;
     [SerializeField] private float _rotationSharpness = 25f;
    
@@ -78,7 +77,7 @@ public class WeaponController : MonoBehaviour
                 reloadAction.OnPerformedAction += TryReload;
             }
 
-            if (CInputDispatcher.Instance.InputActionMap.TryGetValue("Swich", out var swichAction))
+            if (CInputDispatcher.Instance.InputActionMap.TryGetValue("Scroll", out var swichAction))
             {
                 swichAction.OnPerformedAction += TrySwitchWeapon;
             }
@@ -99,7 +98,7 @@ public class WeaponController : MonoBehaviour
                 reloadAction.OnPerformedAction -= TryReload;
             }
 
-            if (CInputDispatcher.Instance.InputActionMap.TryGetValue("Swich", out var swichAction))
+            if (CInputDispatcher.Instance.InputActionMap.TryGetValue("Scroll", out var swichAction))
             {
                 swichAction.OnPerformedAction -= TrySwitchWeapon;
             }
