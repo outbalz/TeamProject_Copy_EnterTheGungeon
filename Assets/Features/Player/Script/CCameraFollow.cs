@@ -6,7 +6,7 @@ public class CCameraFollow : MonoBehaviour
     [SerializeField] private Transform _target;
     #endregion
 
-    void Start()
+    private void Start()
     {
         if (_target == null)
         {
