@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(menuName = "SO/GameDataSO/EntityDataSO/EntityStrategy/PassiveItemEntity", fileName = "PassiveItemEntitySO_")]
 public class CPassiveItemEntitySO : CEntityStrategySO
 {
     #region 인스팩터

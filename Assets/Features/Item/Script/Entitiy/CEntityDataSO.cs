@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(menuName = "SO/GameDataSO/EntityDataSO/EntityData", fileName = "EntityDataSO_")]
 public class CEntityDataSO : CGameDataSO
 {
 	#region 인스팩터
@@ -12,6 +13,7 @@ public class CEntityDataSO : CGameDataSO
 
 	#region 프로퍼티
 	public Sprite Sprite => _sprite;
+	public CEntityStrategySO Strategy => _strategy;
 	#endregion
 
 	public bool IsInteractable(CEntityController entity)
@@ -28,6 +30,7 @@ public class CEntityDataSO : CGameDataSO
 
 	public void InitializeEntitiy(CEntityController entity)
 	{
+		entity.SpriteRenderer.sprite = _sprite;
 		_strategy.InitializeEntitiy(entity);
 	}
 }

@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: Entity
   _name: Entity
-  _prefab: {fileID: 0}
+  _prefab: {fileID: 2041835926246320543, guid: cbb7e486a23d56b4e93623fd12c1bb59, type: 3}
