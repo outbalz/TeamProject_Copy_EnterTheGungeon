@@ -68,6 +68,7 @@ public class CInputAxisActionData
 
 }
 
+[DefaultExecutionOrder(-10)]
 public class CInputDispatcher : CSingleton<CInputDispatcher>
 {
     #region 인스팩터

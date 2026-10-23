@@ -17,3 +17,4 @@ MonoBehaviour:
   _effect:
   - {fileID: 11400000, guid: 2f8c2b3a4a97fe24ba0302c5c14b40d0, type: 2}
   - {fileID: 11400000, guid: feb9195f51bae474bbcc604485538bed, type: 2}
+  _itemEntitySO: {fileID: 11400000, guid: 2876083ee88200445bf8d8f033b4ab12, type: 2}

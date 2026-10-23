@@ -6,12 +6,17 @@ using System.Threading.Tasks;
 using UnityEngine;
 using static UnityEditor.Progress;
 
-public class CTrowableEnitiySO : CEntityStrategySO
+[CreateAssetMenu(menuName = "SO/GameDataSO/EntityDataSO/EntityStrategy/TrowableEnitySO", fileName = "TrowableEnitySO_")]
+public class CTrowableEnitySO : CEntityStrategySO
 {
     #region 인스팩터
     [SerializeField] private float _force;
     [SerializeField] private float _lifeTime;
     [SerializeField] private CEntityDestroyStrategySO _destroyStrategy;
+    #endregion
+
+    #region 프로퍼티
+    public float Force => _force;
     #endregion
 
     public override void InitializeEntitiy(CEntityController entity)

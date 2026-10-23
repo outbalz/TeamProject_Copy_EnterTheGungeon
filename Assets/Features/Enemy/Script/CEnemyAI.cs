@@ -16,6 +16,7 @@ public class CEnemyAI : MonoBehaviour
     [SerializeField] private CEnemyAttackPattern _attackPattern;
 
     private float _attackTimer = 0f;
+    private bool _hasAttacked = false;
 
     [Header("ÀÌµ¿")]
     [SerializeField] private CEnemyMovement _enemyMovement;
@@ -45,10 +46,15 @@ public class CEnemyAI : MonoBehaviour
 
             _attackTimer += Time.deltaTime;
 
-            if (_attackTimer >= _attackCoolTime)
+            if (!_hasAttacked || _attackTimer >= _attackCoolTime)
             {
-                _attackPattern?.Attack();
+                if (_attackPattern != null)
+                {
+                    _attackPattern.Attack();
+                }
+
                 _attackTimer = 0f;
+                _hasAttacked = true;
             }
 
             return;
