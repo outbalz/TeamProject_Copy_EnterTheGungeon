@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CEnemyBulletFactory : CObjectPoolFactory<CEnemyBullet, CEnemyBulletPool, CEnemyBullet>
+public class CEnemyBulletFactory : CObjectPoolFactory<CEnemyBulletFactory, CEnemyBulletPool, CEnemyBullet>
 {
     protected override void PrefabCheck()
     {

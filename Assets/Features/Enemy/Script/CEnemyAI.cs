@@ -41,29 +41,19 @@ public class CEnemyAI : MonoBehaviour
 
         if (distance <= _attackRange)
         {
-            if (_enemyMovement != null)
-            {
-                _enemyMovement.MoveSideways();
-            }
+            _enemyMovement?.MoveSideways();
 
             _attackTimer += Time.deltaTime;
 
             if (_attackTimer >= _attackCoolTime)
             {
-                if (_attackPattern != null)
-                {
-                    _attackPattern.Attack();
-                }
-
+                _attackPattern?.Attack();
                 _attackTimer = 0f;
             }
 
             return;
         }
 
-        if (_enemyMovement != null)
-        {
-            _enemyMovement.MoveToTarget(_player);
-        }
+        _enemyMovement?.MoveToTarget(_player);
     }
 }

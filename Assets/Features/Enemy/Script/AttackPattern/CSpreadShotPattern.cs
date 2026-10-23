@@ -41,7 +41,7 @@ public class CSpreadShotPattern : CEnemyAttackPattern
 
             if (bullet != null)
             {
-                bullet.Fire(bulletDirection);
+                bullet.Fire(direction, 5f);
             }
         }
     }
