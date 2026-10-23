@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7ef82a089464224189088fa5f15c80f, type: 3}
   m_Name: CRandomSpreadPatternStrategySO
   m_EditorClassIdentifier: 
-  _id: 
-  _name: 
+  _id: RandomSpreadPattern
+  _name: RandomSpreadPattern
   _projectilCount: 5
   _spreadAngle: 20
   _randomAngle: 20

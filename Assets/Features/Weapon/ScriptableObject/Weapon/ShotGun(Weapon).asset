@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 324b479d59cd1ba4594b5feab6129604, type: 3}
   m_Name: ShotGun(Weapon)
   m_EditorClassIdentifier: 
-  _id: 002
+  _id: shotgun
   _name: shotgun
   _weaponName: 002
   _damage: 10
   _weaponSprite: {fileID: 1690867539, guid: 883a504e288b1b443b759cde0353cf72, type: 3}
   _fireSprite: {fileID: 2073472249, guid: 883a504e288b1b443b759cde0353cf72, type: 3}
-  _muzzleFlash: {fileID: 21300000, guid: 945a4226409b8ff449ff5525e7227cfe, type: 3}
+  _muzzleFlash: {fileID: 8417785393235985029, guid: 8f26f831c419b024191db59d70305a4e, type: 3}
   _muzzleFlashTime: 0.08
   _reboundRange: 0.2
   _reboundSpeed: 10

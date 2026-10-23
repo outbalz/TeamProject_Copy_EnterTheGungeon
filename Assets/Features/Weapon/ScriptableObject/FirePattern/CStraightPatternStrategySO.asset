@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b609a09afe1bbab4f8c342f554fc4eb4, type: 3}
   m_Name: CStraightPatternStrategySO
   m_EditorClassIdentifier: 
-  _id: id
-  _name: name
+  _id: StratigtPattern
+  _name: StratigtPattern
   _projectilCount: 1

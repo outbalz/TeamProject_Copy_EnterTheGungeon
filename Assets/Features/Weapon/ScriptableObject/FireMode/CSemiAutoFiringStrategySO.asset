@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faae501278995ee4685c05f24e3a6c11, type: 3}
   m_Name: CSemiAutoFiringStrategySO
   m_EditorClassIdentifier: 
-  _id: 
-  _name: 
+  _id: SemiAutoFire
+  _name: SemiAutoFire
   _shotInterval: 0.1

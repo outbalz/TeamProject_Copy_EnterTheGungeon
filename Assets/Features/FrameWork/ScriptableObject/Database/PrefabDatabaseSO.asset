@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: PrefabDatabaseSO
   m_EditorClassIdentifier: 
   _datas:
-  - {fileID: 11400000, guid: 949e87020e5dcc2479a16586bea9363b, type: 2}
+  - {fileID: 0}

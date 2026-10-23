@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025eb08fae80b1c4ba886028a41bb3da, type: 3}
   m_Name: CBurstFiringStrategySO
   m_EditorClassIdentifier: 
-  _id: 
-  _name: 
+  _id: BurstFire
+  _name: BurstFire
   _shotInterval: 0.2
   _shotCount: 5

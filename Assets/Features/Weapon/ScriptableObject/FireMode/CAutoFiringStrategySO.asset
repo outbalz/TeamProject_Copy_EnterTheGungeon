@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cadd199799dfd70469f5bb95a157c90e, type: 3}
   m_Name: CAutoFiringStrategySO
   m_EditorClassIdentifier: 
-  _id: 
-  _name: 
+  _id: AutoFire
+  _name: AutoFire
   _shotInterval: 0.1

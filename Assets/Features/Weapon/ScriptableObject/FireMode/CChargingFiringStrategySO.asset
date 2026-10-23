@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c66cf2165a61eb4b9ca1bd559b811a2, type: 3}
   m_Name: CChargingFiringStrategySO
   m_EditorClassIdentifier: 
-  _id: 
-  _name: 
+  _id: ChargingFire
+  _name: ChargingFire
   _minCharge: 0.1
   _maxCharge: 2

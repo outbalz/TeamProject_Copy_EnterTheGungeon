@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31bba8ffb9a7ba441b5b001dd9d45dc6, type: 3}
   m_Name: CProjectileSO
   m_EditorClassIdentifier: 
-  _id: 
-  _name: 
+  _id: ProjectilSO
+  _name: ProjectilSO
   _projectileSpeed: 5
   _projectileScale: 1
   _lifeTime: 5
