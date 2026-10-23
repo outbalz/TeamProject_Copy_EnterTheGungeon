@@ -1,15 +1,15 @@
-using System.Collections;
+Ôªøusing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CChargeAction : MonoBehaviour
 {
-    [Header("µπ¡¯ º≥¡§")]
+    [Header("ÎèåÏßÑ ÏÑ§Ï†ï")]
     [SerializeField] private float _chargeSpeed = 8f;
     [SerializeField] private float _chargeTime = 0.5f;
     [SerializeField] private float _prepareTime = 1f;
 
-    [Header("∞¯∞› º≥¡§")]
+    [Header("Í≥µÍ≤© ÏÑ§Ï†ï")]
     [SerializeField] private int _damage = 1;
 
     private Rigidbody2D _rigidbody2D;
@@ -66,4 +66,4 @@ public class CChargeAction : MonoBehaviour
             Debug.Log(_damage);
         }
     }
-}
+} 

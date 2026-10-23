@@ -137,6 +137,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1297778566767804590, guid: dd380811d995db94ba24c53b30bf80bc, type: 3}
   m_PrefabInstance: {fileID: 649610201}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &97591732 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 758588610942704519, guid: 6956125d9c3a7d14d8f400b4fdd8af55, type: 3}
+  m_PrefabInstance: {fileID: 2926538548586664806}
+  m_PrefabAsset: {fileID: 0}
 --- !u!19719996 &103063351 stripped
 TilemapCollider2D:
   m_CorrespondingSourceObject: {fileID: 3105348737057831338, guid: 838943bf4365de947968cdeb87b0e571, type: 3}
@@ -30429,6 +30434,7 @@ GameObject:
   - component: {fileID: 1594564032}
   - component: {fileID: 1594564031}
   - component: {fileID: 1594564030}
+  - component: {fileID: 1594564033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -30510,6 +30516,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1594564033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1594564029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d567f4e5354ad6541a15988e7c8b733d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 97591732}
 --- !u!4 &1638668669 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6261706787861915600, guid: 838943bf4365de947968cdeb87b0e571, type: 3}

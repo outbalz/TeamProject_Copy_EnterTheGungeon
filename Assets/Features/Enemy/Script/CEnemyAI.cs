@@ -1,16 +1,16 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CEnemyAI : MonoBehaviour
 {
-    [Header("ÇÃ·¹ÀÌ¾î")]
+    [Header("í”Œë ˆì´ì–´")]
     [SerializeField] private Transform _player;
 
-    [Header("°¨Áö")]
+    [Header("ê°ì§€")]
     [SerializeField] private float _detectRange = 8f;
 
-    [Header("°ø°İ")]
+    [Header("ê³µê²©")]
     [SerializeField] private float _attackRange = 6f;
     [SerializeField] private float _attackCoolTime = 6f;
     [SerializeField] private CEnemyAttackPattern _attackPattern;
@@ -18,7 +18,7 @@ public class CEnemyAI : MonoBehaviour
     private float _attackTimer = 0f;
     private bool _hasAttacked = false;
 
-    [Header("ÀÌµ¿")]
+    [Header("ì´ë™")]
     [SerializeField] private CEnemyMovement _enemyMovement;
 
     private void Update()
@@ -62,4 +62,4 @@ public class CEnemyAI : MonoBehaviour
 
         _enemyMovement?.MoveToTarget(_player);
     }
-}
+} 

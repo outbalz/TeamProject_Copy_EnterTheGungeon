@@ -1,15 +1,15 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CSpiralShotPattern : CEnemyAttackPattern
 {
-    [Header("¹ß»ç ¼³Á¤")]
+    [Header("ë°œì‚¬ ì„¤ì •")]
     [SerializeField] private int _bulletCount = 8;
     [SerializeField] private float _fireInterval = 0.2f;
     [SerializeField] private float _bulletSpeed = 5f;
 
-    [Header("È¸Àü ¼³Á¤")]
+    [Header("íšŒì „ ì„¤ì •")]
     [SerializeField] private float _rotateAngle = 10f;
     [SerializeField] private float _fireDuration = 5f;
 
@@ -63,4 +63,4 @@ public class CSpiralShotPattern : CEnemyAttackPattern
 
         _isFiring = false;
     }
-}
+} 
