@@ -410,8 +410,8 @@ public class WeaponController : MonoBehaviour
         _isReloading = false;
     }
 
-    
-    private async UniTask ReturnFireSpriteAnim()
+    // 발사 이미지 
+    private async UniTask ReturnFireSprite()
     {
         if (_weaponSpriteRenderer == null)
         {
@@ -537,7 +537,7 @@ public class WeaponController : MonoBehaviour
 
         AppltReload();
 
-        ReturnFireSpriteAnim().Forget();
+        ReturnFireSprite().Forget();
         FireFlashMuzzle().Forget();
     }
 
