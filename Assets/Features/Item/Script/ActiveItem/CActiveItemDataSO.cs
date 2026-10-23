@@ -8,13 +8,16 @@ public class CActiveItemDataSO : CGameDataSO
     #region 인스팩터
     [SerializeField] protected CActiveItemEffectStrategySO[] _effect;
     [SerializeField] protected CItemCoolDownStrategySO _coolDown;
+    //사용 횟수, -1때 무한
     [SerializeField] protected int _useAmount = -1;
+    [SerializeField] protected CEntityDataSO _itemEntitySO;
     #endregion
 
     #region 프로퍼티
     public CActiveItemEffectStrategySO[] Effect => _effect;
     public CItemCoolDownStrategySO ColDown => _coolDown;
     public int UseAmount => _useAmount;
+    public CEntityDataSO ItemEntitySO => _itemEntitySO;
     #endregion
 
     public bool OnItemUes(CActiveItem item)

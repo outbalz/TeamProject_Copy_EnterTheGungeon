@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(menuName = "SO/GameDataSO/ItemDataSO/ActiveItemEffect/EntityDrop", fileName = "ActiveItemEntityDropSO_")]
 public class CActiveItemEntityDropSO : CActiveItemEffectStrategySO
 {
     #region 인스팩터
@@ -12,7 +13,7 @@ public class CActiveItemEntityDropSO : CActiveItemEffectStrategySO
 
     public override UniTask OnUse()
     {
-        CEntityController entity = CEntityFactory.Instance.Creat(_entity);
+        CEntityController entity = CEntityFactory.Instance.Creat(_entity,CPlayerCharacterController.Instance.transform.position);
         entity.transform.position = CPlayerCharacterController.Instance.transform.position;
 
         return UniTask.CompletedTask;
