@@ -30,6 +30,7 @@ public class CEntityDataSO : CGameDataSO
 
 	public void InitializeEntitiy(CEntityController entity)
 	{
+		entity.SpriteRenderer.sprite = _sprite;
 		_strategy.InitializeEntitiy(entity);
 	}
 }

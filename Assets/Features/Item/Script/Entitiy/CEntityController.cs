@@ -7,6 +7,9 @@ public class CEntityController : CInteractalbeController
 {
 	#region 인스팩터
 	[SerializeField] private Rigidbody2D _rb;
+    [SerializeField] private Collider2D _collider;
+    [SerializeField] private SpriteRenderer _spriteRenderer;
+    [SerializeField] private Animator _animator;
     #endregion
 
     #region 내부변수
@@ -15,6 +18,9 @@ public class CEntityController : CInteractalbeController
 
     #region 프로퍼티
     public Rigidbody2D Rb => _rb;
+    public Collider2D Col => _collider;
+    public SpriteRenderer SpriteRenderer => _spriteRenderer;
+    public Animator EntityAnimator => _animator;
     public event Action OnInteractEvent;
     public event Action<Collider2D> OnTriggerEnterEvent;
     public event Action OnDestroyEvent;

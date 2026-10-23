@@ -9,6 +9,7 @@ public class CEntitySupplyDropSO : CEntityStrategySO
     #region 인스팩터
     [SerializeField] private CEntityDataSO _dropEntitiy;
     [SerializeField] private float _dropTime;
+    [SerializeField] private Animation _dropAnimation;
     #endregion
 
     public override void InitializeEntitiy(CEntityController entity)
