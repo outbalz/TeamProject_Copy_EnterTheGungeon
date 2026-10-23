@@ -1,16 +1,16 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CTripleShotPattern : CEnemyAttackPattern
 {
-    [Header("ÃÑ¾Ë ¼³Á¤")]
+    [Header("ì´ì•Œ ì„¤ì •")]
     [SerializeField] private float _bulletSpeed = 5f;
     [SerializeField] private int _shotCount = 5;
     [SerializeField] private float _fireInterval = 0.5f;
     [SerializeField] private float _spreadAngle = 30f;
 
-    [Header("¹ß»ç À§Ä¡")]
+    [Header("ë°œì‚¬ ìœ„ì¹˜")]
     [SerializeField] private Transform _firePoint;
     [SerializeField] private Transform _player;
 
@@ -63,3 +63,4 @@ public class CTripleShotPattern : CEnemyAttackPattern
         _isFiring = false;
     }
 }
+ 

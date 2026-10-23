@@ -1,4 +1,4 @@
-using System.Collections;
+Ôªøusing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,19 +13,19 @@ public class CEnemyMovement : MonoBehaviour
         Stop
     }
 
-    [Header("¿Ãµø ∆–≈œ")]
+    [Header("Ïù¥Îèô Ìå®ÌÑ¥")]
     [SerializeField]
     private EEnemyMovePattern _movePattern =
     EEnemyMovePattern.Strafe;
 
-    [Header("¿Ãµø º≥¡§")]
+    [Header("Ïù¥Îèô ÏÑ§Ï†ï")]
     [SerializeField] private float _moveSpeed = 2f;
 
-    [Header("∞≈∏Æ º≥¡§")]
+    [Header("Í±∞Î¶¨ ÏÑ§Ï†ï")]
     [SerializeField] private float _preferredDistance = 5f;
     [SerializeField] private float _distanceTolerance = 0.5f;
 
-    [Header("πÊ«‚ ¿¸»Ø")]
+    [Header("Î∞©Ìñ• Ï†ÑÌôò")]
     [SerializeField] private float _changeDirectionTime = 1.5f;
 
     private Rigidbody2D _rigidbody2D;
@@ -191,4 +191,4 @@ public class CEnemyMovement : MonoBehaviour
 
         MoveInDirection(new Vector2(_moveDirection, 0f));
     }
-}
+} 

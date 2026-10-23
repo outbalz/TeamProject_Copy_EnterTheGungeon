@@ -1,4 +1,4 @@
-using System.Collections;
+Ôªøusing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,13 +12,13 @@ public class CShapeShotPattern : CEnemyAttackPattern
         XShape
     }
 
-    [Header("∏æÁ º≥¡§")]
+    [Header("Î™®Ïñë ÏÑ§Ï†ï")]
     [SerializeField] private EShotShape _shotShape = EShotShape.Square;
     [SerializeField] private Transform _player;
     [SerializeField] private float _shapeSize = 2f;
     [SerializeField] private int _bulletCount = 16;
 
-    [Header("√—æÀ º≥¡§")]
+    [Header("Ï¥ùÏïå ÏÑ§Ï†ï")]
     [SerializeField] private float _bulletSpeed = 5f;
 
     private Vector2 _throwDirection;
@@ -150,4 +150,4 @@ public class CShapeShotPattern : CEnemyAttackPattern
 
         bullet.Fire(_throwDirection, _bulletSpeed);
     }
-}
+} 
