@@ -5,6 +5,7 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.InputSystem;
+using System;
 
 public class WeaponController : MonoBehaviour
 {
@@ -15,22 +16,25 @@ public class WeaponController : MonoBehaviour
     [SerializeField] private Transform _firePoint = null;
     [SerializeField] private Transform _weaponTransform;
 
+    [Header("스프라이트 설정")]
     [SerializeField] private SpriteRenderer _weaponSpriteRenderer;
     [SerializeField] private SpriteRenderer _fireSpriteRenderer;
-
-    [Header("반동 설정")]
-    [SerializeField] private float _reboundRange = 0.2f;
-    [SerializeField] private float _reboundSpeed = 10f;
+    [SerializeField] private float _fireSpriteTime = 0.1f;
+    [SerializeField] private float _rotationSharpness = 25f;
+    [SerializeField] Transform _gunTranform;
     #endregion
 
     #region 내부 변수
     private CWeaponDataSO _currentWeapon;
     private CancellationTokenSource _fireCTS; // 발사 취소
     private CancellationTokenSource _reloadCTS; // 장전 취소
+    private CancellationToken _fireSpriteAnimCTS;
+    private GameObject _muzzleFlash;
 
     private int _currentAmmo;
     private int _currentTotalAmmo;
     private bool _isReloading = false;
+    private float _lastFireTime = 0f;
     #endregion
 
     #region 프로퍼티
@@ -50,31 +54,41 @@ public class WeaponController : MonoBehaviour
 
         SelectWeapon(_weaponId);
     }
+
+    // 발사, 장전 구독
+    private void OnEnable()
+    {
+        if (CInputDispatcher.Instance != null)
+        {
+            if (CInputDispatcher.Instance.InputActionMap.TryGetValue("Fire", out var fireAction))
+            {
+                fireAction.OnPerformedAction += TryFire;
+            }
+            if (CInputDispatcher.Instance.InputActionMap.TryGetValue("Reload", out var reloadAction))
+            {
+                reloadAction.OnPerformedAction += TryReload;
+            }
+        }
+    }
+
+    // 발사, 장전 구독해제
+    private void OnDisable()
+    {
+        if (CInputDispatcher.Instance != null)
+        {
+            if (CInputDispatcher.Instance.InputActionMap.TryGetValue("Fire", out var fireAction))
+            {
+                fireAction.OnPerformedAction -= TryFire;
+            }
+            if (CInputDispatcher.Instance.InputActionMap.TryGetValue("Reload", out var reloadAction))
+            {
+                reloadAction.OnPerformedAction -= TryReload;
+            }
+        }
+    }
     private void Update()
     {
-        //유효성 검사
-        if (Mouse.current != null)
-        {
-            if (Mouse.current.leftButton.wasPressedThisFrame)
-            {
-                TryFire();
-            }
-
-            if (Mouse.current.leftButton.wasReleasedThisFrame)
-            {
-                CancelFire();
-            }
-        }
-
-        if (Keyboard.current != null)
-        {
-            if (Keyboard.current.rKey.wasReleasedThisFrame)
-            {
-                TryReload();
-            }
-
-        }
-
+        Fire();
         RecoveryRevound();
     }
 
@@ -157,18 +171,48 @@ public class WeaponController : MonoBehaviour
         CWeaponTriggerContext context = new CWeaponTriggerContext(
             weapon,
             _firePoint,
-            HandleSpawnProjectile
+            SpawnProjectile
             );
 
         weapon.Trigger.TriggerWeapon(context, _fireCTS.Token).Forget();
 
-        // 발사 이미지 장착 
-        if (_fireSpriteRenderer != null && _fireSpriteRenderer.sprite != null)
-        {
-            _weaponSpriteRenderer.sprite = _fireSpriteRenderer.sprite;
-        }
     }
 
+    private void Fire()
+    {
+        // 마우스 위치 계산
+        Vector2 mousPos = Mouse.current.position.ReadValue();
+        Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint( mousPos );
+        mouseWorldPos.z = 0f;
+
+        // 마우스 방향 계산
+        Vector3 direction = (mouseWorldPos - _gunTranform.position).normalized;
+        Quaternion targetRotatiom = Quaternion.FromToRotation(Vector3.up, direction);
+
+        // 보간
+        float t = 1.0f - Mathf.Exp(-_rotationSharpness * Time.deltaTime);
+        _gunTranform.rotation = Quaternion.Slerp(_gunTranform.rotation, targetRotatiom, t);
+
+        if (_gunTranform != null)
+        {
+            Vector3 localScale = _gunTranform.localScale;
+
+            // 마우스 좌표, 총 좌표 비교
+            if (mouseWorldPos.x < _gunTranform.position.x)
+            {
+                localScale.x = 1f; 
+            }
+            else
+            {
+                localScale.x = -1f;  
+            }
+            _gunTranform.localScale = localScale;
+        }
+
+
+    }
+
+  
     // 장전 시도
     private void TryReload()
     {
@@ -211,7 +255,7 @@ public class WeaponController : MonoBehaviour
         CWeaponReloadContext reloadContext = new CWeaponReloadContext(
             weapon,
               _currentAmmo,
-            HandleReloadComplete
+            LoadComplete
             );
 
         ReloadAsync(reloadContext, _reloadCTS.Token).Forget();
@@ -223,10 +267,11 @@ public class WeaponController : MonoBehaviour
     {
         if (_weaponTransform != null)
         {
+
             _weaponTransform.localPosition = Vector3.Lerp(
                 _weaponTransform.localPosition,
                 _originPos, 
-                Time.deltaTime * _reboundSpeed);
+                Time.deltaTime * _currentWeapon.ReboundSpeed);
         }
     }
 
@@ -237,7 +282,7 @@ public class WeaponController : MonoBehaviour
             return;
         }
 
-        _weaponTransform.localPosition = _originPos + (Vector3.down * _reboundRange);
+        _weaponTransform.localPosition = _originPos + (Vector3.down * _currentWeapon.ReboundRange);
 
         Debug.Log("반동o");
     }
@@ -258,7 +303,49 @@ public class WeaponController : MonoBehaviour
         _isReloading = false;
     }
 
-    private void HandleSpawnProjectile(Quaternion rotation)
+    
+    private async UniTask ReturnFireSpriteAnim()
+    {
+        if (_weaponSpriteRenderer == null || _fireSpriteRenderer == null)
+        {
+            return;
+        }
+
+        
+        _weaponSpriteRenderer.sprite = _fireSpriteRenderer.sprite;
+
+        float currentFireTime = Time.deltaTime;
+        _lastFireTime = currentFireTime;
+
+        await UniTask.Delay(TimeSpan.FromSeconds(_fireSpriteTime), DelayType.UnscaledDeltaTime);
+
+        if (_lastFireTime == currentFireTime)
+        {
+            _weaponSpriteRenderer.sprite = _currentWeapon.WeaponSprite;
+        }
+
+
+    }
+
+    // 발사 머블 플레쉬
+    private async UniTask FireFlashMuzzle()
+    {
+        if (_muzzleFlash == null)
+        {
+            return;
+        }
+
+         _muzzleFlash.SetActive(true);
+
+        await UniTask.Delay(TimeSpan.FromSeconds(_currentWeapon.MuzzleFlashTime), DelayType.UnscaledDeltaTime);
+
+        if (_muzzleFlash != null)
+        {
+            _muzzleFlash.SetActive(false);
+        }
+    }
+
+    private void SpawnProjectile(Quaternion rotation)
     {
         if (_currentWeapon == null)
         {
@@ -274,7 +361,7 @@ public class WeaponController : MonoBehaviour
         SpawnProjectile(_currentWeapon, rotation);
     }
 
-    private void HandleReloadComplete(int ammo)
+    private void LoadComplete(int ammo)
     {
         if (_currentWeapon == null)
         {
@@ -330,8 +417,10 @@ public class WeaponController : MonoBehaviour
         _currentAmmo--;
         Debug.Log($"{projectile.transform.position}");
 
-        AppltReload(); 
+        AppltReload();
 
+        ReturnFireSpriteAnim().Forget();
+        FireFlashMuzzle().Forget();
     }
 
 
