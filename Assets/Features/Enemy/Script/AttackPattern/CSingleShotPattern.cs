@@ -1,16 +1,16 @@
-using System.Collections;
+Ôªøusing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CSingleShotPattern : CEnemyAttackPattern
 {
-    [Header("√—æÀ º≥¡§")]
+    [Header("Ï¥ùÏïå ÏÑ§Ï†ï")]
     [SerializeField] private GameObject _bulletPrefab;
     [SerializeField] private Transform _firePoint;
     [SerializeField] private Transform _player;
     [SerializeField] private float _bulletSpeed = 5f;
 
-    [Header("≈∫√¢ º≥¡§")]
+    [Header("ÌÉÑÏ∞Ω ÏÑ§Ï†ï")]
     [SerializeField] private int _magazineSize = 6;
     [SerializeField] private float _fireInterval = 0.2f;
     [SerializeField] private float _reloadTime = 2f;
@@ -64,4 +64,4 @@ public class CSingleShotPattern : CEnemyAttackPattern
 
         _isAttacking = false;
     }
-}
+} 
