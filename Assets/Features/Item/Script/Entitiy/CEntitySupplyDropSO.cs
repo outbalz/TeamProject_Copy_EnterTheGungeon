@@ -1,6 +1,7 @@
 ﻿using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "SO/GameDataSO/EntityDataSO/EntityStrategy/EntitySupplyDropSO", fileName = "EntitySupplyDropSO_")]
@@ -9,20 +10,19 @@ public class CEntitySupplyDropSO : CEntityStrategySO
     #region 인스팩터
     [SerializeField] private CEntityDataSO _dropEntitiy;
     [SerializeField] private float _dropTime;
-    [SerializeField] private Animation _dropAnimation;
+    [SerializeField] private AnimatorController _dropAnimation;
     #endregion
 
     public override void InitializeEntitiy(CEntityController entity)
     {
         //TODO 보급투하 애니메이션 실행
-
+        entity.EntityAnimator.runtimeAnimatorController = _dropAnimation;
         DropEntitiy(entity).Forget();
     }
 
     public override bool InteractCheck(CEntityController entity)
     {
-        //TODO 현재 총의 탄약이 최대치인지 확인
-        return true;
+        return false;
     }
 
     private async UniTask DropEntitiy(CEntityController entity)
@@ -37,6 +37,7 @@ public class CEntitySupplyDropSO : CEntityStrategySO
         }
 
         CEntityController dropEnitiy = CEntityFactory.Instance.Creat(_dropEntitiy);
+        dropEnitiy.transform.position = entity.transform.position;
 
         dropEnitiy.OnDestroyEvent += () => Destroy(entity.gameObject);
     }

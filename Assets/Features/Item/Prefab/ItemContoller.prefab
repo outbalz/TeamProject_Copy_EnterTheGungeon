@@ -45,3 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _itemUseInputName: UseItem
+  _startActiveItem: {fileID: 11400000, guid: d2c6a0157511022418dba5fdad447209, type: 2}
+  _startPassiveItem:
+  - {fileID: 11400000, guid: f7ee8a71671480946945229d88d6c240, type: 2}

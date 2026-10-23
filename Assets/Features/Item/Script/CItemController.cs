@@ -37,6 +37,10 @@ public class CItemController : CSingleton<CItemController>
 {
     #region 인스팩터
     [SerializeField] private string _itemUseInputName = "UseItem";
+
+    [Header("시작 아이템")]
+    [SerializeField] private CActiveItemDataSO _startActiveItem;
+    [SerializeField] private List<CPassiveItemDataSO> _startPassiveItem;
     #endregion
 
     #region 내부변수
@@ -51,6 +55,16 @@ public class CItemController : CSingleton<CItemController>
     #region 프로퍼티
 
     #endregion
+
+    private void Start()
+    {
+        AddActiveItem(_startActiveItem);
+
+        for (int i = 0; i < _startPassiveItem.Count; i++)
+        {
+            AddPassiveItem(_startPassiveItem[i]);
+        }
+    }
 
     private void OnEnable()
     {
