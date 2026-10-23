@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aca90a0a99889bb40ab5892bd77339f7, type: 3}
   m_Name: EntityStrategy_AmmoCrateSO
   m_EditorClassIdentifier: 
-  _id: AmmoCrate
-  _name: AmmoCrate
+  _id: EntityStrategy_AmmoCrate
+  _name: EntityStrategy_AmmoCrate

@@ -29,8 +29,7 @@ public class CActiveItemEntityTrowSO : CActiveItemEffectStrategySO
         
         Vector2 velocity = (pos - mousePos).normalized * trowable.Force;
 
-        CEntityController entity = CEntityFactory.Instance.CreatAndTrow(velocity, _entity);
-        entity.transform.position = pos;
+        CEntityController entity = CEntityFactory.Instance.CreatAndTrow(velocity, _entity, pos);
 
         return UniTask.CompletedTask;
     }

@@ -17,3 +17,4 @@ MonoBehaviour:
   _dropEntitiy: {fileID: 11400000, guid: 5529d32394cf30b4ab8514cc073d80d1, type: 2}
   _dropTime: 3
   _dropAnimation: {fileID: 9100000, guid: 677201b1b24f41f459b9c944ffc3eb72, type: 2}
+  _offset: {x: 4, y: 4}

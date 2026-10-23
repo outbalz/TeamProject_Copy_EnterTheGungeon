@@ -11,6 +11,7 @@ public class CEntitySupplyDropSO : CEntityStrategySO
     [SerializeField] private CEntityDataSO _dropEntitiy;
     [SerializeField] private float _dropTime;
     [SerializeField] private AnimatorController _dropAnimation;
+    [SerializeField] private Vector2 _offset;
     #endregion
 
     public override void InitializeEntitiy(CEntityController entity)
@@ -27,17 +28,26 @@ public class CEntitySupplyDropSO : CEntityStrategySO
 
     private async UniTask DropEntitiy(CEntityController entity)
     {
+        Vector2 targetPos = entity.transform.position;
+
+        entity.transform.position = targetPos + _offset;
+
+        Vector2 startPos = entity.transform.position;
+
         float timer = _dropTime;
 
         while (timer > 0)
         {
             timer -= Time.deltaTime;
 
+            float t = 1 - (timer / _dropTime);
+
+            entity.transform.position = Vector3.Lerp(startPos, targetPos, t);
+
             await UniTask.NextFrame(PlayerLoopTiming.Update);
         }
 
-        CEntityController dropEnitiy = CEntityFactory.Instance.Creat(_dropEntitiy);
-        dropEnitiy.transform.position = entity.transform.position;
+        CEntityController dropEnitiy = CEntityFactory.Instance.Creat(_dropEntitiy, entity.transform.position);
 
         dropEnitiy.OnDestroyEvent += () => Destroy(entity.gameObject);
     }

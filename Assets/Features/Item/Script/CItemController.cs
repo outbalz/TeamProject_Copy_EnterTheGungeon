@@ -211,14 +211,12 @@ public class CItemController : CSingleton<CItemController>
     public void DropItem(CActiveItemDataSO item)
     {
         CEntityDataSO entityData = item.ItemEntitySO;
-        CEntityController itemEntity = CEntityFactory.Instance.Creat(entityData);
-        itemEntity.transform.position = CPlayerCharacterController.Instance.transform.position;
+        CEntityController itemEntity = CEntityFactory.Instance.Creat(entityData, CPlayerCharacterController.Instance.transform.position);
     }
 
     public void DropItem(CPassiveItemDataSO item)
     {
         CEntityDataSO entityData = item.ItemEntitySO;
-        CEntityController itemEntity = CEntityFactory.Instance.Creat(entityData);
-        itemEntity.transform.position = CPlayerCharacterController.Instance.transform.position;
+        CEntityController itemEntity = CEntityFactory.Instance.Creat(entityData, CPlayerCharacterController.Instance.transform.position);
     }
 }
