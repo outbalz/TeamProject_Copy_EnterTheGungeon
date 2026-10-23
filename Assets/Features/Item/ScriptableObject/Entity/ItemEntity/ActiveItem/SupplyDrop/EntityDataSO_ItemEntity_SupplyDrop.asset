@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: ItemEntity_SupplyDrop
   _name: ItemEntity_SupplyDrop
-  _sprite: {fileID: 0}
+  _sprite: {fileID: 21300000, guid: bb9ae4a1f6e030a4ca0d7aa177fd37ed, type: 3}
   _isInteractable: 1
   _strategy: {fileID: 11400000, guid: 105b3087f3f66a340a1e4556b2b5b033, type: 2}

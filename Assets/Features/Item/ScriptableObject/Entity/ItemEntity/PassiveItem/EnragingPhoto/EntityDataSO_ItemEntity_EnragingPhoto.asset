@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: ItemEntity_EnragingPhoto
   _name: ItemEntity_EnragingPhoto
-  _sprite: {fileID: 0}
+  _sprite: {fileID: 21300000, guid: a480af88b1b87b849b4b15aeacdcf2ce, type: 3}
   _isInteractable: 1
   _strategy: {fileID: 11400000, guid: d674460b7c893e14d87779128f2afa8f, type: 2}

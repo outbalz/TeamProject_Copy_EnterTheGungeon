@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: ItemEntity_Molotov
   _name: ItemEntity_Molotov
-  _sprite: {fileID: 0}
+  _sprite: {fileID: 21300000, guid: 466010cb6cb30c946aba22d3e20ad0ff, type: 3}
   _isInteractable: 1
   _strategy: {fileID: 11400000, guid: b43267cd69754fb41ba0f7ec451139e9, type: 2}

@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: ItemEntity_HiddenCompartment
   _name: ItemEntity_HiddenCompartment
-  _sprite: {fileID: 0}
+  _sprite: {fileID: 21300000, guid: 66d575ad7a794e94eafb3b0f2eff6858, type: 3}
   _isInteractable: 1
   _strategy: {fileID: 11400000, guid: 2fd1f4afddc180d4eb88bd578dd98b58, type: 2}

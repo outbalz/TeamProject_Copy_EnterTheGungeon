@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: ItemEntity_TrustyLockpicks
   _name: ItemEntity_TrustyLockpicks
-  _sprite: {fileID: 0}
+  _sprite: {fileID: 21300000, guid: 54d685ada386718479eb9b402e54bfa7, type: 3}
   _isInteractable: 0
   _strategy: {fileID: 11400000, guid: 698099025608e5b49822ad7a2b77e7f9, type: 2}
