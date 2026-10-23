@@ -1,15 +1,15 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CBurstShotPattern : CEnemyAttackPattern
 {
-    [Header("ÃÑ¾Ë ¼³Á¤")]
+    [Header("ì´ì•Œ ì„¤ì •")]
     [SerializeField] private float _bulletSpeed = 5f;
     [SerializeField] private int _bulletCount = 15;
     [SerializeField] private float _fireInterval = 0.2f;
 
-    [Header("¹ß»ç À§Ä¡")]
+    [Header("ë°œì‚¬ ìœ„ì¹˜")]
     [SerializeField] private Transform _firePoint;
     [SerializeField] private Transform _player;
 
