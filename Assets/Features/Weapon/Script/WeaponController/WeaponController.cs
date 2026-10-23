@@ -143,22 +143,25 @@ public class WeaponController : MonoBehaviour
 
         }
 
+        // 무기 교체 중 발사/ 장전 x
         CancelFire();
         CancelReload();
         _isReloading = false;
    
      
-
         _currentWeapon = weapon;
         _weaponId = id;
         _currentWeaponId = id;
 
+        // 저장한 값 꺼내오기
         if (_ammo.ContainsKey(id))
         {
             _currentAmmo = _ammo[id];
             _currentTotalAmmo = _totalAmmo[id];
         }
 
+
+        // 없으면 최대수치로
         else
         {
             _currentAmmo = _currentWeapon.MaxAmmo;
@@ -168,6 +171,7 @@ public class WeaponController : MonoBehaviour
             _totalAmmo[id] = _currentTotalAmmo;
         }
 
+        // 무기 확인 
         if (_weaponNames != null)
         {
             for (int i = 0; i < _weaponNames.Count; i++)
