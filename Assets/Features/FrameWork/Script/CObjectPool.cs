@@ -27,7 +27,7 @@ public class CObjectPool<TPool, TReuslt> : CSingleton<TPool> where TPool : MonoB
     {
         if (_prefab == null)
         {
-            Debug.LogWarning("팩토리 프리펩 누락");
+            Debug.LogWarning("오브젝트풀 프리펩 누락");
             enabled = false;
             return;
         }
