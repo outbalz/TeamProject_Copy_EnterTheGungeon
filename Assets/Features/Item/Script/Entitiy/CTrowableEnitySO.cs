@@ -4,7 +4,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 [CreateAssetMenu(menuName = "SO/GameDataSO/EntityDataSO/EntityStrategy/TrowableEnitySO", fileName = "TrowableEnitySO_")]
 public class CTrowableEnitySO : CEntityStrategySO

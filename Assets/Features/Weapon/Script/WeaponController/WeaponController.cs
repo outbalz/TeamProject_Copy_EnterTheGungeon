@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
@@ -10,29 +10,29 @@ using UnityEngine.UIElements;
 
 public class WeaponController : MonoBehaviour
 {
-    #region ÀÎ½ºÆåÅÍ
-    [Header("¹«±â ¼³Á¤")]
+    #region ï¿½Î½ï¿½ï¿½ï¿½ï¿½ï¿½
+    [Header("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½")]
     [SerializeField] private CWeaponDatabaseSO _database = null;
     [SerializeField] private string _weaponId = "Weapon_Pistol";
     [SerializeField] private Transform _firePoint = null;
     [SerializeField] private Transform _weaponTransform;
     [SerializeField] private GameObject _muzzleFlash;
-    // ¹«±â ¸ñ·Ï
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
     [SerializeField] private List<string> _weaponNames = new List<string>();
 
-    [Header("½ºÇÁ¶óÀÌÆ® ¼³Á¤")]
+    [Header("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½")]
     [SerializeField] private SpriteRenderer _weaponSpriteRenderer;
     [SerializeField] private float _fireSpriteTime = 0.1f;
     [SerializeField] private float _rotationSharpness = 25f;
    
     #endregion
 
-    #region ³»ºÎ º¯¼ö
+    #region ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     private CWeaponDataSO _currentWeapon;
     private string _currentWeaponId;
     private int _currentWeaponIndex = 0;
-    private CancellationTokenSource _fireCTS; // ¹ß»ç Ãë¼Ò
-    private CancellationTokenSource _reloadCTS; // ÀåÀü Ãë¼Ò
+    private CancellationTokenSource _fireCTS; // ï¿½ß»ï¿½ ï¿½ï¿½ï¿½
+    private CancellationTokenSource _reloadCTS; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
     private CancellationToken _fireSpriteAnimCTS;
     private Dictionary<string, int> _ammo = new Dictionary<string, int>();
     private Dictionary<string, int> _totalAmmo = new Dictionary<string, int>();
@@ -43,7 +43,7 @@ public class WeaponController : MonoBehaviour
     private float _lastFireTime = 0f;
     #endregion
 
-    #region ÇÁ·ÎÆÛÆ¼
+    #region ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¼
     public CWeaponDataSO CurrentWeapon => _currentWeapon;
     public int CurrentAmmo => _currentAmmo;
     public bool IsReloading => _isReloading;
@@ -63,12 +63,12 @@ public class WeaponController : MonoBehaviour
         _muzzleFlash.SetActive(false);
     }
 
-    // ¹ß»ç, ÀåÀü, ½ºÀ§Ä¡ ±¸µ¶
+    // ï¿½ß»ï¿½, ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½
     private void OnEnable()
     {
         if (CInputDispatcher.Instance != null)
         {
-            if (CInputDispatcher.Instance.InputActionMap.TryGetValue("Fire", out var fireAction))
+            if (CInputDispatcher.Instance.InputActionMap.TryGetValue("TriggerWeapon", out var fireAction))
             {
                 fireAction.OnPerformedAction += TryFire;
             }
@@ -84,7 +84,7 @@ public class WeaponController : MonoBehaviour
         }
     }
 
-    // ¹ß»ç, ÀåÀü, ½ºÀ§Ä¡ ±¸µ¶ÇØÁ¦
+    // ï¿½ß»ï¿½, ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     private void OnDisable()
     {
         if (CInputDispatcher.Instance != null)
@@ -117,7 +117,7 @@ public class WeaponController : MonoBehaviour
         CancelReload();
     }
     
-    // ¹«±â¼±ÅÃ
+    // ï¿½ï¿½ï¿½â¼±ï¿½ï¿½
     public bool SelectWeapon(string id)
     {
         if (_database == null)
@@ -127,14 +127,14 @@ public class WeaponController : MonoBehaviour
 
         if (!_database.TryGet(id, out CWeaponDataSO weapon))
         {
-            Debug.Log($"¹«±â¸¦ Ã£À» ¼ö ¾ø´Ù.{id}");
+            Debug.Log($"ï¿½ï¿½ï¿½â¸¦ Ã£ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.{id}");
 
             return false;
         }
 
-        Debug.Log($" ¹«±âid {id}");
+        Debug.Log($" ï¿½ï¿½ï¿½ï¿½id {id}");
 
-        // µñ¼Å³Ê¸®¿¡ ÇöÀç ¹«±â Åº¾à Á¤º¸ ÀúÀå
+        // ï¿½ï¿½Å³Ê¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Åºï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         if (!string.IsNullOrEmpty(_currentWeaponId))
         {
             _ammo[_currentWeaponId] = _currentAmmo;
@@ -142,7 +142,7 @@ public class WeaponController : MonoBehaviour
 
         }
 
-        // ¹«±â ±³Ã¼ Áß ¹ß»ç/ ÀåÀü x
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ ï¿½ï¿½ ï¿½ß»ï¿½/ ï¿½ï¿½ï¿½ï¿½ x
         CancelFire();
         CancelReload();
         _isReloading = false;
@@ -152,7 +152,7 @@ public class WeaponController : MonoBehaviour
         _weaponId = id;
         _currentWeaponId = id;
 
-        // ÀúÀåÇÑ °ª ²¨³»¿À±â
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         if (_ammo.ContainsKey(id))
         {
             _currentAmmo = _ammo[id];
@@ -160,7 +160,7 @@ public class WeaponController : MonoBehaviour
         }
 
 
-        // ¾øÀ¸¸é ÃÖ´ë¼öÄ¡·Î
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ï¿½Ä¡ï¿½ï¿½
         else
         {
             _currentAmmo = _currentWeapon.MaxAmmo;
@@ -170,7 +170,7 @@ public class WeaponController : MonoBehaviour
             _totalAmmo[id] = _currentTotalAmmo;
         }
 
-        // ¹«±â È®ÀÎ 
+        // ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½ 
         if (_weaponNames != null)
         {
             for (int i = 0; i < _weaponNames.Count; i++)
@@ -185,23 +185,23 @@ public class WeaponController : MonoBehaviour
 
         }
 
-        // ¹«±â ÀÌ¹ÌÁö ÀåÂø 
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 
         if (_weaponSpriteRenderer != null && _currentWeapon.WeaponSprite != null)
         {
             _weaponSpriteRenderer.sprite = _currentWeapon.WeaponSprite; 
         }
 
 
-        Debug.Log($"¹«±â ÀåÂø ¼º°ø: {_currentWeapon.name}");
+        Debug.Log($"ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½: {_currentWeapon.name}");
         return true;
     }
 
-    // ¹«±â ±³Ã¼ 
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ 
     public void SwitchWeapon(int index)
     {
         if (_weaponNames == null || _weaponNames.Count == 0)
         {
-            Debug.Log("_weaponNames ¾øÀ½");
+            Debug.Log("_weaponNames ï¿½ï¿½ï¿½ï¿½");
             return;
         }
 
@@ -223,10 +223,10 @@ public class WeaponController : MonoBehaviour
 
 
 
-    // ¹ß»ç½Ãµµ
+    // ï¿½ß»ï¿½Ãµï¿½
     public void TryFire()
     {
-        Debug.Log("¹ß»ç");
+        Debug.Log("ï¿½ß»ï¿½");
         if (_currentWeapon == null || _firePoint == null)
         {
             return;
@@ -242,7 +242,7 @@ public class WeaponController : MonoBehaviour
             return;
         }
 
-        // ÇöÀç Åº¾àÀÌ 0º¸´Ù ÀÛÀ¸¸é ÀåÀü
+        // ï¿½ï¿½ï¿½ï¿½ Åºï¿½ï¿½ï¿½ï¿½ 0ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         if (_currentAmmo <= 0)
         {
             TryReload();
@@ -265,19 +265,19 @@ public class WeaponController : MonoBehaviour
 
     }
 
-    // Á¶ÁØ À§Ä¡¿¡ µû¸¥ ÃÑ±â ÀÌ¹ÌÁö °è»ê
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ±ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
     private void Fire()
     {
-        // ¸¶¿ì½º À§Ä¡ °è»ê
+        // ï¿½ï¿½ï¿½ì½º ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½
         Vector2 mousPos = Mouse.current.position.ReadValue();
         Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint( mousPos );
         mouseWorldPos.z = 0f;
 
-        // ¸¶¿ì½º ¹æÇâ °è»ê
+        // ï¿½ï¿½ï¿½ì½º ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
         Vector3 direction = (mouseWorldPos - _weaponTransform.position).normalized;
         Quaternion targetRotatiom = Quaternion.FromToRotation(Vector3.up, direction);
 
-        // º¸°£
+        // ï¿½ï¿½ï¿½ï¿½
         float t = 1.0f - Mathf.Exp(-_rotationSharpness * Time.deltaTime);
         _weaponTransform.rotation = Quaternion.Slerp(_weaponTransform.rotation, targetRotatiom, t);
 
@@ -285,7 +285,7 @@ public class WeaponController : MonoBehaviour
         {
             Vector3 localScale = _weaponTransform.localScale;
 
-            // ¸¶¿ì½º ÁÂÇ¥, ÃÑ ÁÂÇ¥ ºñ±³
+            // ï¿½ï¿½ï¿½ì½º ï¿½ï¿½Ç¥, ï¿½ï¿½ ï¿½ï¿½Ç¥ ï¿½ï¿½
             if (mouseWorldPos.x < _weaponTransform.position.x)
             {
                 localScale.x = 1f; 
@@ -301,43 +301,43 @@ public class WeaponController : MonoBehaviour
     }
 
   
-    // ÀåÀü ½Ãµµ
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½Ãµï¿½
     private void TryReload()
     {
-        Debug.Log($"ÇöÀç Åº¾à {_currentAmmo} | ¿¹ºñ Åº¾à{_currentTotalAmmo}");
-        // À¯È¿¼º °Ë»ç
+        Debug.Log($"ï¿½ï¿½ï¿½ï¿½ Åºï¿½ï¿½ {_currentAmmo} | ï¿½ï¿½ï¿½ï¿½ Åºï¿½ï¿½{_currentTotalAmmo}");
+        // ï¿½ï¿½È¿ï¿½ï¿½ ï¿½Ë»ï¿½
         if (_currentWeapon == null || _currentWeapon.Reload == null) 
         {
             return;
         }
 
-        // ÀåÀüÁßÀÌ¸é X
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½ X
         if (_isReloading)
         {
             return;
         }
 
-        // ÃÖ´ë Åº¾à ³ÑÀ¸¸é x
+        // ï¿½Ö´ï¿½ Åºï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ x
         if (_currentAmmo >= _currentWeapon.MaxAmmo)
         {
-            Debug.Log("ÅºÃ¢ÀÌ °¡µæÂü");
+            Debug.Log("ÅºÃ¢ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
             return;
         }
 
-        // Åº¾à ¾øÀ»°æ¿ì ÀåÀü ºÒ°¡
+        // Åºï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ò°ï¿½
         if (_currentTotalAmmo <= 0)
         {
             return;
         }
 
-        Debug.Log("ÀåÀü ½ÃÀÛ");
+        Debug.Log("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
         CancelFire();
         CancelReload();
 
         _reloadCTS = new CancellationTokenSource();
         _isReloading = true;
 
-        // µ¥ÀÌÅÍ °ª µé°í¿À±â
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         CWeaponDataSO weapon = _currentWeapon;
 
         CWeaponReloadContext reloadContext = new CWeaponReloadContext(
@@ -350,7 +350,7 @@ public class WeaponController : MonoBehaviour
 
     }
 
-    // ¹Ýµ¿ º¹±¸
+    // ï¿½Ýµï¿½ ï¿½ï¿½ï¿½ï¿½
     private void RecoveryRevound()
     {
         if (_weaponTransform == null || _currentWeapon == null)
@@ -367,7 +367,7 @@ public class WeaponController : MonoBehaviour
 
     private void TrySwitchWeapon()
     {
-        // ½ºÅ©·Ñ Á¤º¸ °¡Á®¿À±â
+        // ï¿½ï¿½Å©ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         Vector2 scrollValue = Mouse.current.scroll.ReadValue();
         float scrollY = scrollValue.y;
 
@@ -381,10 +381,10 @@ public class WeaponController : MonoBehaviour
             SwitchWeapon(1);  
         }
 
-        Debug.Log("¹«±âº¯°æ");
+        Debug.Log("ï¿½ï¿½ï¿½âº¯ï¿½ï¿½");
     }
 
-    // ¹Ýµ¿ 
+    // ï¿½Ýµï¿½ 
     private void AppltReload()
     {
         if (_weaponTransform == null)
@@ -394,7 +394,7 @@ public class WeaponController : MonoBehaviour
 
         _weaponTransform.localPosition = _originPos + (Vector3.down * _currentWeapon.ReboundRange);
 
-        Debug.Log("¹Ýµ¿o");
+        Debug.Log("ï¿½Ýµï¿½o");
     }
 
     private async UniTask ReloadAsync(CWeaponReloadContext context, CancellationToken ct)
@@ -403,17 +403,17 @@ public class WeaponController : MonoBehaviour
 
         if (success)
         {
-            Debug.Log("ÀåÀü O");
+            Debug.Log("ï¿½ï¿½ï¿½ï¿½ O");
         }
 
         else
         {
-            Debug.Log("ÀåÀü x");
+            Debug.Log("ï¿½ï¿½ï¿½ï¿½ x");
         }
         _isReloading = false;
     }
 
-    // ¹ß»ç ÀÌ¹ÌÁö 
+    // ï¿½ß»ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ 
     private async UniTask ReturnFireSprite()
     {
         if (_weaponSpriteRenderer == null)
@@ -438,7 +438,7 @@ public class WeaponController : MonoBehaviour
 
     }
 
-    // ¹ß»ç ¸Óºí ÇÃ·¹½¬
+    // ï¿½ß»ï¿½ ï¿½Óºï¿½ ï¿½Ã·ï¿½ï¿½ï¿½
     private async UniTask FireFlashMuzzle()
     {
         if (_muzzleFlash == null) return;
@@ -469,7 +469,7 @@ public class WeaponController : MonoBehaviour
         SpawnProjectile(_currentWeapon, rotation);
     }
 
-    // ÀåÀü 
+    // ï¿½ï¿½ï¿½ï¿½ 
     private void LoadComplete(int ammo)
     {
         if (_currentWeapon == null)
@@ -480,10 +480,10 @@ public class WeaponController : MonoBehaviour
         int neededAmmo = _currentWeapon.MaxAmmo - _currentAmmo;
 
 
-        // Åº¾à ¹«Á¦ÇÑ °ü¸®
+        // Åºï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         if (_currentWeapon.IsInfiniteAmmo)
         {
-            // ¹«Á¦ÇÑ
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             _currentAmmo += neededAmmo;
         }
         else
@@ -498,7 +498,7 @@ public class WeaponController : MonoBehaviour
 
 
 
-    // Åõ»çÃ¼ ²¨³»¿À±â
+    // ï¿½ï¿½ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     private void SpawnProjectile(CWeaponDataSO weapon, Quaternion rotation)
     {
         if (weapon == null || weapon.Projectile == null)
@@ -506,7 +506,7 @@ public class WeaponController : MonoBehaviour
             return;
         }
 
-        // »ý¼º
+        // ï¿½ï¿½ï¿½ï¿½
         ProjectileController projectile = CProjectileFactory.Instance.Creat();
 
         Debug.Log($"{_firePoint.position}");
@@ -534,7 +534,7 @@ public class WeaponController : MonoBehaviour
         projectile.gameObject.SetActive(true);
         projectile.SetUp(weapon.Projectile);
 
-        // ÃÑ¾Ë °¨¼Ò
+        // ï¿½Ñ¾ï¿½ ï¿½ï¿½ï¿½ï¿½
         _currentAmmo--;
         Debug.Log($"{projectile.transform.position}");
 
@@ -546,7 +546,7 @@ public class WeaponController : MonoBehaviour
 
 
 
-    // Ãë¼Ò‰çÀ»°æ¿ì
+    // ï¿½ï¿½Ò‰ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     private void CancelFire()
     {
         if (_fireCTS == null)

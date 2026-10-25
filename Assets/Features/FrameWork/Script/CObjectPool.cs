@@ -40,7 +40,7 @@ public class CObjectPool<TPool, TReuslt> : CSingleton<TPool> where TPool : MonoB
             return;
         }
 
-        GameObject root = new GameObject("EnemyPool_Root");
+        GameObject root = new GameObject("_Pool_Root_"+(typeof(TReuslt).ToString()));
 
         _poolRoot = root.transform;
     }

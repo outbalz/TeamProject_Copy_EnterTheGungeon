@@ -1,7 +1,6 @@
 ﻿using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Animations;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "SO/GameDataSO/EntityDataSO/EntityStrategy/EntitySupplyDropSO", fileName = "EntitySupplyDropSO_")]
@@ -10,7 +9,7 @@ public class CEntitySupplyDropSO : CEntityStrategySO
     #region 인스팩터
     [SerializeField] private CEntityDataSO _dropEntitiy;
     [SerializeField] private float _dropTime;
-    [SerializeField] private AnimatorController _dropAnimation;
+    [SerializeField] private RuntimeAnimatorController _dropAnimation;
     [SerializeField] private Vector2 _offset;
     #endregion
 
